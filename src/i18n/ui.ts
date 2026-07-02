@@ -39,6 +39,7 @@ export interface Dict {
     leadHtml: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    pills: { text: string; lang?: string }[];
   };
   legal: { titleHtml: string; bodyHtml: string };
   offer: {
@@ -51,7 +52,19 @@ export interface Dict {
     title: string;
     steps: { t: string; dHtml: string }[];
   };
-  proof: { title: string; p1Html: string; p2Html: string };
+  proof: {
+    title: string;
+    p1Html: string;
+    p2Html: string;
+    pr: {
+      figLabel: string;
+      title: string;
+      badge: string;
+      lines: { t: string; k: 'ctx' | 'del' | 'add' }[];
+      checks: string[];
+      ready: string;
+    };
+  };
   story: { title: string; p1Html: string; p2Html: string };
   contact: {
     title: string;
@@ -92,13 +105,17 @@ export const ui: Record<Lang, Dict> = {
       theme: { label: 'Thème', auto: 'auto', light: 'clair', dark: 'sombre' },
     },
     hero: {
-      eyebrow: 'Accessibilité numérique · RGAA · WCAG 2.2',
-      h1Html: `L'auditeur qui <span style="color:var(--c-primary);">code la solution</span>.`,
-      leadHtml: `La plupart des audits livrent un PDF de 80 pages que personne ne sait appliquer.
-        Moi je suis développeur fullstack : je livre l'audit <strong>et les <span lang="en">pull requests</span> de
-        correction</strong>. Je parle aux équipes dev et j'arbitre conformité vs UX réelle.`,
+      eyebrow: 'Audit & remédiation · RGAA / WCAG 2.2',
+      h1Html: `Je forge des <em>mains d'argent</em> pour vos interfaces.`,
+      leadHtml: `Auditeur RGAA <em>et</em> développeur fullstack senior : je relève les non-conformités,
+        puis — si vous le souhaitez — je livre le code qui les corrige, directement dans votre dépôt.`,
       ctaPrimary: 'Demander un audit',
       ctaSecondary: 'Voir la méthode',
+      pills: [
+        { text: 'France — RGAA · EAA' },
+        { text: 'Español — WCAG · UNE-EN 301 549', lang: 'es' },
+        { text: 'English — WCAG · ADA', lang: 'en' },
+      ],
     },
     legal: {
       titleHtml: `<span lang="en">European Accessibility Act</span> : applicable depuis juin 2025`,
@@ -185,6 +202,25 @@ export const ui: Record<Lang, Dict> = {
         mené de bout en bout — de l'audit jusqu'au code en production.`,
       p2Html: `Ce site en est la garantie silencieuse : entièrement accessible, il applique au quotidien
         ce que je livre à mes clients.`,
+      pr: {
+        figLabel: 'Exemple de livrable : pull request de correction',
+        title: 'fix(a11y) : labels, contraste, focus',
+        badge: 'PR #217',
+        lines: [
+          { t: '  src/components/ContactForm.tsx', k: 'ctx' },
+          { t: '− <div class="btn" onclick="send()">OK</div>', k: 'del' },
+          { t: '+ <button type="submit" class="btn">', k: 'add' },
+          { t: '+   Envoyer le message', k: 'add' },
+          { t: '+ </button>', k: 'add' },
+          { t: '', k: 'ctx' },
+          { t: '  src/pages/index.astro', k: 'ctx' },
+          { t: '− <img src="equipe.jpg">', k: 'del' },
+          { t: '+ <img src="equipe.jpg" alt="L\'équipe', k: 'add' },
+          { t: '+   au complet devant l\'atelier">', k: 'add' },
+        ],
+        checks: ['✓ axe : 0 violation', '✓ contraste AAA'],
+        ready: 'prêt à merger',
+      },
     },
     story: {
       title: 'Pourquoi « Nuada » ?',
@@ -237,13 +273,17 @@ export const ui: Record<Lang, Dict> = {
       theme: { label: 'Theme', auto: 'auto', light: 'light', dark: 'dark' },
     },
     hero: {
-      eyebrow: 'Digital accessibility · WCAG 2.2 · EAA / ADA',
-      h1Html: `The auditor who <span style="color:var(--c-primary);">codes the fix</span>.`,
-      leadHtml: `Most audits deliver an 80-page PDF nobody knows how to apply.
-        I'm a fullstack developer: I deliver the audit <strong>and the remediation pull
-        requests</strong>. I speak dev, and I balance strict conformance with real-world UX.`,
+      eyebrow: 'Accessibility audit & remediation · WCAG 2.2',
+      h1Html: `I forge <em>silver hands</em> for your interfaces.`,
+      leadHtml: `Accessibility auditor <em>and</em> senior fullstack developer: I find the barriers,
+        then — if you want — I ship the code that removes them, right in your repository.`,
       ctaPrimary: 'Request an audit',
       ctaSecondary: 'See the method',
+      pills: [
+        { text: 'English — WCAG · ADA' },
+        { text: 'France — RGAA · EAA', lang: 'fr' },
+        { text: 'Español — WCAG · UNE-EN 301 549', lang: 'es' },
+      ],
     },
     legal: {
       titleHtml: `EAA, ADA, Section 508: accessibility is now a legal requirement`,
@@ -328,6 +368,25 @@ export const ui: Record<Lang, Dict> = {
         I ship the fixes. Working with me means rigorous work carried end to end — from the audit
         to code in production.`,
       p2Html: `This site is the quiet proof: fully accessible, it practises daily what I deliver to clients.`,
+      pr: {
+        figLabel: 'Sample deliverable: a remediation pull request',
+        title: 'fix(a11y): labels, contrast, focus',
+        badge: 'PR #217',
+        lines: [
+          { t: '  src/components/ContactForm.tsx', k: 'ctx' },
+          { t: '− <div class="btn" onclick="send()">OK</div>', k: 'del' },
+          { t: '+ <button type="submit" class="btn">', k: 'add' },
+          { t: '+   Send message', k: 'add' },
+          { t: '+ </button>', k: 'add' },
+          { t: '', k: 'ctx' },
+          { t: '  src/pages/index.astro', k: 'ctx' },
+          { t: '− <img src="team.jpg">', k: 'del' },
+          { t: '+ <img src="team.jpg" alt="The whole', k: 'add' },
+          { t: '+   team outside the workshop">', k: 'add' },
+        ],
+        checks: ['✓ axe: 0 violations', '✓ AAA contrast'],
+        ready: 'ready to merge',
+      },
     },
     story: {
       title: 'Why "Nuada"?',
@@ -380,13 +439,17 @@ export const ui: Record<Lang, Dict> = {
       theme: { label: 'Tema', auto: 'auto', light: 'claro', dark: 'oscuro' },
     },
     hero: {
-      eyebrow: 'Accesibilidad digital · WCAG 2.2 · UNE-EN 301 549',
-      h1Html: `El auditor que <span style="color:var(--c-primary);">programa la solución</span>.`,
-      leadHtml: `La mayoría de las auditorías entregan un PDF de 80 páginas que nadie sabe aplicar.
-        Yo soy desarrollador fullstack: entrego la auditoría <strong>y las <span lang="en">pull requests</span>
-        de corrección</strong>. Hablo el idioma de los equipos dev y equilibrio conformidad y UX real.`,
+      eyebrow: 'Auditoría y corrección · WCAG 2.2 · UNE-EN 301 549',
+      h1Html: `Forjo <em>manos de plata</em> para sus interfaces.`,
+      leadHtml: `Auditor de accesibilidad <em>y</em> desarrollador fullstack senior: detecto las no
+        conformidades y — si lo desea — entrego el código que las corrige, directamente en su repositorio.`,
       ctaPrimary: 'Solicitar una auditoría',
       ctaSecondary: 'Ver el método',
+      pills: [
+        { text: 'Español — WCAG · UNE-EN 301 549' },
+        { text: 'France — RGAA · EAA', lang: 'fr' },
+        { text: 'English — WCAG · ADA', lang: 'en' },
+      ],
     },
     legal: {
       titleHtml: `<span lang="en">European Accessibility Act</span>: aplicable desde junio de 2025`,
@@ -471,6 +534,25 @@ export const ui: Record<Lang, Dict> = {
         los problemas, entrego las correcciones. Trabajar conmigo es la certeza de un trabajo riguroso,
         llevado de principio a fin — de la auditoría al código en producción.`,
       p2Html: `Este sitio es la garantía silenciosa: totalmente accesible, aplica a diario lo que entrego a mis clientes.`,
+      pr: {
+        figLabel: 'Ejemplo de entregable: pull request de corrección',
+        title: 'fix(a11y): labels, contraste, focus',
+        badge: 'PR #217',
+        lines: [
+          { t: '  src/components/ContactForm.tsx', k: 'ctx' },
+          { t: '− <div class="btn" onclick="send()">OK</div>', k: 'del' },
+          { t: '+ <button type="submit" class="btn">', k: 'add' },
+          { t: '+   Enviar el mensaje', k: 'add' },
+          { t: '+ </button>', k: 'add' },
+          { t: '', k: 'ctx' },
+          { t: '  src/pages/index.astro', k: 'ctx' },
+          { t: '− <img src="equipo.jpg">', k: 'del' },
+          { t: '+ <img src="equipo.jpg" alt="El equipo', k: 'add' },
+          { t: '+   al completo frente al taller">', k: 'add' },
+        ],
+        checks: ['✓ axe: 0 violaciones', '✓ contraste AAA'],
+        ready: 'listo para merge',
+      },
     },
     story: {
       title: '¿Por qué «Nuada»?',
