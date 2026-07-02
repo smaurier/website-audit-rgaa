@@ -36,6 +36,7 @@
   --radius: 10px;
   --maxw: 68rem;
   --gap: clamp(1rem, 2.5vw, 2rem);
+  --section-gap: clamp(4rem, 9vw, 7rem);   /* rythme vertical unique entre sections */
   --font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-brand: 'Uncial Antiqua', var(--font-display);
@@ -79,8 +80,12 @@ h1, h2, h3 {
 }
 h1 { font-size: clamp(2rem, 1.4rem + 3.2vw, 3.75rem); font-weight: 900; letter-spacing: -0.015em; margin: 0 0 0.5em; }
 h1 em { font-style: italic; color: var(--c-primary); }
-h2 { font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.125rem); margin: 2.5rem 0 0.75rem; }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.125rem); margin: 0 0 1rem; }
 h3 { font-size: 1.25rem; margin: 0 0 0.5rem; }
+
+/* Rythme vertical : un seul espace entre sections, pas d'empilements ad hoc */
+main > section + section { margin-top: var(--section-gap); }
+main > section:last-child { margin-bottom: var(--section-gap); }
 
 /* Filet argent sous les titres de section — la signature Nuada */
 main h2::after {
@@ -213,8 +218,10 @@ a:hover { text-decoration-thickness: 2px; }
   position: relative;
   text-align: center;
   overflow: hidden;
-  padding-block: clamp(3rem, 7vw, 5rem);
+  /* bas plus court : c'est --section-gap qui espace la section suivante */
+  padding-block: clamp(3rem, 7vw, 5rem) clamp(1rem, 2vw, 1.5rem);
 }
+.hero h1 { margin-bottom: 0; }
 .hero-torque {
   position: absolute;
   left: 50%;
@@ -278,7 +285,7 @@ a:hover { text-decoration-thickness: 2px; }
   background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  padding: clamp(1.4rem, 2.5vw, 1.9rem);
 }
 .card::before {
   content: '';
@@ -292,6 +299,12 @@ a:hover { text-decoration-thickness: 2px; }
   display: grid;
   gap: var(--gap);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+/* Méthode : 4 étapes — min plus bas pour tenir 4-up en desktop, 2×2 en tablette
+   (sinon la 4e carte se retrouve orpheline sous une rangée de 3) */
+#methode .grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
 }
 
 /* ==========================================================================
@@ -326,11 +339,14 @@ a:hover { text-decoration-thickness: 2px; }
 .silver-line {
   width: 9rem;
   height: 3px;
-  margin: 1.75rem auto;
+  margin: 1.5rem auto;
   border-radius: 2px;
   background: var(--silver);
   background-size: 220% 100%;
 }
+
+/* Footer */
+footer p { margin: 0.35rem 0; }
 
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }

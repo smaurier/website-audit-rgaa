@@ -38,7 +38,7 @@ const t = ui[lang];
         <a class="btn btn--primary" href="#contact">{t.hero.ctaPrimary}</a>
         <a class="btn btn--ghost" href="#methode">{t.hero.ctaSecondary}</a>
       </p>
-      <ul style="list-style:none; display:flex; gap:0.9rem; flex-wrap:wrap; justify-content:center; margin:2.75rem 0 0; padding:0;">
+      <ul role="list" style="list-style:none; display:flex; gap:0.9rem; flex-wrap:wrap; justify-content:center; margin:2.5rem 0 0; padding:0;">
         {t.hero.pills.map((p) => (
           <li class="pill" lang={p.lang}>{p.text}</li>
         ))}
@@ -58,7 +58,7 @@ const t = ui[lang];
   <section class="container" id="offre" aria-labelledby="offre-title">
     <h2 id="offre-title">{t.offer.title}</h2>
     <p style="color:var(--c-muted);">{t.offer.subtitle}</p>
-    <ul class="grid" style="list-style:none; padding:0; margin-top:1.5rem;">
+    <ul class="grid" role="list" style="list-style:none; padding:0; margin-top:2rem;">
       {t.offer.paliers.map((p, i) => (
         <li class="card reveal" style={`${p.phare ? 'border:2px solid var(--c-primary);' : ''}--reveal-delay:${i * 90}ms;`}>
           {p.phare && (
@@ -66,11 +66,11 @@ const t = ui[lang];
               {t.offer.badge}
             </p>
           )}
-          <h3>{p.nom}</h3>
-          <p style="color:var(--c-muted); margin:0 0 0.5rem;">{p.cible}</p>
-          <p style="font-size:1.5em; font-weight:700; margin:0;">{p.prix}</p>
-          <p style="color:var(--c-muted); font-size:0.9em; margin:0.25rem 0 1rem;">{p.scope}</p>
-          <ul style="padding-left:1.1rem; margin:0 0 1rem;">
+          <h3 style="margin-bottom:0.25rem;">{p.nom}</h3>
+          <p style="color:var(--c-muted); margin:0;">{p.cible}</p>
+          <p style="font-size:1.5em; font-weight:700; margin:0.9rem 0 0;">{p.prix}</p>
+          <p style="color:var(--c-muted); font-size:0.9em; margin:0.3rem 0 1.25rem;">{p.scope}</p>
+          <ul style="padding-left:1.1rem; margin:0 0 1.25rem; display:grid; gap:0.35rem;">
             {p.contenu.map((c) => <li>{c}</li>)}
           </ul>
           <p style="margin:0; font-weight:600;">→ {p.livrable}</p>
@@ -82,7 +82,7 @@ const t = ui[lang];
   <!-- METHODE -->
   <section class="container" id="methode" aria-labelledby="methode-title">
     <h2 id="methode-title">{t.method.title}</h2>
-    <ol class="grid" style="padding:0; margin-top:1.5rem;">
+    <ol class="grid" role="list" style="padding:0; margin-top:2rem; list-style:none;">
       {t.method.steps.map((s, i) => (
         <li class="card reveal" style={`--reveal-delay:${i * 90}ms;`}>
           <h3>{s.t}</h3>
@@ -95,7 +95,7 @@ const t = ui[lang];
   <!-- PREUVE — le positionnement montré : une PR de remédiation -->
   <section class="container" aria-labelledby="preuve-title">
     <h2 id="preuve-title">{t.proof.title}</h2>
-    <div style="display:grid; gap:var(--gap); grid-template-columns:repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); align-items:center; margin-top:1.5rem;">
+    <div style="display:grid; gap:var(--gap); grid-template-columns:repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); align-items:center; margin-top:2rem;">
       <div class="reveal">
         <p style="margin-top:0;" set:html={t.proof.p1Html} />
         <p set:html={t.proof.p2Html} />
@@ -145,7 +145,7 @@ const t = ui[lang];
         action={t.contact.form.action}
         data-netlify="true"
         netlify-honeypot="bot-field"
-        style="display:grid; gap:1rem; max-width:36rem;"
+        style="display:grid; gap:1.25rem; max-width:36rem; margin-top:1.5rem;"
       >
         <input type="hidden" name="form-name" value="contact" />
         <input type="hidden" name="lang" value={lang} />

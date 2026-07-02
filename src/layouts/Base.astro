@@ -189,7 +189,7 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
       <slot />
     </main>
 
-    <footer class="container" style="padding-block: 2.5rem; margin-top:3rem; border-top:1px solid var(--c-border); color:var(--c-muted);">
+    <footer class="container" style="padding-block: 2.5rem; border-top:1px solid var(--c-border); color:var(--c-muted);">
       <p>© {new Date().getFullYear()} {l.footerRights}</p>
       <p set:html={l.footerProof} />
     </footer>
