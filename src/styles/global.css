@@ -353,6 +353,28 @@ a:hover { text-decoration-thickness: 2px; }
   }
   .torque-arc { animation: torque-draw 1.6s var(--ease) 0.15s backwards; }
 
+  /* — Les extrémités du torque : posées comme des rivets à la fin du tracé — */
+  @keyframes torque-finial {
+    from { opacity: 0; scale: 0.2; }
+  }
+  .torque-end {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: torque-finial 0.45s var(--ease) 1.5s backwards;
+  }
+
+  /* — Parallaxe légère : le torque glisse plus lentement que la page — */
+  @supports (animation-timeline: scroll()) {
+    @keyframes torque-parallax {
+      to { translate: 0 120px; }
+    }
+    .hero-torque {
+      animation: torque-parallax linear both;
+      animation-timeline: scroll();
+      animation-range: 0px 700px;
+    }
+  }
+
   /* — Le filet scintille, deux passages puis repos — */
   @keyframes shimmer {
     from { background-position: 130% 0; }

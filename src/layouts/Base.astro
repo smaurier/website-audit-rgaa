@@ -164,6 +164,25 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
         );
         document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       }
+
+      // Boutons magnétiques — pointeur fin uniquement, mouvement accepté uniquement.
+      // Purement décoratif : n'affecte ni le clavier, ni la cible tactile.
+      if (
+        !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        matchMedia('(pointer: fine)').matches
+      ) {
+        for (const b of document.querySelectorAll<HTMLElement>('.btn')) {
+          b.addEventListener('pointermove', (e) => {
+            const r = b.getBoundingClientRect();
+            const x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+            const y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+            b.style.translate = `${(x * 5).toFixed(1)}px ${(y * 4).toFixed(1)}px`;
+          });
+          b.addEventListener('pointerleave', () => {
+            b.style.translate = '';
+          });
+        }
+      }
     </script>
 
     <main id="main">
