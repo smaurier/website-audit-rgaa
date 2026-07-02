@@ -31,6 +31,7 @@ export interface Dict {
     langLabel: string;
     footerRights: string;
     footerProof: string;
+    theme: { label: string; auto: string; light: string; dark: string };
   };
   hero: {
     eyebrow: string;
@@ -88,6 +89,7 @@ export const ui: Record<Lang, Dict> = {
       footerRights: 'Nuada — Accessibilité numérique FR · EN · ES.',
       footerProof:
         'Ce site vise la conformité <strong>WCAG 2.2 niveau AAA</strong>. Il est sa propre démonstration.',
+      theme: { label: 'Thème', auto: 'auto', light: 'clair', dark: 'sombre' },
     },
     hero: {
       eyebrow: 'Accessibilité numérique · RGAA · WCAG 2.2',
@@ -232,6 +234,7 @@ export const ui: Record<Lang, Dict> = {
       footerRights: 'Nuada — Digital accessibility FR · EN · ES.',
       footerProof:
         'This site targets <strong>WCAG 2.2 level AAA</strong> conformance. It is its own demo.',
+      theme: { label: 'Theme', auto: 'auto', light: 'light', dark: 'dark' },
     },
     hero: {
       eyebrow: 'Digital accessibility · WCAG 2.2 · EAA / ADA',
@@ -374,6 +377,7 @@ export const ui: Record<Lang, Dict> = {
       footerRights: 'Nuada — Accesibilidad digital FR · EN · ES.',
       footerProof:
         'Este sitio apunta a la conformidad <strong>WCAG 2.2 nivel AAA</strong>. Es su propia demostración.',
+      theme: { label: 'Tema', auto: 'auto', light: 'claro', dark: 'oscuro' },
     },
     hero: {
       eyebrow: 'Accesibilidad digital · WCAG 2.2 · UNE-EN 301 549',

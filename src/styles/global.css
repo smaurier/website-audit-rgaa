@@ -6,16 +6,27 @@
 
 :root {
   /* Palette « Nuada » — celtique : vert forêt, cuivre, pierre.
-     Contrastes AAA sur fond clair (à re-vérifier à chaque ajustement). */
+     Chaque token : light-dark(clair, sombre). Les deux palettes sont AAA.
+     Fallback clair déclaré d'abord pour les navigateurs sans light-dark(). */
   --c-bg: #ffffff;
   --c-surface: #f3f7f4;
-  --c-text: #131a15;      /* sur --c-bg : ~16:1 (AAA) */
-  --c-muted: #42504a;     /* sur --c-bg : ~9:1  (AAA) */
-  --c-primary: #0b5138;   /* vert forêt — ~7.5:1 (AAA texte) */
+  --c-text: #131a15;
+  --c-muted: #42504a;
+  --c-primary: #0b5138;
   --c-primary-ink: #ffffff;
-  --c-accent: #7a3b10;    /* cuivre — ~8:1 (AAA) */
+  --c-accent: #7a3b10;
   --c-border: #c7d3cb;
-  --c-focus: #b4310a;     /* anneau de focus très contrasté */
+  --c-focus: #b4310a;
+
+  --c-bg: light-dark(#ffffff, #0c1310);
+  --c-surface: light-dark(#f3f7f4, #14201a);
+  --c-text: light-dark(#131a15, #eef4f0);       /* ~16:1 / ~15:1 */
+  --c-muted: light-dark(#42504a, #b7c5bd);      /* ~9:1 des deux côtés */
+  --c-primary: light-dark(#0b5138, #82d4ab);    /* vert forêt / vert menthe */
+  --c-primary-ink: light-dark(#ffffff, #0c1310);
+  --c-accent: light-dark(#7a3b10, #e0b48f);     /* cuivre / cuivre clair */
+  --c-border: light-dark(#c7d3cb, #2e3a33);
+  --c-focus: light-dark(#b4310a, #ffb37a);      /* anneau de focus très contrasté */
 
   /* Argent — DÉCORATIF UNIQUEMENT (filets, hauts de cartes), jamais en texte (contraste) */
   --silver: linear-gradient(100deg, #d9dde2, #98a2ac 55%, #c4cad1);
@@ -30,18 +41,19 @@
   color-scheme: light dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --c-bg: #0c1310;
-    --c-surface: #14201a;
-    --c-text: #eef4f0;      /* ~15:1 */
-    --c-muted: #b7c5bd;     /* ~9:1  */
-    --c-primary: #82d4ab;   /* vert clair sur fond sombre, AAA */
-    --c-primary-ink: #0c1310;
-    --c-accent: #e0b48f;    /* cuivre clair */
-    --c-border: #2e3a33;
-    --c-focus: #ffb37a;
-  }
+/* Choix manuel de thème (toggle) — sinon `color-scheme: light dark` suit le système */
+:root[data-theme='light'] { color-scheme: light; }
+:root[data-theme='dark'] { color-scheme: dark; }
+
+/* Bouton de thème (injecté par JS — absent sans JS, le site suit alors le système) */
+.theme-toggle {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.4rem 0.9rem;
+  background: var(--c-surface);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
 }
 
 *, *::before, *::after { box-sizing: border-box; }

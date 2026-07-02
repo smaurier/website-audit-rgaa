@@ -36,6 +36,13 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
       <link rel="alternate" hreflang={code} href={new URL(path, site).href} />
     ))}
     <link rel="alternate" hreflang="x-default" href={site.href} />
+    <script is:inline>
+      // Anti-flash : applique le thème choisi avant le premier rendu
+      (function () {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      })();
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">{l.skip}</a>
@@ -86,7 +93,51 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
           ))}
         </ul>
       </nav>
+      <!-- Le bouton de thème est injecté ici par JS (pas de contrôle mort sans JS) -->
+      <span
+        data-theme-mount
+        data-label={l.theme.label}
+        data-auto={l.theme.auto}
+        data-light={l.theme.light}
+        data-dark={l.theme.dark}
+      ></span>
+      <span id="theme-status" role="status" class="visually-hidden"></span>
     </header>
+
+    <script>
+      const mount = document.querySelector<HTMLElement>('[data-theme-mount]');
+      if (mount) {
+        const d = mount.dataset;
+        const labels: Record<string, string | undefined> = { auto: d.auto, light: d.light, dark: d.dark };
+        const order = ['auto', 'light', 'dark'];
+        const status = document.getElementById('theme-status');
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'theme-toggle';
+        const value = document.createElement('span');
+        btn.append(`${d.label} : `, value);
+        mount.replaceWith(btn);
+
+        const current = () => document.documentElement.dataset.theme ?? 'auto';
+        const render = () => { value.textContent = labels[current()] ?? ''; };
+
+        btn.addEventListener('click', () => {
+          const next = order[(order.indexOf(current()) + 1) % order.length];
+          if (next === 'auto') {
+            delete document.documentElement.dataset.theme;
+            localStorage.removeItem('theme');
+          } else {
+            document.documentElement.dataset.theme = next;
+            localStorage.setItem('theme', next);
+          }
+          render();
+          if (status) status.textContent = `${d.label} : ${labels[next]}`;
+        });
+
+        render();
+      }
+    </script>
 
     <main id="main">
       <slot />
