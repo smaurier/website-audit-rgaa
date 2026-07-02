@@ -1,27 +1,15 @@
 ---
 import '../styles/global.css';
+import { ui, locales, type Lang } from '../i18n/ui';
 
 interface Props {
-  title: string;
-  description: string;
-  lang?: string;
+  lang: Lang;
 }
 
-const { title, description, lang = 'fr' } = Astro.props;
-
-// Libellés de navigation par langue (extensible EN/ES)
-const t = {
-  fr: {
-    skip: 'Aller au contenu principal',
-    nav: 'Navigation principale',
-    offer: 'Offre',
-    method: 'Méthode',
-    contact: 'Contact',
-    langLabel: 'Choisir la langue',
-  },
-} as const;
-
-const l = t.fr;
+const { lang } = Astro.props;
+const t = ui[lang];
+const l = t.layout;
+const site = Astro.site ?? new URL('https://audit-rgaa.fr');
 ---
 
 <!doctype html>
@@ -30,18 +18,22 @@ const l = t.fr;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
     <meta name="generator" content={Astro.generator} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
     <meta property="og:type" content="website" />
+    {Object.entries(locales).map(([code, { path }]) => (
+      <link rel="alternate" hreflang={code} href={new URL(path, site).href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={site.href} />
   </head>
   <body>
     <a class="skip-link" href="#main">{l.skip}</a>
 
     <header class="container" style="padding-block: 1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
-      <a href="/" style="font-weight:700; text-decoration:none; color:var(--c-text);">
+      <a href={locales[lang].path} style="font-weight:700; text-decoration:none; color:var(--c-text);">
         Audit&nbsp;RGAA
       </a>
       <nav aria-label={l.nav}>
@@ -51,6 +43,23 @@ const l = t.fr;
           <li><a href="#contact">{l.contact}</a></li>
         </ul>
       </nav>
+      <nav aria-label={l.langLabel}>
+        <ul style="list-style:none; display:flex; gap:0.75rem; margin:0; padding:0;">
+          {Object.entries(locales).map(([code, { label, path }]) => (
+            <li>
+              <a
+                href={path}
+                lang={code}
+                hreflang={code}
+                aria-current={code === lang ? 'true' : undefined}
+                style={code === lang ? 'font-weight:700; text-decoration:none; color:var(--c-text);' : undefined}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
 
     <main id="main">
@@ -58,8 +67,8 @@ const l = t.fr;
     </main>
 
     <footer class="container" style="padding-block: 2.5rem; margin-top:3rem; border-top:1px solid var(--c-border); color:var(--c-muted);">
-      <p>© {new Date().getFullYear()} Audit RGAA — Accessibilité numérique FR · EN · ES.</p>
-      <p>Ce site vise la conformité <strong>WCAG 2.2 niveau AAA</strong>. Il est sa propre démonstration.</p>
+      <p>© {new Date().getFullYear()} {l.footerRights}</p>
+      <p set:html={l.footerProof} />
     </footer>
   </body>
 </html>

@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+import EmailLink from './EmailLink.astro';
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<Base lang={lang}>
+  <!-- HERO -->
+  <section class="container" style="padding-block: clamp(2rem, 6vw, 4.5rem);">
+    <p style="color:var(--c-accent); font-weight:600; margin:0 0 0.5rem; letter-spacing:0.02em;">
+      {t.hero.eyebrow}
+    </p>
+    <h1 set:html={t.hero.h1Html} />
+    <p style="font-size:1.15em; color:var(--c-muted);" set:html={t.hero.leadHtml} />
+    <p style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.5rem;">
+      <a class="btn btn--primary" href="#contact">{t.hero.ctaPrimary}</a>
+      <a class="btn btn--ghost" href="#methode">{t.hero.ctaSecondary}</a>
+    </p>
+  </section>
+
+  <!-- CADRE LEGAL -->
+  <section class="container" aria-labelledby="legal-title">
+    <div class="card" style="border-left:4px solid var(--c-accent);">
+      <h2 id="legal-title" style="margin-top:0;" set:html={t.legal.titleHtml} />
+      <p style="margin-bottom:0;" set:html={t.legal.bodyHtml} />
+    </div>
+  </section>
+
+  <!-- OFFRE -->
+  <section class="container" id="offre" aria-labelledby="offre-title">
+    <h2 id="offre-title">{t.offer.title}</h2>
+    <p style="color:var(--c-muted);">{t.offer.subtitle}</p>
+    <ul class="grid" style="list-style:none; padding:0; margin-top:1.5rem;">
+      {t.offer.paliers.map((p) => (
+        <li class="card" style={p.phare ? 'border:2px solid var(--c-primary);' : ''}>
+          {p.phare && (
+            <p style="margin:0 0 0.5rem; color:var(--c-primary); font-weight:700; font-size:0.85em; text-transform:uppercase; letter-spacing:0.04em;">
+              {t.offer.badge}
+            </p>
+          )}
+          <h3>{p.nom}</h3>
+          <p style="color:var(--c-muted); margin:0 0 0.75rem;">{p.cible}</p>
+          <ul style="padding-left:1.1rem; margin:0 0 1rem;">
+            {p.contenu.map((c) => <li>{c}</li>)}
+          </ul>
+          <p style="margin:0; font-weight:600;">→ {p.livrable}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- METHODE -->
+  <section class="container" id="methode" aria-labelledby="methode-title">
+    <h2 id="methode-title">{t.method.title}</h2>
+    <ol class="grid" style="padding:0; margin-top:1.5rem;">
+      {t.method.steps.map((s) => (
+        <li class="card">
+          <h3>{s.t}</h3>
+          <p style="margin:0;" set:html={s.dHtml} />
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- PREUVE -->
+  <section class="container" aria-labelledby="preuve-title">
+    <h2 id="preuve-title">{t.proof.title}</h2>
+    <p set:html={t.proof.p1Html} />
+    <p set:html={t.proof.p2Html} />
+  </section>
+
+  <!-- CONTACT -->
+  <section class="container" id="contact" aria-labelledby="contact-title">
+    <div class="card">
+      <h2 id="contact-title" style="margin-top:0;">{t.contact.title}</h2>
+      <p>{t.contact.body}</p>
+      <p style="font-size:1.15em;">
+        {t.contact.lead}&nbsp;<EmailLink user="sylvain.maurier" domain="gmail.com" subject={t.contact.subject} />
+      </p>
+    </div>
+  </section>
+</Base>
