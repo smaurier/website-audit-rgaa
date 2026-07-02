@@ -23,6 +23,22 @@
   courtier anonyme (Sedo / broker du registrar).
 - Renouvellements : uniquement sur le site de TON registrar.
 
+## ⚖️ Mentions légales — données à fournir par Sylvain (Opquast 101/105/106 + LCEN)
+
+Un site professionnel français doit publier : identité de l'éditeur (nom, statut), **SIREN/SIRET**,
+adresse, moyen de contact, identité de l'hébergeur (Netlify, Inc. — 512 2nd Street, San Francisco).
+- [ ] Créer la page `/mentions-legales` dès que le statut freelance/micro est posé (SIREN dispo)
+- [ ] Y intégrer la politique de confidentialité complète (la note RGPD courte est déjà sous le formulaire)
+
+## 🤔 Arbitrages Opquast documentés (choix assumés, pas des oublis)
+
+- **R141** (liens visités différenciés) : non appliqué — one-page à ancres internes, la distinction
+  visité/non-visité créerait du bruit sans bénéfice. À réévaluer si le site devient multi-pages.
+- **R135** (négociation Accept-Language serveur) : non appliqué — FR servi par défaut à la racine,
+  hreflang + sélecteur visible. Une redirection par langue casserait le canonical SEO.
+- **R168/171** (moteur de recherche, plan du site) : non applicables — one-page, tout est
+  atteignable depuis l'accueil (cas particulier prévu).
+
 ## 📋 Backlog site (rappel)
 
 - [ ] **Auto-audit RGAA complet** avec la grille Access42 (`rgaa-private/ressources/rgaa41-modele-grille-d-audit-Access42.xlsx`)

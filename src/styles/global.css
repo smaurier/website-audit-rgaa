@@ -210,12 +210,14 @@ main > section:last-child { margin-bottom: var(--section-gap); }
 
 /* Liens de navigation — soulignés argent, épaississement au survol */
 .nav-link {
+  display: inline-block;
   color: var(--c-text);
   font-size: 0.95rem;
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-color: #98a2ac;
-  padding: var(--space-2) 0;
+  /* cible tactile confortable (Opquast 186) */
+  padding: var(--space-3) var(--space-1);
 }
 .nav-link:hover {
   text-decoration-color: var(--c-primary);
@@ -237,7 +239,7 @@ main > section:last-child { margin-bottom: var(--section-gap); }
   font-size: var(--text-sm);
   color: var(--c-muted);
   text-decoration: none;
-  padding: var(--space-1) var(--space-3);
+  padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-pill);
 }
 .lang-pills a:hover { background: var(--c-surface); text-decoration: underline; }
@@ -540,6 +542,13 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
 }
 .contact-alt { margin: var(--space-6) 0 0; }
 
+/* Information RGPD — visible avant l'envoi (Opquast 15/16) */
+.form-privacy {
+  font-size: var(--text-sm);
+  color: var(--c-muted);
+  margin: 0;
+}
+
 /* --- Footer --- */
 .site-footer {
   padding-block: var(--space-10);
@@ -672,6 +681,34 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation-duration: 0.35s;
+  }
+}
+
+/* ==========================================================================
+   IMPRESSION — contenu sans blocs de navigation (Opquast 195/196)
+   ========================================================================== */
+
+@media print {
+  .skip-link,
+  .site-header nav,
+  .theme-toggle,
+  .hero-torque,
+  .hero-cta,
+  .hero-story-link {
+    display: none !important;
+  }
+  body {
+    color: #000;
+    background: #fff;
+  }
+  .card {
+    border: 1px solid #999;
+    background: #fff;
+  }
+  /* URLs des liens externes visibles à l'impression */
+  main a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.85em;
   }
 }
 

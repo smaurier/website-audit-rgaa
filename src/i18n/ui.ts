@@ -83,6 +83,7 @@ export interface Dict {
       submit: string;
       or: string;
       action: string;
+      privacyHtml: string;
     };
   };
   success: { title: string; body: string; back: string };
@@ -104,7 +105,7 @@ export const ui: Record<Lang, Dict> = {
       langLabel: 'Choisir la langue',
       footerRights: 'Nuada — Accessibilité numérique FR · EN · ES.',
       footerProof:
-        'Ce site vise la conformité <strong>WCAG 2.2 niveau AAA</strong>. Il est sa propre démonstration.',
+        'Ce site vise la conformité <strong><a href="https://www.w3.org/TR/WCAG22/" hreflang="en">WCAG 2.2 (en anglais)</a> niveau AAA</strong>. Il est sa propre démonstration.',
       theme: { label: 'Thème', auto: 'auto', light: 'clair', dark: 'sombre' },
     },
     hero: {
@@ -124,7 +125,8 @@ export const ui: Record<Lang, Dict> = {
     legal: {
       titleHtml: `<span lang="en">European Accessibility Act</span> : applicable depuis juin 2025`,
       bodyHtml: `L'EAA impose l'accessibilité à un large périmètre de services numériques (e-commerce,
-        banque, transport, etc.). En France, le RGAA — déclinaison de WCAG — en est le cadre
+        banque, transport, etc.). En France, le <abbr title="Référentiel général d'amélioration de l'accessibilité">RGAA</abbr>
+        — déclinaison des <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr> — en est le cadre
         de référence. La non-conformité expose à des sanctions et ferme des marchés publics.
         <strong>Un audit maintenant, c'est de la conformité, pas du rattrapage.</strong>`,
     },
@@ -251,6 +253,9 @@ export const ui: Record<Lang, Dict> = {
         submit: 'Envoyer le message',
         or: 'Ou directement par e-mail :',
         action: '/merci/',
+        privacyHtml: `Vos nom et adresse e-mail servent uniquement à répondre à votre demande.
+          Ils ne sont ni transmis à des tiers, ni utilisés à d'autres fins. Vous pouvez demander
+          l'accès, la rectification ou la suppression de vos données en écrivant à la même adresse.`,
       },
     },
     success: {
@@ -275,7 +280,7 @@ export const ui: Record<Lang, Dict> = {
       langLabel: 'Choose language',
       footerRights: 'Nuada — Digital accessibility FR · EN · ES.',
       footerProof:
-        'This site targets <strong>WCAG 2.2 level AAA</strong> conformance. It is its own demo.',
+        'This site targets <strong><a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2</a> level AAA</strong> conformance. It is its own demo.',
       theme: { label: 'Theme', auto: 'auto', light: 'light', dark: 'dark' },
     },
     hero: {
@@ -295,7 +300,8 @@ export const ui: Record<Lang, Dict> = {
     legal: {
       titleHtml: `EAA, ADA, Section 508: accessibility is now a legal requirement`,
       bodyHtml: `The <strong>European Accessibility Act</strong> (in force since June 2025) applies to any
-        company selling digital services into the EU — wherever it is based. In the US, ADA lawsuits
+        company selling digital services into the EU — wherever it is based. In the US,
+        <abbr title="Americans with Disabilities Act">ADA</abbr> lawsuits
         over inaccessible websites keep rising. Non-compliance means legal exposure and lost contracts.
         <strong>An audit now is compliance, not damage control.</strong>`,
     },
@@ -420,6 +426,9 @@ export const ui: Record<Lang, Dict> = {
         submit: 'Send message',
         or: 'Or by email:',
         action: '/en/thanks/',
+        privacyHtml: `Your name and email address are used solely to answer your request.
+          They are never shared with third parties or used for any other purpose. You can request
+          access, rectification or deletion of your data by writing to the same address.`,
       },
     },
     success: {
@@ -444,7 +453,7 @@ export const ui: Record<Lang, Dict> = {
       langLabel: 'Elegir idioma',
       footerRights: 'Nuada — Accesibilidad digital FR · EN · ES.',
       footerProof:
-        'Este sitio apunta a la conformidad <strong>WCAG 2.2 nivel AAA</strong>. Es su propia demostración.',
+        'Este sitio apunta a la conformidad <strong><a href="https://www.w3.org/TR/WCAG22/" hreflang="en">WCAG 2.2 (en inglés)</a> nivel AAA</strong>. Es su propia demostración.',
       theme: { label: 'Tema', auto: 'auto', light: 'claro', dark: 'oscuro' },
     },
     hero: {
@@ -465,7 +474,8 @@ export const ui: Record<Lang, Dict> = {
       titleHtml: `<span lang="en">European Accessibility Act</span>: aplicable desde junio de 2025`,
       bodyHtml: `La EAA exige accesibilidad a un amplio conjunto de servicios digitales (e-commerce, banca,
         transporte…) y se aplica a <strong>cualquier empresa que venda en la UE</strong>, esté donde esté.
-        En España, la referencia es la norma UNE-EN 301 549, basada en WCAG.
+        En España, la referencia es la norma UNE-EN 301 549, basada en las
+        <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>.
         <strong>Auditar ahora es conformidad, no rescate.</strong>`,
     },
     offer: {
@@ -589,6 +599,9 @@ export const ui: Record<Lang, Dict> = {
         submit: 'Enviar el mensaje',
         or: 'O directamente por correo:',
         action: '/es/gracias/',
+        privacyHtml: `Su nombre y correo electrónico se utilizan únicamente para responder a su
+          solicitud. No se transmiten a terceros ni se usan con otros fines. Puede solicitar el
+          acceso, la rectificación o la supresión de sus datos escribiendo a la misma dirección.`,
       },
     },
     success: {

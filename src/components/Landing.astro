@@ -177,6 +177,8 @@ const t = ui[lang];
           <textarea class="input" id="f-message" name="message" required rows="6"></textarea>
         </p>
 
+        <p class="form-privacy" set:html={t.contact.form.privacyHtml} />
+
         <p class="field">
           <button type="submit" class="btn btn--primary">{t.contact.form.submit}</button>
         </p>
