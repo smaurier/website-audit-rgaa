@@ -1,0 +1,43 @@
+# Nuada — Audit & remédiation accessibilité (RGAA / WCAG 2.2)
+
+> Nuada est le cabinet indépendant de Sylvain Maurier, auditeur accessibilité formé par Access42
+> (certification RGAA en cours) et développeur fullstack senior (React, React Native, Node).
+> Particularité unique sur le marché : l'audit est livré AVEC les corrections, sous forme de
+> pull requests prêtes à merger dans le dépôt du client — pas seulement un rapport.
+> Le nom vient de la mythologie irlandaise : Nuada, roi écarté du trône après avoir perdu un bras,
+> y fut rétabli grâce à une main d'argent forgée. La technologie qui restaure l'accès.
+
+## Services et tarifs (2026)
+
+- **Diagnostic** : 1 200 € — jusqu'à 5 pages ou parcours clés. Audit des pages clés, rapport
+  priorisé par impact utilisateur, restitution visio 45 min.
+- **Audit + Remédiation** (le plus demandé) : à partir de 4 900 € — échantillon jusqu'à 10 pages,
+  106 critères RGAA, audit 100 % manuel. Rapport technique + synthèse décideurs + pull requests
+  de correction livrées (React / React Native) + vérification post-correction.
+- **Mise en conformité RGAA** : sur devis — multi-parcours, déclaration d'accessibilité,
+  accompagnement des équipes (revue, pairing), suivi dans le temps.
+
+Prix fixes affichés, périmètres bornés. Web et mobile (React Native).
+
+## Marchés et référentiels couverts
+
+- **France** : RGAA 4 · European Accessibility Act (applicable depuis juin 2025)
+- **Hispanophone (Espagne, Amérique latine)** : WCAG 2.2 · UNE-EN 301 549 — service en espagnol
+- **Anglophone** : WCAG 2.2 · ADA / Section 508 — service en anglais
+
+Trilingue français / español / english.
+
+## Positionnement
+
+L'auditeur qui code la solution : contrairement aux cabinets qui livrent un rapport PDF et aux
+widgets/overlays automatiques (qui ne rendent pas un site conforme au RGAA), Nuada corrige le
+code source — la seule approche qui passe un audit. Le site nuada.dev est lui-même sa
+démonstration : conçu pour la conformité RGAA / WCAG 2.2 AAA, zéro cookie, statique et léger.
+
+## Pages
+
+- Accueil (français) : https://nuada.dev/
+- Home (English) : https://nuada.dev/en/
+- Inicio (español) : https://nuada.dev/es/
+- Contact : https://nuada.dev/#contact
+- Mentions légales & confidentialité : https://nuada.dev/mentions-legales/

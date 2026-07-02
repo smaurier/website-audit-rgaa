@@ -19,7 +19,54 @@ const t = ui[lang];
 const l = t.layout;
 const pageTitle = title ?? t.meta.title;
 const pageDescription = description ?? t.meta.description;
-const site = Astro.site ?? new URL('https://audit-rgaa.fr');
+const site = Astro.site ?? new URL('https://nuada.dev');
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogLocale = { fr: 'fr_FR', en: 'en_US', es: 'es_ES' }[lang];
+
+// Données structurées — l'entité Nuada pour Google et les LLM (GEO)
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Nuada',
+  description: t.meta.description,
+  url: site.href,
+  inLanguage: ['fr', 'en', 'es'],
+  founder: { '@type': 'Person', name: 'Sylvain Maurier' },
+  knowsAbout: [
+    'Accessibilité numérique',
+    'RGAA 4',
+    'WCAG 2.2',
+    'European Accessibility Act',
+    'EN 301 549',
+    'React',
+    'React Native',
+  ],
+  areaServed: ['France', 'Europe', 'España', 'Latin America', 'United States'],
+  makesOffer: [
+    {
+      '@type': 'Offer',
+      name: t.offer.paliers[0].nom,
+      price: '1200',
+      priceCurrency: 'EUR',
+      description: t.offer.paliers[0].scope,
+    },
+    {
+      '@type': 'Offer',
+      name: t.offer.paliers[1].nom,
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        minPrice: '4900',
+        priceCurrency: 'EUR',
+      },
+      description: t.offer.paliers[1].scope,
+    },
+    {
+      '@type': 'Offer',
+      name: t.offer.paliers[2].nom,
+      description: t.offer.paliers[2].scope,
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -31,9 +78,15 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonical} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Nuada" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     {Object.entries(locales).map(([code, { path }]) => (
       <link rel="alternate" hreflang={code} href={new URL(path, site).href} />
     ))}

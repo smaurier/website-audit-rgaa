@@ -9,6 +9,10 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) => !page.includes('404'),
+      i18n: {
+        defaultLocale: 'fr',
+        locales: { fr: 'fr', en: 'en', es: 'es' },
+      },
     }),
   ],
   i18n: {
