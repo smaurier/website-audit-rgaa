@@ -13,6 +13,8 @@ export const locales: Record<Lang, { label: string; path: string }> = {
 interface Palier {
   nom: string;
   cible: string;
+  prix: string;
+  scope: string;
   contenu: string[];
   livrable: string;
   phare?: boolean;
@@ -105,12 +107,14 @@ export const ui: Record<Lang, Dict> = {
     offer: {
       title: 'Trois façons de travailler ensemble',
       subtitle:
-        "Offre à prix fixe. Pas de temps facturé à l'aveugle : un périmètre, un livrable.",
+        "Offre à prix fixe, audit 100 % manuel. Pas de temps facturé à l'aveugle : un périmètre, un livrable.",
       badge: 'Le plus demandé',
       paliers: [
         {
           nom: 'Diagnostic',
           cible: 'Site vitrine / landing',
+          prix: '1 200 €',
+          scope: "Jusqu'à 5 pages ou parcours clés",
           contenu: [
             'Audit des pages clés (parcours principal)',
             'Rapport priorisé par impact utilisateur',
@@ -120,10 +124,13 @@ export const ui: Record<Lang, Dict> = {
         },
         {
           nom: 'Audit + Remédiation',
-          cible: 'Application / e-commerce',
+          cible: 'Application web ou mobile / e-commerce',
+          prix: 'À partir de 4 900 €',
+          scope: "Échantillon jusqu'à 10 pages · 106 critères RGAA",
           contenu: [
             'Audit RGAA complet sur périmètre défini',
-            'Pull requests de correction livrées (React / RN)',
+            'Rapport technique + synthèse pour décideurs',
+            'Pull requests de correction livrées (React / React Native)',
             'Vérification post-correction',
           ],
           livrable: 'Audit + code corrigé',
@@ -132,6 +139,8 @@ export const ui: Record<Lang, Dict> = {
         {
           nom: 'Mise en conformité EAA',
           cible: 'Grand compte / obligation légale',
+          prix: 'Sur devis',
+          scope: 'Périmètre multi-parcours',
           contenu: [
             "Audit multi-parcours + déclaration d'accessibilité",
             'Accompagnement équipes dev (revue, pairing)',
@@ -232,12 +241,14 @@ export const ui: Record<Lang, Dict> = {
     },
     offer: {
       title: 'Three ways to work together',
-      subtitle: 'Fixed-price offer. No blind hourly billing: one scope, one deliverable.',
+      subtitle: 'Fixed prices, 100% manual audits. No blind hourly billing: one scope, one deliverable.',
       badge: 'Most requested',
       paliers: [
         {
           nom: 'Assessment',
           cible: 'Marketing site / landing page',
+          prix: '€1,200',
+          scope: 'Up to 5 pages or key journeys',
           contenu: [
             'Audit of key pages (main user journey)',
             'Report prioritised by user impact',
@@ -247,10 +258,13 @@ export const ui: Record<Lang, Dict> = {
         },
         {
           nom: 'Audit + Remediation',
-          cible: 'Web app / e-commerce',
+          cible: 'Web or mobile app / e-commerce',
+          prix: 'From €4,900',
+          scope: 'Sample up to 10 pages · full WCAG 2.2 audit',
           contenu: [
             'Full WCAG 2.2 audit on a defined scope',
-            'Remediation pull requests delivered (React / RN)',
+            'Technical report + executive summary',
+            'Remediation pull requests delivered (React / React Native)',
             'Post-fix verification',
           ],
           livrable: 'Audit + fixed code',
@@ -259,6 +273,8 @@ export const ui: Record<Lang, Dict> = {
         {
           nom: 'Compliance program',
           cible: 'Enterprise / legal obligation',
+          prix: 'Custom quote',
+          scope: 'Multi-journey scope',
           contenu: [
             'Multi-journey audit + accessibility statement',
             'Dev team enablement (reviews, pairing)',
@@ -358,12 +374,14 @@ export const ui: Record<Lang, Dict> = {
     },
     offer: {
       title: 'Tres formas de trabajar juntos',
-      subtitle: 'Oferta a precio fijo. Sin horas facturadas a ciegas: un alcance, un entregable.',
+      subtitle: 'Precios fijos, auditoría 100 % manual. Sin horas facturadas a ciegas: un alcance, un entregable.',
       badge: 'El más solicitado',
       paliers: [
         {
           nom: 'Diagnóstico',
           cible: 'Sitio corporativo / landing',
+          prix: '1 200 €',
+          scope: 'Hasta 5 páginas o recorridos clave',
           contenu: [
             'Auditoría de las páginas clave (recorrido principal)',
             'Informe priorizado por impacto en el usuario',
@@ -373,10 +391,13 @@ export const ui: Record<Lang, Dict> = {
         },
         {
           nom: 'Auditoría + Corrección',
-          cible: 'Aplicación / e-commerce',
+          cible: 'Aplicación web o móvil / e-commerce',
+          prix: 'Desde 4 900 €',
+          scope: 'Muestra de hasta 10 páginas · auditoría completa',
           contenu: [
             'Auditoría WCAG 2.2 completa sobre un alcance definido',
-            'Pull requests de corrección entregadas (React / RN)',
+            'Informe técnico + síntesis para decisores',
+            'Pull requests de corrección entregadas (React / React Native)',
             'Verificación posterior a la corrección',
           ],
           livrable: 'Auditoría + código corregido',
@@ -385,6 +406,8 @@ export const ui: Record<Lang, Dict> = {
         {
           nom: 'Conformidad EAA',
           cible: 'Gran cuenta / obligación legal',
+          prix: 'Presupuesto a medida',
+          scope: 'Alcance multi-recorrido',
           contenu: [
             'Auditoría multi-recorrido + declaración de accesibilidad',
             'Acompañamiento a equipos dev (revisiones, pairing)',

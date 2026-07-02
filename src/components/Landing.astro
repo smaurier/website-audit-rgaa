@@ -46,7 +46,9 @@ const t = ui[lang];
             </p>
           )}
           <h3>{p.nom}</h3>
-          <p style="color:var(--c-muted); margin:0 0 0.75rem;">{p.cible}</p>
+          <p style="color:var(--c-muted); margin:0 0 0.5rem;">{p.cible}</p>
+          <p style="font-size:1.5em; font-weight:700; margin:0;">{p.prix}</p>
+          <p style="color:var(--c-muted); font-size:0.9em; margin:0.25rem 0 1rem;">{p.scope}</p>
           <ul style="padding-left:1.1rem; margin:0 0 1rem;">
             {p.contenu.map((c) => <li>{c}</li>)}
           </ul>
