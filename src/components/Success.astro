@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { ui, locales, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<Base lang={lang} title={t.success.title} description={t.success.body}>
+  <section class="container" style="padding-block: clamp(3rem, 8vw, 6rem);">
+    <h1>{t.success.title}</h1>
+    <p style="font-size:1.15em;">{t.success.body}</p>
+    <p style="margin-top:2rem;">
+      <a class="btn btn--primary" href={locales[lang].path}>{t.success.back}</a>
+    </p>
+  </section>
+</Base>

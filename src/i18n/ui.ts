@@ -49,7 +49,23 @@ export interface Dict {
     steps: { t: string; dHtml: string }[];
   };
   proof: { title: string; p1Html: string; p2Html: string };
-  contact: { title: string; body: string; lead: string; subject: string };
+  contact: {
+    title: string;
+    body: string;
+    lead: string;
+    subject: string;
+    form: {
+      name: string;
+      email: string;
+      url: string;
+      message: string;
+      required: string;
+      submit: string;
+      or: string;
+      action: string;
+    };
+  };
+  success: { title: string; body: string; back: string };
 }
 
 export const ui: Record<Lang, Dict> = {
@@ -163,6 +179,21 @@ export const ui: Record<Lang, Dict> = {
       body: 'Décrivez votre site ou application et le cadre légal visé. Réponse sous 48 h.',
       lead: 'Écrivez-moi :',
       subject: "Demande d'audit RGAA",
+      form: {
+        name: 'Votre nom',
+        email: 'Votre adresse e-mail',
+        url: 'Adresse de votre site (facultatif)',
+        message: 'Votre message',
+        required: 'obligatoire',
+        submit: 'Envoyer le message',
+        or: 'Ou directement par e-mail :',
+        action: '/merci/',
+      },
+    },
+    success: {
+      title: 'Message envoyé',
+      body: 'Merci, votre message est bien parti. Je vous réponds sous 48 h.',
+      back: "Retour à l'accueil",
     },
   },
 
@@ -274,6 +305,21 @@ export const ui: Record<Lang, Dict> = {
       body: 'Describe your site or app and the legal framework you target. Reply within 48 hours.',
       lead: 'Write to me:',
       subject: 'Accessibility audit request',
+      form: {
+        name: 'Your name',
+        email: 'Your email address',
+        url: 'Your website URL (optional)',
+        message: 'Your message',
+        required: 'required',
+        submit: 'Send message',
+        or: 'Or by email:',
+        action: '/en/thanks/',
+      },
+    },
+    success: {
+      title: 'Message sent',
+      body: 'Thank you, your message is on its way. I will reply within 48 hours.',
+      back: 'Back to home',
     },
   },
 
@@ -385,6 +431,21 @@ export const ui: Record<Lang, Dict> = {
       body: 'Describa su sitio o aplicación y el marco legal objetivo. Respuesta en 48 h.',
       lead: 'Escríbame:',
       subject: 'Solicitud de auditoría de accesibilidad',
+      form: {
+        name: 'Su nombre',
+        email: 'Su correo electrónico',
+        url: 'La URL de su sitio (opcional)',
+        message: 'Su mensaje',
+        required: 'obligatorio',
+        submit: 'Enviar el mensaje',
+        or: 'O directamente por correo:',
+        action: '/es/gracias/',
+      },
+    },
+    success: {
+      title: 'Mensaje enviado',
+      body: 'Gracias, su mensaje está en camino. Le responderé en 48 h.',
+      back: 'Volver al inicio',
     },
   },
 };
