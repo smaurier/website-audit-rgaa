@@ -40,7 +40,9 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
     <link rel="alternate" hreflang="x-default" href={site.href} />
     <script is:inline>
       // Anti-flash : applique le thème choisi avant le premier rendu
+      // + marqueur js pour les états initiaux des reveals (sans JS, rien n'est masqué)
       (function () {
+        document.documentElement.classList.add('js');
         var t = localStorage.getItem('theme');
         if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
       })();
@@ -49,7 +51,7 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
   <body>
     <a class="skip-link" href="#main">{l.skip}</a>
 
-    <header class="container" style="padding-block: 1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+    <header class="container site-header">
       <a href={locales[lang].path} class="brand" style="display:inline-flex; align-items:center; gap:0.6rem; text-decoration:none; color:var(--c-text);">
         <!-- La main d'argent de Nuada (4c « la frappe pleine ») — décoratif, le texte adjacent porte le nom -->
         <svg aria-hidden="true" focusable="false" width="28" height="28" viewBox="0 0 28 28">
@@ -125,18 +127,42 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
 
         btn.addEventListener('click', () => {
           const next = order[(order.indexOf(current()) + 1) % order.length];
-          if (next === 'auto') {
-            delete document.documentElement.dataset.theme;
-            localStorage.removeItem('theme');
+          const apply = () => {
+            if (next === 'auto') {
+              delete document.documentElement.dataset.theme;
+              localStorage.removeItem('theme');
+            } else {
+              document.documentElement.dataset.theme = next;
+              localStorage.setItem('theme', next);
+            }
+            render();
+          };
+          // Fondu de theme via View Transitions, si dispo et mouvement accepte
+          if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.startViewTransition(apply);
           } else {
-            document.documentElement.dataset.theme = next;
-            localStorage.setItem('theme', next);
+            apply();
           }
-          render();
           if (status) status.textContent = `${d.label} : ${labels[next]}`;
         });
 
         render();
+      }
+
+      // Reveals au scroll — uniquement si le mouvement est accepte
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('in-view');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+        );
+        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       }
     </script>
 

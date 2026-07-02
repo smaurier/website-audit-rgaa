@@ -294,6 +294,136 @@ a:hover { text-decoration-thickness: 2px; }
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
 }
 
+/* ==========================================================================
+   MOTION — créatif mais débrayable. Tout est gaté :
+   - prefers-reduced-motion: no-preference (respect utilisateur)
+   - html.js pour les états initiaux masqués (sans JS : tout est visible)
+   Pas d'animation infinie (WCAG 2.2.2), pas d'info portée par le mouvement.
+   ========================================================================== */
+
+:root {
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Header sticky verre dépoli */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding-block: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: color-mix(in srgb, var(--c-bg) 85%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+}
+
+/* Filet d'argent du hero */
+.silver-line {
+  width: 9rem;
+  height: 3px;
+  margin: 1.75rem auto;
+  border-radius: 2px;
+  background: var(--silver);
+  background-size: 220% 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+
+  /* — Entrée du hero, séquencée — */
+  @keyframes rise {
+    from { opacity: 0; translate: 0 22px; }
+  }
+  .hero-content > * { animation: rise 0.8s var(--ease) backwards; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.09s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.18s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.27s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.38s; }
+  .hero-content > *:nth-child(6) { animation-delay: 0.5s; }
+
+  /* — Le torque se forge : le trait d'argent se dessine — */
+  @keyframes torque-draw {
+    from { stroke-dashoffset: 58.35; opacity: 0; }
+    25% { opacity: 1; }
+  }
+  .torque-arc { animation: torque-draw 1.6s var(--ease) 0.15s backwards; }
+
+  /* — Le filet scintille, deux passages puis repos — */
+  @keyframes shimmer {
+    from { background-position: 130% 0; }
+    to { background-position: -130% 0; }
+  }
+  .silver-line { animation: shimmer 2.2s ease-in-out 0.7s 2 backwards; }
+
+  /* — Reveals au scroll (JS requis pour l'état masqué) — */
+  html.js .reveal {
+    opacity: 0;
+    translate: 0 26px;
+    transition:
+      opacity 0.7s var(--ease),
+      translate 0.7s var(--ease);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  html.js .reveal.in-view {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  /* — Micro-interactions — */
+  .card {
+    transition: translate 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  }
+  .card:hover {
+    translate: 0 -4px;
+    box-shadow: 0 16px 36px light-dark(rgba(19, 26, 21, 0.12), rgba(0, 0, 0, 0.45));
+  }
+  .btn {
+    transition: background-color 0.25s var(--ease), border-color 0.25s var(--ease),
+      translate 0.15s var(--ease);
+  }
+  .btn:hover { translate: 0 -1px; }
+  .btn:active { translate: 0 1px; }
+  .nav-link { transition: text-decoration-color 0.2s ease; }
+  .lang-pills a { transition: background-color 0.2s ease; }
+
+  /* — Les doigts du logo se lèvent un à un au survol — */
+  .brand rect {
+    transform-box: fill-box;
+    transition: transform 0.3s var(--ease);
+  }
+  .brand:hover rect:nth-of-type(1) { transform: translateY(-0.8px); transition-delay: 0s; }
+  .brand:hover rect:nth-of-type(2) { transform: translateY(-1.4px); transition-delay: 0.04s; }
+  .brand:hover rect:nth-of-type(3) { transform: translateY(-1.8px); transition-delay: 0.08s; }
+  .brand:hover rect:nth-of-type(4) { transform: translateY(-1.4px); transition-delay: 0.12s; }
+  .brand:hover rect:nth-of-type(5) { transform: translateY(-0.8px); transition-delay: 0.16s; }
+
+  /* — Le header s'élève au scroll (scroll-driven, zéro JS) — */
+  @supports (animation-timeline: scroll()) {
+    @keyframes header-elevate {
+      to {
+        border-color: var(--c-border);
+        box-shadow: 0 8px 24px light-dark(rgba(19, 26, 21, 0.08), rgba(0, 0, 0, 0.35));
+      }
+    }
+    .site-header {
+      animation: header-elevate linear both;
+      animation-timeline: scroll();
+      animation-range: 0px 140px;
+    }
+  }
+
+  /* — Transition de thème (View Transitions API) — */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.35s;
+  }
+}
+
 /* Respect du réglage utilisateur : pas d'animation forcée */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
