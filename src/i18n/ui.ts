@@ -51,6 +51,7 @@ export interface Dict {
     steps: { t: string; dHtml: string }[];
   };
   proof: { title: string; p1Html: string; p2Html: string };
+  story: { title: string; p1Html: string; p2Html: string };
   contact: {
     title: string;
     body: string;
@@ -73,7 +74,7 @@ export interface Dict {
 export const ui: Record<Lang, Dict> = {
   fr: {
     meta: {
-      title: "Audit RGAA — l'auditeur qui code la solution",
+      title: "Nuada — Audit & remédiation accessibilité (RGAA · WCAG 2.2)",
       description:
         "Audits d'accessibilité RGAA / WCAG 2.2 par un dev fullstack. Pas un PDF de 80 pages : un audit + les PR de remédiation livrées. Conformité European Accessibility Act 2025.",
     },
@@ -84,7 +85,7 @@ export const ui: Record<Lang, Dict> = {
       method: 'Méthode',
       contact: 'Contact',
       langLabel: 'Choisir la langue',
-      footerRights: 'Audit RGAA — Accessibilité numérique FR · EN · ES.',
+      footerRights: 'Nuada — Accessibilité numérique FR · EN · ES.',
       footerProof:
         'Ce site vise la conformité <strong>WCAG 2.2 niveau AAA</strong>. Il est sa propre démonstration.',
     },
@@ -183,6 +184,15 @@ export const ui: Record<Lang, Dict> = {
       p2Html: `Ce site en est la garantie silencieuse : entièrement accessible, il applique au quotidien
         ce que je livre à mes clients.`,
     },
+    story: {
+      title: 'Pourquoi « Nuada » ?',
+      p1Html: `Dans la mythologie irlandaise, <strong>Nuada</strong>, roi des Tuatha Dé Danann, perd un bras
+        au combat. La loi l'écarte du trône : un roi doit être « intact ». Le médecin des dieux lui forge
+        alors une <strong>main d'argent</strong>, entièrement fonctionnelle — et Nuada remonte sur le trône.`,
+      p2Html: `La barrière n'était pas dans son corps : elle était dans la règle. C'est la technologie qui l'a
+        levée. L'accessibilité numérique dit exactement cela : ce ne sont pas vos utilisateurs qui sont
+        inadaptés, ce sont les interfaces. <strong>Je forge des mains d'argent pour les vôtres.</strong>`,
+    },
     contact: {
       title: 'Parlons de votre projet',
       body: 'Décrivez votre site ou application et le cadre légal visé. Réponse sous 48 h.',
@@ -208,7 +218,7 @@ export const ui: Record<Lang, Dict> = {
 
   en: {
     meta: {
-      title: 'Accessibility Audits — the auditor who codes the fix',
+      title: 'Nuada — Accessibility audit & remediation (WCAG 2.2)',
       description:
         'WCAG 2.2 accessibility audits by a fullstack developer. Not an 80-page PDF: an audit plus the remediation pull requests, delivered. EAA, ADA and Section 508 compliance.',
     },
@@ -219,7 +229,7 @@ export const ui: Record<Lang, Dict> = {
       method: 'Method',
       contact: 'Contact',
       langLabel: 'Choose language',
-      footerRights: 'Accessibility audits — FR · EN · ES.',
+      footerRights: 'Nuada — Digital accessibility FR · EN · ES.',
       footerProof:
         'This site targets <strong>WCAG 2.2 level AAA</strong> conformance. It is its own demo.',
     },
@@ -316,6 +326,15 @@ export const ui: Record<Lang, Dict> = {
         to code in production.`,
       p2Html: `This site is the quiet proof: fully accessible, it practises daily what I deliver to clients.`,
     },
+    story: {
+      title: 'Why "Nuada"?',
+      p1Html: `In Irish mythology, <strong>Nuada</strong>, king of the Tuatha Dé Danann, loses an arm in
+        battle. The law bars him from the throne: a king must be "whole". The physician of the gods then
+        forges him a fully functional <strong>silver hand</strong> — and Nuada reigns again.`,
+      p2Html: `The barrier was never his body: it was the rule. Technology lifted it. That is precisely what
+        digital accessibility means: your users are not unfit — your interfaces are.
+        <strong>I forge silver hands for yours.</strong>`,
+    },
     contact: {
       title: "Let's talk about your project",
       body: 'Describe your site or app and the legal framework you target. Reply within 48 hours.',
@@ -341,7 +360,7 @@ export const ui: Record<Lang, Dict> = {
 
   es: {
     meta: {
-      title: 'Auditorías de accesibilidad — el auditor que programa la solución',
+      title: 'Nuada — Auditoría y corrección de accesibilidad (WCAG 2.2)',
       description:
         'Auditorías de accesibilidad WCAG 2.2 / UNE-EN 301 549 por un desarrollador fullstack. No un PDF de 80 páginas: la auditoría más las pull requests de corrección. Conformidad con la EAA 2025.',
     },
@@ -352,7 +371,7 @@ export const ui: Record<Lang, Dict> = {
       method: 'Método',
       contact: 'Contacto',
       langLabel: 'Elegir idioma',
-      footerRights: 'Auditorías de accesibilidad — FR · EN · ES.',
+      footerRights: 'Nuada — Accesibilidad digital FR · EN · ES.',
       footerProof:
         'Este sitio apunta a la conformidad <strong>WCAG 2.2 nivel AAA</strong>. Es su propia demostración.',
     },
@@ -448,6 +467,15 @@ export const ui: Record<Lang, Dict> = {
         los problemas, entrego las correcciones. Trabajar conmigo es la certeza de un trabajo riguroso,
         llevado de principio a fin — de la auditoría al código en producción.`,
       p2Html: `Este sitio es la garantía silenciosa: totalmente accesible, aplica a diario lo que entrego a mis clientes.`,
+    },
+    story: {
+      title: '¿Por qué «Nuada»?',
+      p1Html: `En la mitología irlandesa, <strong>Nuada</strong>, rey de los Tuatha Dé Danann, pierde un brazo
+        en combate. La ley lo aparta del trono: un rey debe estar «íntegro». El médico de los dioses le forja
+        entonces una <strong>mano de plata</strong> totalmente funcional — y Nuada vuelve a reinar.`,
+      p2Html: `La barrera nunca estuvo en su cuerpo: estaba en la regla. Fue la tecnología la que la levantó.
+        Eso es exactamente la accesibilidad digital: sus usuarios no son inadecuados — lo son las interfaces.
+        <strong>Yo forjo manos de plata para las suyas.</strong>`,
     },
     contact: {
       title: 'Hablemos de su proyecto',

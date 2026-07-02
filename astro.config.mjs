@@ -3,8 +3,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: remplacer par le domaine réel avant mise en prod
-  site: 'https://audit-rgaa.fr',
+  // Domaine principal (à enregistrer : nuada.dev + nuada-audit.fr en redirection)
+  site: 'https://nuada.dev',
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en', 'es'],

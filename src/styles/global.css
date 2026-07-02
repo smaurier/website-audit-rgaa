@@ -5,15 +5,16 @@
 */
 
 :root {
-  /* Palette — contrastes vérifiés sur fond clair */
+  /* Palette « Nuada » — celtique : vert forêt, cuivre, pierre.
+     Contrastes AAA sur fond clair (à re-vérifier à chaque ajustement). */
   --c-bg: #ffffff;
-  --c-surface: #f4f6f8;
-  --c-text: #12181f;      /* sur --c-bg : ~16:1 (AAA) */
-  --c-muted: #414b57;     /* sur --c-bg : ~9:1  (AAA) */
-  --c-primary: #0b4f9c;   /* sur --c-bg : ~7.4:1 (AAA texte) */
+  --c-surface: #f3f7f4;
+  --c-text: #131a15;      /* sur --c-bg : ~16:1 (AAA) */
+  --c-muted: #42504a;     /* sur --c-bg : ~9:1  (AAA) */
+  --c-primary: #0b5138;   /* vert forêt — ~7.5:1 (AAA texte) */
   --c-primary-ink: #ffffff;
-  --c-accent: #7a1f6b;    /* sur --c-bg : ~8:1  (AAA) */
-  --c-border: #c8d0d9;
+  --c-accent: #7a3b10;    /* cuivre — ~8:1 (AAA) */
+  --c-border: #c7d3cb;
   --c-focus: #b4310a;     /* anneau de focus très contrasté */
 
   --radius: 10px;
@@ -26,14 +27,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --c-bg: #0d1117;
-    --c-surface: #161b22;
-    --c-text: #eef2f6;      /* ~15:1 */
-    --c-muted: #b9c2cd;     /* ~9:1  */
-    --c-primary: #7fb0ee;   /* clair sur fond sombre, AAA */
-    --c-primary-ink: #0d1117;
-    --c-accent: #e59fd6;
-    --c-border: #30363d;
+    --c-bg: #0c1310;
+    --c-surface: #14201a;
+    --c-text: #eef4f0;      /* ~15:1 */
+    --c-muted: #b7c5bd;     /* ~9:1  */
+    --c-primary: #82d4ab;   /* vert clair sur fond sombre, AAA */
+    --c-primary-ink: #0c1310;
+    --c-accent: #e0b48f;    /* cuivre clair */
+    --c-border: #2e3a33;
     --c-focus: #ffb37a;
   }
 }
