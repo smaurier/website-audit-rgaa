@@ -1,0 +1,32 @@
+---
+/*
+  Adresse email protégée des bots sans sacrifier l'accessibilité.
+  - Sans JS : texte lisible/copiable "user (at) domaine (dot) com" (pas de mailto: ni @ à récolter).
+  - Avec JS : remplacé par un vrai lien <a mailto:> cliquable.
+  Aucun lien mort, lecture correcte par lecteur d'écran.
+*/
+interface Props {
+  user: string;
+  domain: string;
+  subject?: string;
+}
+const { user, domain, subject } = Astro.props;
+const display = `${user} (at) ${domain.replace(/\./g, ' (dot) ')}`;
+---
+<span class="email" data-user={user} data-domain={domain} data-subject={subject ?? ''}>{display}</span>
+
+<script>
+  for (const el of document.querySelectorAll('span.email')) {
+    const s = el as HTMLElement;
+    const user = s.dataset.user;
+    const domain = s.dataset.domain;
+    if (!user || !domain) continue;
+    const addr = `${user}@${domain}`;
+    const subject = s.dataset.subject;
+    const a = document.createElement('a');
+    a.href = `mailto:${addr}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`;
+    a.textContent = addr;
+    a.className = 'email';
+    s.replaceWith(a);
+  }
+</script>

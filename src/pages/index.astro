@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import EmailLink from '../components/EmailLink.astro';
 
 const title = "Audit RGAA — l'auditeur qui code la solution";
 const description =
@@ -50,7 +51,7 @@ const paliers = [
     <h1>L'auditeur qui <span style="color:var(--c-primary);">code la solution</span>.</h1>
     <p style="font-size:1.15em; color:var(--c-muted);">
       La plupart des audits livrent un PDF de 80 pages que personne ne sait appliquer.
-      Moi je suis développeur fullstack : je livre l'audit <strong>et les pull requests de
+      Moi je suis développeur fullstack : je livre l'audit <strong>et les <span lang="en">pull requests</span> de
       correction</strong>. Je parle aux équipes dev et j'arbitre conformité vs UX réelle.
     </p>
     <p style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.5rem;">
@@ -62,7 +63,7 @@ const paliers = [
   <!-- URGENCE EAA -->
   <section class="container" aria-labelledby="eaa-title">
     <div class="card" style="border-left:4px solid var(--c-accent);">
-      <h2 id="eaa-title" style="margin-top:0;">European Accessibility Act : applicable depuis juin 2025</h2>
+      <h2 id="eaa-title" style="margin-top:0;"><span lang="en">European Accessibility Act</span> : applicable depuis juin 2025</h2>
       <p style="margin-bottom:0;">
         L'EAA impose l'accessibilité à un large périmètre de services numériques (e-commerce,
         banque, transport, etc.). En France, le RGAA — déclinaison de WCAG — en est le cadre
@@ -101,7 +102,7 @@ const paliers = [
     <ol class="grid" style="padding:0; margin-top:1.5rem;">
       <li class="card"><h3>1. Cadrage</h3><p style="margin:0;">On définit le périmètre (parcours critiques) et le référentiel applicable (RGAA, WCAG 2.2, EAA).</p></li>
       <li class="card"><h3>2. Audit</h3><p style="margin:0;">Tests automatisés + manuels : clavier, lecteur d'écran, contrastes, structure. Priorisation par impact réel.</p></li>
-      <li class="card"><h3>3. Remédiation</h3><p style="margin:0;">Je livre les correctifs sous forme de pull requests dans votre code, pas de recommandations abstraites.</p></li>
+      <li class="card"><h3>3. Remédiation</h3><p style="margin:0;">Je livre les correctifs sous forme de <span lang="en">pull requests</span> dans votre code, pas de recommandations abstraites.</p></li>
       <li class="card"><h3>4. Vérification</h3><p style="margin:0;">Contrôle post-correction et, si besoin, déclaration d'accessibilité conforme.</p></li>
     </ol>
   </section>
@@ -111,7 +112,7 @@ const paliers = [
     <h2 id="preuve-title">La meilleure preuve, c'est ce site</h2>
     <p>
       Naviguez au clavier (touche <kbd>Tab</kbd>), coupez les images, activez un lecteur d'écran,
-      passez en mode sombre ou réduisez les animations : tout tient. Score Lighthouse accessibilité
+      passez en mode sombre ou réduisez les animations : tout tient. Score <span lang="en">Lighthouse</span> accessibilité
       visé <strong>100/100</strong>, conformité <strong>WCAG 2.2 AAA</strong>. Ce que je vends, je le tiens.
     </p>
   </section>
@@ -121,10 +122,8 @@ const paliers = [
     <div class="card">
       <h2 id="contact-title" style="margin-top:0;">Parlons de votre projet</h2>
       <p>Décrivez votre site ou application et le cadre légal visé. Réponse sous 48 h.</p>
-      <p>
-        <a class="btn btn--primary" href="mailto:sylvain.maurier@gmail.com?subject=Demande%20d'audit%20RGAA">
-          sylvain.maurier@gmail.com
-        </a>
+      <p style="font-size:1.15em;">
+        Écrivez-moi&nbsp;: <EmailLink user="sylvain.maurier" domain="gmail.com" subject="Demande d'audit RGAA" />
       </p>
     </div>
   </section>
