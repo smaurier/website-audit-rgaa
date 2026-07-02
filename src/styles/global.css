@@ -17,10 +17,15 @@
   --c-border: #c7d3cb;
   --c-focus: #b4310a;     /* anneau de focus très contrasté */
 
+  /* Argent — DÉCORATIF UNIQUEMENT (filets, hauts de cartes), jamais en texte (contraste) */
+  --silver: linear-gradient(100deg, #d9dde2, #98a2ac 55%, #c4cad1);
+
   --radius: 10px;
   --maxw: 68rem;
   --gap: clamp(1rem, 2.5vw, 2rem);
   --font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-brand: 'Uncial Antiqua', var(--font-display);
 
   color-scheme: light dark;
 }
@@ -52,10 +57,33 @@ body {
   background: var(--c-bg);
 }
 
-h1, h2, h3 { line-height: 1.2; text-wrap: balance; }
-h1 { font-size: clamp(2rem, 1.4rem + 3vw, 3.25rem); margin: 0 0 0.5em; }
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(2rem, 1.4rem + 3vw, 3.25rem); font-weight: 700; margin: 0 0 0.5em; }
 h2 { font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.125rem); margin: 2.5rem 0 0.75rem; }
 h3 { font-size: 1.25rem; margin: 0 0 0.5rem; }
+
+/* Filet argent sous les titres de section — la signature Nuada */
+main h2::after {
+  content: '';
+  display: block;
+  width: 4.5rem;
+  height: 3px;
+  margin-top: 0.4rem;
+  border-radius: 2px;
+  background: var(--silver);
+}
+
+/* Wordmark : uncial pour le nom seul */
+.brand {
+  font-family: var(--font-brand);
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+}
 
 p { max-width: 62ch; }
 
@@ -100,12 +128,21 @@ a:hover { text-decoration-thickness: 2px; }
 .btn--ghost { border-color: var(--c-border); color: var(--c-text); }
 .btn:hover { filter: brightness(1.08); }
 
-/* Cartes */
+/* Cartes — liseré argent en tête */
 .card {
+  position: relative;
+  overflow: hidden;
   background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
   padding: 1.5rem;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--silver);
 }
 
 .grid {

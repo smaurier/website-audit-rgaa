@@ -1,4 +1,8 @@
 ---
+// Polices auto-hébergées (Fontsource) — pas de CDN Google Fonts (RGPD)
+import '@fontsource/uncial-antiqua';        // wordmark « Nuada » uniquement
+import '@fontsource/fraunces/600.css';      // titres
+import '@fontsource/fraunces/700.css';
 import '../styles/global.css';
 import { ui, locales, type Lang } from '../i18n/ui';
 
@@ -37,7 +41,25 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
     <a class="skip-link" href="#main">{l.skip}</a>
 
     <header class="container" style="padding-block: 1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
-      <a href={locales[lang].path} style="font-weight:700; text-decoration:none; color:var(--c-text); font-size:1.25em; letter-spacing:0.02em;">
+      <a href={locales[lang].path} class="brand" style="display:inline-flex; align-items:center; gap:0.6rem; text-decoration:none; color:var(--c-text);">
+        <!-- La main d'argent de Nuada — décoratif, le texte adjacent porte le nom -->
+        <svg aria-hidden="true" focusable="false" width="30" height="30" viewBox="0 0 32 32">
+          <defs>
+            <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#d9dde2" />
+              <stop offset="0.55" stop-color="#98a2ac" />
+              <stop offset="1" stop-color="#c4cad1" />
+            </linearGradient>
+          </defs>
+          <g fill="url(#silver)">
+            <rect x="9" y="6.5" width="3.2" height="10" rx="1.6" />
+            <rect x="13.4" y="4" width="3.2" height="12" rx="1.6" />
+            <rect x="17.8" y="5.5" width="3.2" height="10.5" rx="1.6" />
+            <rect x="22.2" y="8" width="3.2" height="8.5" rx="1.6" />
+            <rect x="3" y="15.5" width="9" height="3.6" rx="1.8" transform="rotate(32 7.5 17.3)" />
+            <rect x="8.6" y="14.5" width="17" height="11.5" rx="5.5" />
+          </g>
+        </svg>
         Nuada
       </a>
       <nav aria-label={l.nav}>
