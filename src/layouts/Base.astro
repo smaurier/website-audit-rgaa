@@ -52,7 +52,7 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
     <a class="skip-link" href="#main">{l.skip}</a>
 
     <header class="container site-header">
-      <a href={locales[lang].path} class="brand" style="display:inline-flex; align-items:center; gap:0.6rem; text-decoration:none; color:var(--c-text);">
+      <a href={locales[lang].path} class="brand">
         <!-- La main d'argent de Nuada (4c « la frappe pleine ») — décoratif, le texte adjacent porte le nom -->
         <svg aria-hidden="true" focusable="false" width="28" height="28" viewBox="0 0 28 28">
           <defs>
@@ -74,7 +74,7 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
         Nuada
       </a>
       <nav aria-label={l.nav}>
-        <ul style="list-style:none; display:flex; gap:1.25rem; margin:0; padding:0; flex-wrap:wrap;">
+        <ul class="nav-list">
           <li><a class="nav-link" href="#offre">{l.offer}</a></li>
           <li><a class="nav-link" href="#methode">{l.method}</a></li>
           <li><a class="nav-link" href="#contact">{l.contact}</a></li>
@@ -189,7 +189,7 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
       <slot />
     </main>
 
-    <footer class="container" style="padding-block: 2.5rem; border-top:1px solid var(--c-border); color:var(--c-muted);">
+    <footer class="container site-footer">
       <p>© {new Date().getFullYear()} {l.footerRights}</p>
       <p set:html={l.footerProof} />
     </footer>

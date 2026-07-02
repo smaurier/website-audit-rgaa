@@ -1,13 +1,19 @@
-/*
-  Design tokens + base accessible.
-  Contraste visé : AAA (>= 7:1 texte normal, >= 4.5:1 grand texte).
-  Le site EST la démo : chaque choix doit passer l'audit qu'on vend.
-*/
+/* ==========================================================================
+   NUADA — design system minimaliste
+   1. Tokens        (couleurs light-dark, espacement base 4px, typo, motion)
+   2. Base          (reset, typographie, rythme vertical, focus, a11y)
+   3. Composants    (header, hero, cartes, offre, preuve, formulaire, footer)
+   4. Motion        (débrayable : prefers-reduced-motion + html.js)
+   ========================================================================== */
+
+/* ==========================================================================
+   1. TOKENS
+   ========================================================================== */
 
 :root {
-  /* Palette « Nuada » — celtique : vert forêt, cuivre, pierre.
+  /* --- Couleurs — palette « Nuada » : vert forêt, cuivre, pierre.
      Chaque token : light-dark(clair, sombre). Les deux palettes sont AAA.
-     Fallback clair déclaré d'abord pour les navigateurs sans light-dark(). */
+     Fallback clair déclaré d'abord pour les navigateurs sans light-dark(). --- */
   --c-bg: #ffffff;
   --c-surface: #f3f7f4;
   --c-text: #131a15;
@@ -30,34 +36,49 @@
   --c-primary-hover: light-dark(#083d2a, #a5e2c3);
   --c-primary-active: light-dark(#062e20, #6bbf95);
 
-  /* Argent — DÉCORATIF UNIQUEMENT (filets, hauts de cartes), jamais en texte (contraste) */
+  /* Argent — DÉCORATIF UNIQUEMENT (filets, liserés), jamais en texte */
   --silver: linear-gradient(100deg, #d9dde2, #98a2ac 55%, #c4cad1);
 
+  /* --- Espacement — base 4px (0.25rem). Tout espace est un multiple. --- */
+  --space-1: 0.25rem;   /*  4px */
+  --space-2: 0.5rem;    /*  8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --section-gap: clamp(var(--space-16), 9vw, 7rem);
+
+  /* --- Forme & layout --- */
   --radius: 10px;
+  --radius-pill: 999px;
   --maxw: 68rem;
-  --gap: clamp(1rem, 2.5vw, 2rem);
-  --section-gap: clamp(4rem, 9vw, 7rem);   /* rythme vertical unique entre sections */
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --gap: clamp(var(--space-4), 2.5vw, var(--space-8));
+
+  /* --- Typographie --- */
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-brand: 'Uncial Antiqua', var(--font-display);
+  --font-mono: ui-monospace, Menlo, Consolas, monospace;
+  --text-sm: 0.875rem;
+  --text-lg: 1.15em;
+
+  /* --- Motion --- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   color-scheme: light dark;
 }
 
-/* Choix manuel de thème (toggle) — sinon `color-scheme: light dark` suit le système */
+/* Choix manuel de thème (toggle) — sinon suit le système */
 :root[data-theme='light'] { color-scheme: light; }
 :root[data-theme='dark'] { color-scheme: dark; }
 
-/* Bouton de thème (injecté par JS — absent sans JS, le site suit alors le système) */
-.theme-toggle {
-  font: inherit;
-  cursor: pointer;
-  padding: 0.4rem 0.9rem;
-  background: var(--c-surface);
-  color: var(--c-text);
-  border: 1px solid var(--c-border);
-  border-radius: var(--radius);
-}
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -78,14 +99,15 @@ h1, h2, h3 {
   line-height: 1.2;
   text-wrap: balance;
 }
-h1 { font-size: clamp(2rem, 1.4rem + 3.2vw, 3.75rem); font-weight: 900; letter-spacing: -0.015em; margin: 0 0 0.5em; }
+h1 {
+  font-size: clamp(2rem, 1.4rem + 3.2vw, 3.75rem);
+  font-weight: 900;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-4);
+}
 h1 em { font-style: italic; color: var(--c-primary); }
-h2 { font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.125rem); margin: 0 0 1rem; }
-h3 { font-size: 1.25rem; margin: 0 0 0.5rem; }
-
-/* Rythme vertical : un seul espace entre sections, pas d'empilements ad hoc */
-main > section + section { margin-top: var(--section-gap); }
-main > section:last-child { margin-bottom: var(--section-gap); }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.125rem); margin: 0 0 var(--space-4); }
+h3 { font-size: 1.25rem; margin: 0 0 var(--space-2); }
 
 /* Filet argent sous les titres de section — la signature Nuada */
 main h2::after {
@@ -93,22 +115,19 @@ main h2::after {
   display: block;
   width: 4.5rem;
   height: 3px;
-  margin-top: 0.4rem;
+  margin-top: var(--space-2);
   border-radius: 2px;
   background: var(--silver);
-}
-
-/* Wordmark : uncial pour le nom seul */
-.brand {
-  font-family: var(--font-brand);
-  font-size: 1.5rem;
-  letter-spacing: 0.02em;
 }
 
 p { max-width: 62ch; }
 
 a { color: var(--c-primary); }
 a:hover { text-decoration-thickness: 2px; }
+
+/* Rythme vertical : un seul espace entre sections, pas d'empilements ad hoc */
+main > section + section { margin-top: var(--section-gap); }
+main > section:last-child { margin-bottom: var(--section-gap); }
 
 /* Focus visible très contrasté — jamais d'outline: none sans remplacement */
 :focus-visible {
@@ -125,27 +144,131 @@ a:hover { text-decoration-thickness: 2px; }
   transform: translateY(-120%);
   background: var(--c-primary);
   color: var(--c-primary-ink);
-  padding: 0.75rem 1rem;
+  padding: var(--space-3) var(--space-4);
   z-index: 100;
   transition: transform 0.15s ease;
 }
-.skip-link:focus {
-  transform: translateY(0);
+.skip-link:focus { transform: translateY(0); }
+
+.container { width: min(100% - var(--space-8), var(--maxw)); margin-inline: auto; }
+
+/* Masqué visuellement mais lisible par lecteur d'écran */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.container { width: min(100% - 2rem, var(--maxw)); margin-inline: auto; }
+/* ==========================================================================
+   3. COMPOSANTS
+   ========================================================================== */
 
-/* Boutons / CTA — états issus du système d'interaction (canvas 1e) */
+/* --- Header sticky verre dépoli --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding-block: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  row-gap: var(--space-3);
+  flex-wrap: wrap;
+  background: color-mix(in srgb, var(--c-bg) 85%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+}
+
+/* Wordmark : uncial pour le nom seul */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-brand);
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--c-text);
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+}
+
+/* Liens de navigation — soulignés argent, épaississement au survol */
+.nav-link {
+  color: var(--c-text);
+  font-size: 0.95rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: #98a2ac;
+  padding: var(--space-2) 0;
+}
+.nav-link:hover {
+  text-decoration-color: var(--c-primary);
+  text-decoration-thickness: 2.5px;
+}
+
+/* Sélecteur de langue en pills */
+.lang-pills {
+  display: flex;
+  gap: 2px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  list-style: none;
+  margin: 0;
+}
+.lang-pills a {
+  display: inline-block;
+  font-size: var(--text-sm);
+  color: var(--c-muted);
+  text-decoration: none;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+}
+.lang-pills a:hover { background: var(--c-surface); text-decoration: underline; }
+.lang-pills a[aria-current='true'] {
+  background: var(--c-text);
+  color: var(--c-bg);
+  font-weight: 700;
+}
+
+/* Bouton de thème (injecté par JS — absent sans JS, le site suit le système) */
+.theme-toggle {
+  font: inherit;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-4);
+  background: var(--c-surface);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-pill);
+}
+
+/* --- Boutons / CTA — états issus du système d'interaction --- */
 .btn {
   display: inline-flex;
   align-items: center;
   min-height: 52px;
-  padding: 0 1.8rem;
-  border-radius: 999px;
+  padding: 0 var(--space-8);
+  border-radius: var(--radius-pill);
   font-weight: 600;
   text-decoration: none;
   border: 1.5px solid transparent;
 }
+button.btn { font: inherit; font-weight: 600; cursor: pointer; }
 .btn--primary { background: var(--c-primary); color: var(--c-primary-ink); }
 .btn--primary:hover {
   background: var(--c-primary-hover);
@@ -163,129 +286,89 @@ a:hover { text-decoration-thickness: 2px; }
 .btn--ghost:hover { border-color: var(--c-primary); background: var(--c-surface); }
 .btn--ghost:active { transform: translateY(1px); }
 
-/* Liens de navigation — soulignés argent, épaississement au survol */
-.nav-link {
-  color: var(--c-text);
-  font-size: 0.95rem;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-color: #98a2ac;
-  padding: 0.6rem 0.1rem;
-}
-.nav-link:hover {
-  text-decoration-color: var(--c-primary);
-  text-decoration-thickness: 2.5px;
-}
-
-/* Sélecteur de langue en pills */
-.lang-pills {
-  display: flex;
-  gap: 2px;
-  border: 1px solid var(--c-border);
-  border-radius: 999px;
-  padding: 3px;
-  list-style: none;
-  margin: 0;
-}
-.lang-pills a {
-  display: inline-block;
-  font-size: 0.85rem;
-  color: var(--c-muted);
-  text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-}
-.lang-pills a:hover { background: var(--c-surface); text-decoration: underline; }
-.lang-pills a[aria-current='true'] {
-  background: var(--c-text);
-  color: var(--c-bg);
-  font-weight: 700;
-}
-
-/* Pastilles marchés (hero) */
-.pill {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--c-text);
-  background: var(--c-surface);
-  border: 1px solid var(--c-border);
-  border-radius: 999px;
-  padding: 0.55rem 1rem;
-}
-
-/* Hero centré sous le torque d'argent */
+/* --- Hero : composition centrée sous le torque d'argent --- */
 .hero {
   position: relative;
   text-align: center;
   overflow: hidden;
   /* bas plus court : c'est --section-gap qui espace la section suivante */
-  padding-block: clamp(3rem, 7vw, 5rem) clamp(1rem, 2vw, 1.5rem);
+  padding-block: clamp(var(--space-12), 7vw, 5rem) clamp(var(--space-4), 2vw, var(--space-6));
 }
-.hero h1 { margin-bottom: 0; }
 .hero-torque {
   position: absolute;
   left: 50%;
-  top: 2rem;
+  top: var(--space-8);
   transform: translateX(-50%);
   z-index: 0;
 }
-.hero > .hero-content { position: relative; z-index: 1; }
+.hero-content { position: relative; z-index: 1; }
+.hero h1 { max-width: 48rem; margin-inline: auto; margin-bottom: 0; }
 
-/* Fenêtre PR — toujours sombre, comme un éditeur de code */
-.pr-window { margin: 0; min-width: 0; }
-.pr-window .pr-bar {
-  height: 3px;
-  background: var(--silver);
-  border-radius: 10px 10px 0 0;
-}
-.pr-window .pr-body {
-  background: #14201a;
-  border: 1px solid #2a3a32;
-  border-top: none;
-  border-radius: 0 0 10px 10px;
-  box-shadow: 0 18px 48px light-dark(rgba(19, 26, 21, 0.25), rgba(0, 0, 0, 0.5));
-}
-.pr-window .pr-head,
-.pr-window .pr-foot {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 18px;
-  font-family: ui-monospace, Menlo, Consolas, monospace;
-  font-size: 0.8rem;
+.eyebrow {
+  max-width: none;
+  color: var(--c-accent);
   font-weight: 600;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-5);
 }
-.pr-window .pr-head { border-bottom: 1px solid #2a3a32; color: #eef4f0; }
-.pr-window .pr-foot { border-top: 1px solid #2a3a32; color: #82d4ab; flex-wrap: wrap; }
-.pr-window .pr-badge {
-  margin-left: auto;
-  color: #82d4ab;
-  border: 1px solid #3d5f4d;
-  border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 0.72rem;
-}
-.pr-window .pr-code {
-  margin: 0;
-  padding: 18px 20px;
-  font-family: ui-monospace, Menlo, Consolas, monospace;
-  font-size: 0.82rem;
-  line-height: 1.75;
-  color: #b7c5bd;
-  overflow-x: auto;
-}
-.pr-window .pr-code .del { color: #f0b0a4; }
-.pr-window .pr-code .add { color: #82d4ab; }
-.pr-window .pr-ready { margin-left: auto; color: #e0b48f; }
 
-/* Cartes — liseré argent en tête */
+/* Filet d'argent du hero */
+.silver-line {
+  width: 9rem;
+  height: 3px;
+  margin: var(--space-6) auto;
+  border-radius: 2px;
+  background: var(--silver);
+  background-size: 220% 100%;
+}
+
+.hero-lead {
+  font-size: var(--text-lg);
+  color: var(--c-muted);
+  max-width: 38rem;
+  margin: 0 auto;
+}
+
+.hero-cta {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: none;
+  margin: var(--space-8) 0 0;
+}
+
+.hero-pills {
+  list-style: none;
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: var(--space-10) 0 0;
+  padding: 0;
+}
+
+/* Pastille marché */
+.pill {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--c-text);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-4);
+}
+
+/* --- Cartes — liseré argent en tête --- */
 .card {
   position: relative;
   overflow: hidden;
   background: var(--c-surface);
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
-  padding: clamp(1.4rem, 2.5vw, 1.9rem);
+  padding: clamp(var(--space-6), 2.5vw, var(--space-8));
 }
 .card::before {
   content: '';
@@ -294,12 +377,19 @@ a:hover { text-decoration-thickness: 2px; }
   height: 3px;
   background: var(--silver);
 }
+.card > :first-child { margin-top: 0; }
+.card > :last-child { margin-bottom: 0; }
+.card--accent { border-left: 4px solid var(--c-accent); }
+.card--featured { border: 2px solid var(--c-primary); }
 
+/* --- Grilles de section --- */
 .grid {
   display: grid;
   gap: var(--gap);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  margin-top: var(--space-8);
 }
+ul.grid, ol.grid { list-style: none; padding: 0; }
 
 /* Méthode : 4 étapes — min plus bas pour tenir 4-up en desktop, 2×2 en tablette
    (sinon la 4e carte se retrouve orpheline sous une rangée de 3) */
@@ -307,46 +397,147 @@ a:hover { text-decoration-thickness: 2px; }
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
 }
 
+/* Cascade des reveals dans une grille */
+.grid > .reveal:nth-child(2) { --reveal-delay: 90ms; }
+.grid > .reveal:nth-child(3) { --reveal-delay: 180ms; }
+.grid > .reveal:nth-child(4) { --reveal-delay: 270ms; }
+
+/* Chapeau sous un titre de section */
+.section-lead { color: var(--c-muted); margin: 0; }
+
+/* --- Offre : carte de palier --- */
+.tier-name { margin-bottom: var(--space-1); }
+.tier-target { color: var(--c-muted); margin: 0; }
+.tier-price { font-size: 1.5em; font-weight: 700; margin: var(--space-4) 0 0; }
+.tier-scope { color: var(--c-muted); font-size: 0.9em; margin: var(--space-1) 0 var(--space-5); }
+.tier-list {
+  padding-left: var(--space-5);
+  margin: 0 0 var(--space-5);
+  display: grid;
+  gap: var(--space-1);
+}
+.tier-deliverable { margin: 0; font-weight: 600; }
+.badge {
+  margin: 0 0 var(--space-2);
+  color: var(--c-primary);
+  font-weight: 700;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Étape de méthode */
+.step p { margin: 0; }
+
+/* --- Preuve : texte + fenêtre PR --- */
+.proof-grid {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  align-items: center;
+  margin-top: var(--space-8);
+}
+.proof-grid > .reveal:nth-child(2) { --reveal-delay: 140ms; }
+
+/* Fenêtre PR — toujours sombre, comme un éditeur de code */
+.pr-window { margin: 0; min-width: 0; }
+.pr-bar {
+  height: 3px;
+  background: var(--silver);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.pr-body {
+  background: #14201a;
+  border: 1px solid #2a3a32;
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: 0 18px 48px light-dark(rgba(19, 26, 21, 0.25), rgba(0, 0, 0, 0.5));
+}
+.pr-head,
+.pr-foot {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.pr-head { border-bottom: 1px solid #2a3a32; color: #eef4f0; }
+.pr-foot { border-top: 1px solid #2a3a32; color: #82d4ab; flex-wrap: wrap; }
+.pr-dots { display: flex; gap: var(--space-1); }
+.pr-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3d5247;
+}
+.pr-badge {
+  margin-left: auto;
+  color: #82d4ab;
+  border: 1px solid #3d5f4d;
+  border-radius: var(--radius-pill);
+  padding: 3px var(--space-2);
+  font-size: 0.72rem;
+}
+.pr-code {
+  margin: 0;
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: #b7c5bd;
+  overflow-x: auto;
+}
+.pr-code span { display: block; min-height: 1.2em; }
+.pr-code .del { color: #f0b0a4; }
+.pr-code .add { color: #82d4ab; }
+.pr-ready { margin-left: auto; color: #e0b48f; }
+
+/* --- Formulaire de contact --- */
+.contact-form {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 36rem;
+  margin-top: var(--space-6);
+}
+.field { margin: 0; }
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+.req { color: var(--c-accent); }
+.input {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font: inherit;
+}
+.contact-alt { margin: var(--space-6) 0 0; }
+
+/* --- Footer --- */
+.site-footer {
+  padding-block: var(--space-10);
+  border-top: 1px solid var(--c-border);
+  color: var(--c-muted);
+}
+.site-footer p { margin: var(--space-1) 0; }
+
+/* --- Page de confirmation --- */
+.success { padding-block: clamp(var(--space-12), 8vw, 6rem); }
+.success-lead { font-size: var(--text-lg); }
+.success-back { margin: var(--space-8) 0 0; }
+
 /* ==========================================================================
-   MOTION — créatif mais débrayable. Tout est gaté :
+   4. MOTION — créatif mais débrayable. Tout est gaté :
    - prefers-reduced-motion: no-preference (respect utilisateur)
    - html.js pour les états initiaux masqués (sans JS : tout est visible)
    Pas d'animation infinie (WCAG 2.2.2), pas d'info portée par le mouvement.
    ========================================================================== */
-
-:root {
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Header sticky verre dépoli */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  padding-block: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  background: color-mix(in srgb, var(--c-bg) 85%, transparent);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
-}
-
-/* Filet d'argent du hero */
-.silver-line {
-  width: 9rem;
-  height: 3px;
-  margin: 1.5rem auto;
-  border-radius: 2px;
-  background: var(--silver);
-  background-size: 220% 100%;
-}
-
-/* Footer */
-footer p { margin: 0.35rem 0; }
 
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
@@ -470,15 +661,4 @@ footer p { margin: 0.35rem 0; }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* Classe utilitaire : masqué visuellement mais lisible par lecteur d'écran */
-.visually-hidden {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
 }
