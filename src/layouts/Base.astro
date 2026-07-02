@@ -193,6 +193,7 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
     <footer class="container site-footer" role="contentinfo">
       <p>© {new Date().getFullYear()} {l.footerRights}</p>
       <p set:html={l.footerProof} />
+      <p><a href="/mentions-legales/" hreflang="fr">{l.legalLink}</a></p>
     </footer>
   </body>
 </html>

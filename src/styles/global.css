@@ -562,6 +562,17 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
 .success-lead { font-size: var(--text-lg); }
 .success-back { margin: var(--space-8) 0 0; }
 
+/* --- Mentions légales --- */
+.legal h2 { margin-top: var(--space-10); }
+.legal ul { padding-left: var(--space-5); display: grid; gap: var(--space-1); }
+.legal mark {
+  background: light-dark(#fdf3d7, #3a3320);
+  color: inherit;
+  padding: 0 var(--space-1);
+  border-radius: 3px;
+  font-style: italic;
+}
+
 /* ==========================================================================
    4. MOTION — créatif mais débrayable. Tout est gaté :
    - prefers-reduced-motion: no-preference (respect utilisateur)

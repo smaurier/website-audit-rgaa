@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import EmailLink from '../components/EmailLink.astro';
+---
+
+<Base
+  lang="fr"
+  title="Mentions légales & politique de confidentialité — Nuada"
+  description="Mentions légales, hébergement, propriété intellectuelle et politique de confidentialité du site Nuada."
+>
+  <section class="container success legal">
+    <h1>Mentions légales &amp; confidentialité</h1>
+    <p class="section-lead">
+      Dernière mise à jour : juillet 2026. Certaines informations sont en cours de complétion
+      (immatriculation de l'activité en cours) et sont signalées comme telles.
+    </p>
+
+    <h2>Éditeur du site</h2>
+    <ul>
+      <li><strong>Nom :</strong> Sylvain Maurier</li>
+      <li><strong>Statut :</strong> <mark>entrepreneur individuel — immatriculation en cours</mark></li>
+      <li><strong>SIREN :</strong> <mark>en cours d'attribution</mark></li>
+      <li><strong>Adresse professionnelle :</strong> <mark>sera précisée à l'immatriculation</mark></li>
+      <li><strong>Contact :</strong> <EmailLink user="sylvain.maurier" domain="gmail.com" subject="Contact — mentions légales" /></li>
+      <li><strong>Directeur de la publication :</strong> Sylvain Maurier</li>
+    </ul>
+
+    <h2>Hébergement</h2>
+    <p>
+      Ce site est hébergé par <strong>Netlify, Inc.</strong> — 512 2nd Street, Suite 200,
+      San Francisco, CA 94107, États-Unis —
+      <a href="https://www.netlify.com/" hreflang="en">netlify.com (en anglais)</a>.
+    </p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      L'ensemble des contenus de ce site (textes, identité visuelle, logo « main d'argent », code)
+      est la propriété de Sylvain Maurier, sauf mention contraire. Toute réutilisation est soumise
+      à autorisation préalable — écrivez-moi, je réponds vite et je dis rarement non aux projets
+      qui font avancer l'accessibilité.
+    </p>
+
+    <h2>Données personnelles (RGPD)</h2>
+    <p>
+      Le formulaire de contact collecte : nom, adresse e-mail, adresse de site web (facultative)
+      et message.
+    </p>
+    <ul>
+      <li><strong>Finalité :</strong> répondre à votre demande, uniquement.</li>
+      <li><strong>Base légale :</strong> mesures précontractuelles prises à votre demande (art. 6.1.b RGPD).</li>
+      <li><strong>Destinataire :</strong> Sylvain Maurier, seul. Aucune transmission à des tiers, aucune prospection.</li>
+      <li><strong>Sous-traitant technique :</strong> Netlify, Inc. (réception des formulaires), société américaine
+        certifiée dans le cadre des mécanismes de transfert UE-États-Unis en vigueur.</li>
+      <li><strong>Durée de conservation :</strong> 12 mois après le dernier échange, puis suppression.</li>
+      <li><strong>Vos droits :</strong> accès, rectification, effacement, opposition — sur simple e-mail
+        à l'adresse ci-dessus. Vous pouvez également saisir la
+        <a href="https://www.cnil.fr/">CNIL</a>.</li>
+    </ul>
+
+    <h2>Cookies et traceurs</h2>
+    <p>
+      Ce site n'utilise <strong>aucun cookie</strong> et aucun outil de mesure d'audience.
+      Une seule donnée est stockée localement dans votre navigateur (<code>localStorage</code>) :
+      votre préférence de thème clair/sombre si vous utilisez le sélecteur — une préférence
+      d'affichage exemptée de consentement, qui ne quitte jamais votre appareil.
+    </p>
+
+    <h2>Accessibilité</h2>
+    <p>
+      Ce site vise la conformité au RGAA et aux
+      <a href="https://www.w3.org/TR/WCAG22/" hreflang="en">WCAG 2.2 (en anglais)</a> niveau AAA.
+      Une déclaration d'accessibilité formelle sera publiée à l'issue de l'audit complet en cours.
+      Si vous rencontrez un défaut d'accessibilité, signalez-le moi : il sera corrigé en priorité.
+    </p>
+
+    <p class="success-back">
+      <a class="btn btn--primary" href="/">Retour à l'accueil</a>
+    </p>
+  </section>
+</Base>

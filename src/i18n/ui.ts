@@ -31,6 +31,7 @@ export interface Dict {
     langLabel: string;
     footerRights: string;
     footerProof: string;
+    legalLink: string;
     theme: { label: string; auto: string; light: string; dark: string };
   };
   hero: {
@@ -107,6 +108,7 @@ export const ui: Record<Lang, Dict> = {
       footerProof:
         'Ce site vise la conformité <strong><a href="https://www.w3.org/TR/WCAG22/" hreflang="en">WCAG 2.2 (en anglais)</a> niveau AAA</strong>. Il est sa propre démonstration.',
       theme: { label: 'Thème', auto: 'auto', light: 'clair', dark: 'sombre' },
+      legalLink: 'Mentions légales & confidentialité',
     },
     hero: {
       eyebrow: 'Audit & remédiation · RGAA / WCAG 2.2',
@@ -282,6 +284,7 @@ export const ui: Record<Lang, Dict> = {
       footerProof:
         'This site targets <strong><a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2</a> level AAA</strong> conformance. It is its own demo.',
       theme: { label: 'Theme', auto: 'auto', light: 'light', dark: 'dark' },
+      legalLink: 'Legal notice & privacy (in French)',
     },
     hero: {
       eyebrow: 'Accessibility audit & remediation · WCAG 2.2',
@@ -455,6 +458,7 @@ export const ui: Record<Lang, Dict> = {
       footerProof:
         'Este sitio apunta a la conformidad <strong><a href="https://www.w3.org/TR/WCAG22/" hreflang="en">WCAG 2.2 (en inglés)</a> nivel AAA</strong>. Es su propia demostración.',
       theme: { label: 'Tema', auto: 'auto', light: 'claro', dark: 'oscuro' },
+      legalLink: 'Aviso legal y privacidad (en francés)',
     },
     hero: {
       eyebrow: 'Auditoría y corrección · WCAG 2.2 · UNE-EN 301 549',
