@@ -350,6 +350,14 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
   padding: 0;
 }
 
+/* Invitation vers l'histoire de Nuada — la curiosité qui fait scroller */
+.hero-story-link {
+  max-width: none;
+  margin: var(--space-8) 0 0;
+  font-size: var(--text-sm);
+  font-style: italic;
+}
+
 /* Pastille marché */
 .pill {
   font-size: var(--text-sm);
@@ -552,6 +560,7 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
   .hero-content > *:nth-child(4) { animation-delay: 0.27s; }
   .hero-content > *:nth-child(5) { animation-delay: 0.38s; }
   .hero-content > *:nth-child(6) { animation-delay: 0.5s; }
+  .hero-content > *:nth-child(7) { animation-delay: 0.62s; }
 
   /* — Le torque se forge : le trait d'argent se dessine — */
   @keyframes torque-draw {

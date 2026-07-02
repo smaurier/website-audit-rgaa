@@ -40,6 +40,7 @@ export interface Dict {
     ctaPrimary: string;
     ctaSecondary: string;
     pills: { text: string; lang?: string }[];
+    storyLink: string;
   };
   legal: { titleHtml: string; bodyHtml: string };
   offer: {
@@ -106,7 +107,7 @@ export const ui: Record<Lang, Dict> = {
     },
     hero: {
       eyebrow: 'Audit & remédiation · RGAA / WCAG 2.2',
-      h1Html: `Je forge des <em>mains d'argent</em> pour vos interfaces.`,
+      h1Html: `L'auditeur qui <em>code la solution</em>.`,
       leadHtml: `Auditeur RGAA <em>et</em> développeur fullstack senior : je relève les non-conformités,
         puis — si vous le souhaitez — je livre le code qui les corrige, directement dans votre dépôt.`,
       ctaPrimary: 'Demander un audit',
@@ -116,6 +117,7 @@ export const ui: Record<Lang, Dict> = {
         { text: 'Español — WCAG · UNE-EN 301 549', lang: 'es' },
         { text: 'English — WCAG · ADA', lang: 'en' },
       ],
+      storyLink: 'Pourquoi « Nuada » ? L\'histoire du roi à la main d\'argent ↓',
     },
     legal: {
       titleHtml: `<span lang="en">European Accessibility Act</span> : applicable depuis juin 2025`,
@@ -274,7 +276,7 @@ export const ui: Record<Lang, Dict> = {
     },
     hero: {
       eyebrow: 'Accessibility audit & remediation · WCAG 2.2',
-      h1Html: `I forge <em>silver hands</em> for your interfaces.`,
+      h1Html: `The auditor who <em>codes the fix</em>.`,
       leadHtml: `Accessibility auditor <em>and</em> senior fullstack developer: I find the barriers,
         then — if you want — I ship the code that removes them, right in your repository.`,
       ctaPrimary: 'Request an audit',
@@ -284,6 +286,7 @@ export const ui: Record<Lang, Dict> = {
         { text: 'France — RGAA · EAA', lang: 'fr' },
         { text: 'Español — WCAG · UNE-EN 301 549', lang: 'es' },
       ],
+      storyLink: 'Why "Nuada"? The story of the silver-handed king ↓',
     },
     legal: {
       titleHtml: `EAA, ADA, Section 508: accessibility is now a legal requirement`,
@@ -440,7 +443,7 @@ export const ui: Record<Lang, Dict> = {
     },
     hero: {
       eyebrow: 'Auditoría y corrección · WCAG 2.2 · UNE-EN 301 549',
-      h1Html: `Forjo <em>manos de plata</em> para sus interfaces.`,
+      h1Html: `El auditor que <em>programa la solución</em>.`,
       leadHtml: `Auditor de accesibilidad <em>y</em> desarrollador fullstack senior: detecto las no
         conformidades y — si lo desea — entrego el código que las corrige, directamente en su repositorio.`,
       ctaPrimary: 'Solicitar una auditoría',
@@ -450,6 +453,7 @@ export const ui: Record<Lang, Dict> = {
         { text: 'France — RGAA · EAA', lang: 'fr' },
         { text: 'English — WCAG · ADA', lang: 'en' },
       ],
+      storyLink: '¿Por qué «Nuada»? La historia del rey de la mano de plata ↓',
     },
     legal: {
       titleHtml: `<span lang="en">European Accessibility Act</span>: aplicable desde junio de 2025`,
