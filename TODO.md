@@ -27,8 +27,8 @@
 
 Un site professionnel français doit publier : identité de l'éditeur (nom, statut), **SIREN/SIRET**,
 adresse, moyen de contact, identité de l'hébergeur (Netlify, Inc. — 512 2nd Street, San Francisco).
-- [ ] Créer la page `/mentions-legales` dès que le statut freelance/micro est posé (SIREN dispo)
-- [ ] Y intégrer la politique de confidentialité complète (la note RGPD courte est déjà sous le formulaire)
+- [x] Page `/mentions-legales` créée (avec politique de confidentialité complète)
+- [ ] **Compléter les 3 placeholders `<mark>`** dès l'immatriculation : statut exact, SIREN, adresse pro
 
 ## 🤔 Arbitrages Opquast documentés (choix assumés, pas des oublis)
 
