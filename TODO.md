@@ -45,7 +45,11 @@ adresse, moyen de contact, identité de l'hébergeur (Netlify, Inc. — 512 2nd 
       + tests de restitution NVDA/Firefox — puis publier une **page /accessibilite** avec la vraie
       déclaration (état de conformité, taux, base de référence, moyen de contact). Ne JAMAIS afficher
       « totalement conforme » sans audit réel. Excellent exercice de prépa certif + preuve commerciale.
-- [ ] Socle SEO/GEO : sitemap, robots.txt, JSON-LD (ProfessionalService, Offer, FAQPage), llms.txt — **primordial**
+- [x] Socle SEO/GEO : sitemap i18n, robots.txt, canonical, OG, JSON-LD ProfessionalService+Offers, llms.txt
+- [ ] **FAQ sur la landing** + JSON-LD FAQPage (prochaine session — meilleur ratio GEO)
+- [ ] 3 pages piliers : `/audit-rgaa`, `/european-accessibility-act` (+ quiz Svelte), `/auditoria-accesibilidad`
+- [ ] Image OG 1200×630 (main d'argent sur vert-nuit)
+- [ ] Google Search Console dès le domaine branché ; vérifier notifications Netlify Forms
 - [ ] DA celtique v2 : logo main d'argent, entrelacs discrets, typographie display
 - [ ] Calculateur de coût interactif (futur composant Svelte)
 - [ ] Études de cas dès les premiers clients
