@@ -25,6 +25,10 @@
 
 ## 📋 Backlog site (rappel)
 
+- [ ] **Auto-audit RGAA complet** avec la grille Access42 (`rgaa-private/ressources/rgaa41-modele-grille-d-audit-Access42.xlsx`)
+      + tests de restitution NVDA/Firefox — puis publier une **page /accessibilite** avec la vraie
+      déclaration (état de conformité, taux, base de référence, moyen de contact). Ne JAMAIS afficher
+      « totalement conforme » sans audit réel. Excellent exercice de prépa certif + preuve commerciale.
 - [ ] Socle SEO/GEO : sitemap, robots.txt, JSON-LD (ProfessionalService, Offer, FAQPage), llms.txt — **primordial**
 - [ ] DA celtique v2 : logo main d'argent, entrelacs discrets, typographie display
 - [ ] Calculateur de coût interactif (futur composant Svelte)

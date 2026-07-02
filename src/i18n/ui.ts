@@ -75,7 +75,9 @@ export interface Dict {
     form: {
       name: string;
       email: string;
+      emailHint: string;
       url: string;
+      urlHint: string;
       message: string;
       required: string;
       submit: string;
@@ -117,7 +119,7 @@ export const ui: Record<Lang, Dict> = {
         { text: 'Español — WCAG · UNE-EN 301 549', lang: 'es' },
         { text: 'English — WCAG · ADA', lang: 'en' },
       ],
-      storyLink: 'Pourquoi « Nuada » ? L\'histoire du roi à la main d\'argent ↓',
+      storyLink: "Pourquoi « Nuada » ? L'histoire du roi à la main d'argent",
     },
     legal: {
       titleHtml: `<span lang="en">European Accessibility Act</span> : applicable depuis juin 2025`,
@@ -152,7 +154,7 @@ export const ui: Record<Lang, Dict> = {
           contenu: [
             'Audit RGAA complet sur périmètre défini',
             'Rapport technique + synthèse pour décideurs',
-            'Pull requests de correction livrées (React / React Native)',
+            '<span lang="en">Pull requests</span> de correction livrées (React / React Native)',
             'Vérification post-correction',
           ],
           livrable: 'Audit + code corrigé',
@@ -241,7 +243,9 @@ export const ui: Record<Lang, Dict> = {
       form: {
         name: 'Votre nom',
         email: 'Votre adresse e-mail',
+        emailHint: 'Format attendu : prenom.nom@domaine.fr',
         url: 'Adresse de votre site (facultatif)',
+        urlHint: 'Format attendu : https://www.votre-site.fr',
         message: 'Votre message',
         required: 'obligatoire',
         submit: 'Envoyer le message',
@@ -286,7 +290,7 @@ export const ui: Record<Lang, Dict> = {
         { text: 'France — RGAA · EAA', lang: 'fr' },
         { text: 'Español — WCAG · UNE-EN 301 549', lang: 'es' },
       ],
-      storyLink: 'Why "Nuada"? The story of the silver-handed king ↓',
+      storyLink: 'Why "Nuada"? The story of the silver-handed king',
     },
     legal: {
       titleHtml: `EAA, ADA, Section 508: accessibility is now a legal requirement`,
@@ -408,7 +412,9 @@ export const ui: Record<Lang, Dict> = {
       form: {
         name: 'Your name',
         email: 'Your email address',
+        emailHint: 'Expected format: firstname.lastname@domain.com',
         url: 'Your website URL (optional)',
+        urlHint: 'Expected format: https://www.your-site.com',
         message: 'Your message',
         required: 'required',
         submit: 'Send message',
@@ -453,7 +459,7 @@ export const ui: Record<Lang, Dict> = {
         { text: 'France — RGAA · EAA', lang: 'fr' },
         { text: 'English — WCAG · ADA', lang: 'en' },
       ],
-      storyLink: '¿Por qué «Nuada»? La historia del rey de la mano de plata ↓',
+      storyLink: '¿Por qué «Nuada»? La historia del rey de la mano de plata',
     },
     legal: {
       titleHtml: `<span lang="en">European Accessibility Act</span>: aplicable desde junio de 2025`,
@@ -487,7 +493,7 @@ export const ui: Record<Lang, Dict> = {
           contenu: [
             'Auditoría WCAG 2.2 completa sobre un alcance definido',
             'Informe técnico + síntesis para decisores',
-            'Pull requests de corrección entregadas (React / React Native)',
+            '<span lang="en">Pull requests</span> de corrección entregadas (React / React Native)',
             'Verificación posterior a la corrección',
           ],
           livrable: 'Auditoría + código corregido',
@@ -575,7 +581,9 @@ export const ui: Record<Lang, Dict> = {
       form: {
         name: 'Su nombre',
         email: 'Su correo electrónico',
+        emailHint: 'Formato esperado: nombre.apellido@dominio.com',
         url: 'La URL de su sitio (opcional)',
+        urlHint: 'Formato esperado: https://www.su-sitio.com',
         message: 'Su mensaje',
         required: 'obligatorio',
         submit: 'Enviar el mensaje',

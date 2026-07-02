@@ -51,7 +51,7 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
   <body>
     <a class="skip-link" href="#main">{l.skip}</a>
 
-    <header class="container site-header">
+    <header class="container site-header" role="banner">
       <a href={locales[lang].path} class="brand">
         <!-- La main d'argent de Nuada (4c « la frappe pleine ») — décoratif, le texte adjacent porte le nom -->
         <svg aria-hidden="true" focusable="false" width="28" height="28" viewBox="0 0 28 28">
@@ -73,14 +73,14 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
         </svg>
         Nuada
       </a>
-      <nav aria-label={l.nav}>
+      <nav role="navigation" aria-label={l.nav}>
         <ul class="nav-list">
           <li><a class="nav-link" href="#offre">{l.offer}</a></li>
           <li><a class="nav-link" href="#methode">{l.method}</a></li>
           <li><a class="nav-link" href="#contact">{l.contact}</a></li>
         </ul>
       </nav>
-      <nav aria-label={l.langLabel}>
+      <nav role="navigation" aria-label={l.langLabel}>
         <ul class="lang-pills">
           {Object.entries(locales).map(([code, { label, path }]) => (
             <li>
@@ -185,11 +185,12 @@ const site = Astro.site ?? new URL('https://audit-rgaa.fr');
       }
     </script>
 
-    <main id="main">
+    <!-- tabindex=-1 : garantit le déplacement effectif du focus via le lien d'évitement (RGAA 12.7) -->
+    <main id="main" role="main" tabindex="-1">
       <slot />
     </main>
 
-    <footer class="container site-footer">
+    <footer class="container site-footer" role="contentinfo">
       <p>© {new Date().getFullYear()} {l.footerRights}</p>
       <p set:html={l.footerProof} />
     </footer>

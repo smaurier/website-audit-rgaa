@@ -32,6 +32,8 @@
   --c-primary-ink: light-dark(#ffffff, #0c1310);
   --c-accent: light-dark(#7a3b10, #e0b48f);     /* cuivre / cuivre clair */
   --c-border: light-dark(#c7d3cb, #2e3a33);
+  /* Bordure d'identification (champs) — RGAA 3.3 : >= 3:1 avec le fond */
+  --c-border-strong: light-dark(#5f6e66, #93a49b);
   --c-focus: light-dark(#b4310a, #ffb37a);      /* anneau de focus très contrasté */
   --c-primary-hover: light-dark(#083d2a, #a5e2c3);
   --c-primary-active: light-dark(#062e20, #6bbf95);
@@ -332,12 +334,14 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
 }
 
 .hero-cta {
+  list-style: none;
   display: flex;
   gap: var(--space-4);
   flex-wrap: wrap;
   justify-content: center;
   max-width: none;
   margin: var(--space-8) 0 0;
+  padding: 0;
 }
 
 .hero-pills {
@@ -519,11 +523,20 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
 .input {
   width: 100%;
   padding: var(--space-3);
-  border: 1px solid var(--c-border);
+  /* RGAA 3.3 : la bordure identifie le champ, contraste >= 3:1 */
+  border: 1px solid var(--c-border-strong);
   border-radius: 6px;
   background: var(--c-bg);
   color: var(--c-text);
   font: inherit;
+}
+
+/* Aide de saisie visible, reliée par aria-describedby — RGAA 11.10 */
+.hint {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--c-muted);
+  margin-bottom: var(--space-1);
 }
 .contact-alt { margin: var(--space-6) 0 0; }
 

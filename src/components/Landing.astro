@@ -32,17 +32,18 @@ const t = ui[lang];
       <h1 set:html={t.hero.h1Html} />
       <div class="silver-line" aria-hidden="true"></div>
       <p class="hero-lead" set:html={t.hero.leadHtml} />
-      <p class="hero-cta">
-        <a class="btn btn--primary" href="#contact">{t.hero.ctaPrimary}</a>
-        <a class="btn btn--ghost" href="#methode">{t.hero.ctaSecondary}</a>
-      </p>
+      <!-- Suite de liens => liste (RGAA 9.3) -->
+      <ul class="hero-cta" role="list">
+        <li><a class="btn btn--primary" href="#contact">{t.hero.ctaPrimary}</a></li>
+        <li><a class="btn btn--ghost" href="#methode">{t.hero.ctaSecondary}</a></li>
+      </ul>
       <ul class="hero-pills" role="list">
         {t.hero.pills.map((p) => (
           <li class="pill" lang={p.lang}>{p.text}</li>
         ))}
       </ul>
       <p class="hero-story-link">
-        <a href="#nuada">{t.hero.storyLink}</a>
+        <a href="#nuada">{t.hero.storyLink}<span aria-hidden="true"> ↓</span></a>
       </p>
     </div>
   </section>
@@ -68,9 +69,9 @@ const t = ui[lang];
           <p class="tier-price">{p.prix}</p>
           <p class="tier-scope">{p.scope}</p>
           <ul class="tier-list">
-            {p.contenu.map((c) => <li>{c}</li>)}
+            {p.contenu.map((c) => <li set:html={c} />)}
           </ul>
-          <p class="tier-deliverable">→ {p.livrable}</p>
+          <p class="tier-deliverable"><span aria-hidden="true">→ </span>{p.livrable}</p>
         </li>
       ))}
     </ul>
@@ -159,12 +160,14 @@ const t = ui[lang];
           <label for="f-email">
             {t.contact.form.email} <span class="req">({t.contact.form.required})</span>
           </label>
-          <input class="input" id="f-email" name="email" type="email" required autocomplete="email" />
+          <span class="hint" id="f-email-hint">{t.contact.form.emailHint}</span>
+          <input class="input" id="f-email" name="email" type="email" required autocomplete="email" aria-describedby="f-email-hint" />
         </p>
 
         <p class="field">
           <label for="f-url">{t.contact.form.url}</label>
-          <input class="input" id="f-url" name="website" type="url" autocomplete="url" />
+          <span class="hint" id="f-url-hint">{t.contact.form.urlHint}</span>
+          <input class="input" id="f-url" name="website" type="url" autocomplete="url" aria-describedby="f-url-hint" />
         </p>
 
         <p class="field">
