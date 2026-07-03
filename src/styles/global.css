@@ -290,22 +290,13 @@ button.btn { font: inherit; font-weight: 600; cursor: pointer; }
 .btn--ghost:hover { border-color: var(--c-primary); background: var(--c-surface); }
 .btn--ghost:active { transform: translateY(1px); }
 
-/* --- Hero : composition centrée sous le torque d'argent --- */
+/* --- Hero : composition centrée --- */
 .hero {
-  position: relative;
   text-align: center;
-  overflow: hidden;
   /* bas plus court : c'est --section-gap qui espace la section suivante */
   padding-block: clamp(var(--space-12), 7vw, 5rem) clamp(var(--space-4), 2vw, var(--space-6));
 }
-.hero-torque {
-  position: absolute;
-  left: 50%;
-  top: var(--space-8);
-  transform: translateX(-50%);
-  z-index: 0;
-}
-.hero-content { position: relative; z-index: 1; }
+.hero-content { position: relative; }
 .hero h1 { max-width: 48rem; margin-inline: auto; margin-bottom: 0; }
 
 .eyebrow {
@@ -595,35 +586,6 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
   .hero-content > *:nth-child(6) { animation-delay: 0.5s; }
   .hero-content > *:nth-child(7) { animation-delay: 0.62s; }
 
-  /* — Le torque se forge : le trait d'argent se dessine — */
-  @keyframes torque-draw {
-    from { stroke-dashoffset: 58.35; opacity: 0; }
-    25% { opacity: 1; }
-  }
-  .torque-arc { animation: torque-draw 1.6s var(--ease) 0.15s backwards; }
-
-  /* — Les extrémités du torque : posées comme des rivets à la fin du tracé — */
-  @keyframes torque-finial {
-    from { opacity: 0; scale: 0.2; }
-  }
-  .torque-end {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: torque-finial 0.45s var(--ease) 1.5s backwards;
-  }
-
-  /* — Parallaxe légère : le torque glisse plus lentement que la page — */
-  @supports (animation-timeline: scroll()) {
-    @keyframes torque-parallax {
-      to { translate: 0 120px; }
-    }
-    .hero-torque {
-      animation: torque-parallax linear both;
-      animation-timeline: scroll();
-      animation-range: 0px 700px;
-    }
-  }
-
   /* — Le filet scintille, deux passages puis repos — */
   @keyframes shimmer {
     from { background-position: 130% 0; }
@@ -703,7 +665,6 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
   .skip-link,
   .site-header nav,
   .theme-toggle,
-  .hero-torque,
   .hero-cta,
   .hero-story-link {
     display: none !important;
