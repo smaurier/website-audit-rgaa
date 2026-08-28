@@ -410,6 +410,66 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
 /* Chapeau sous un titre de section */
 .section-lead { color: var(--c-muted); margin: 0; }
 
+/* --- Piliers : hero plus court, grille numerotee des thematiques --- */
+.hero--pillar { padding-block: clamp(var(--space-10), 5vw, var(--space-16)) var(--space-6); }
+.hero--pillar h1 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+
+.thematiques {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-8) 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: var(--space-5);
+  counter-reset: none;
+}
+.thematique {
+  position: relative;
+  padding: var(--space-5) var(--space-5) var(--space-5) var(--space-10);
+  background: var(--c-surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--c-border);
+}
+.thematique h3 {
+  margin: 0 0 var(--space-2);
+  font-size: 1.05em;
+  color: var(--c-primary);
+}
+.thematique p { margin: 0; color: var(--c-muted); font-size: 0.95em; }
+.thematique-num {
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-4);
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.4em;
+  color: var(--c-accent);
+  line-height: 1;
+}
+
+.scope-list {
+  padding-left: var(--space-6);
+  margin: var(--space-5) 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* Panorama LATAM : liste de definitions --- */
+.latam-list {
+  display: grid;
+  gap: var(--space-5);
+  margin: var(--space-6) 0;
+}
+.latam-item {
+  padding: var(--space-4) var(--space-5);
+  background: var(--c-surface);
+  border-left: 3px solid var(--c-primary);
+  border-radius: var(--radius);
+}
+.latam-item dt { margin: 0 0 var(--space-2); }
+.latam-item dd { margin: 0; color: var(--c-muted); }
+.latam-ley { color: var(--c-accent); font-size: 0.95em; }
+
 /* --- FAQ : questions frequentes, colonne unique, lecture confortable --- */
 .faq-list {
   display: grid;

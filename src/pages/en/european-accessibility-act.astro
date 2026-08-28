@@ -1,0 +1,199 @@
+---
+import Base from '../../layouts/Base.astro';
+import EmailLink from '../../components/EmailLink.astro';
+
+const lang = 'en';
+const title = 'European Accessibility Act (EAA): what changed on 28 June 2025 | Nuada';
+const description =
+  'A practical guide to the European Accessibility Act (Directive 2019/882): who is affected, the products and services in scope, exemptions, enforcement by Member States, the EN 301 549 harmonized standard, and how Nuada helps you become compliant with code, not just reports.';
+const datePublished = '2026-08-28';
+const site = Astro.site ?? new URL('https://nuada.dev');
+const homepage = site.href;
+const enHome = new URL('/en/', site).href;
+const pageUrl = new URL('/en/european-accessibility-act/', site).href;
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'European Accessibility Act: what changed on 28 June 2025',
+  description,
+  inLanguage: 'en',
+  datePublished,
+  dateModified: datePublished,
+  author: { '@type': 'Person', name: 'Sylvain Maurier' },
+  publisher: { '@type': 'Organization', name: 'Nuada', url: homepage },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: enHome },
+    { '@type': 'ListItem', position: 2, name: 'European Accessibility Act', item: pageUrl },
+  ],
+};
+
+const productsInScope = [
+  'Self-service terminals (ATMs, ticketing machines, check-in kiosks)',
+  'Consumer computer hardware and operating systems',
+  'Smartphones and consumer terminal equipment',
+  'E-readers',
+  'Consumer terminal equipment for accessing audiovisual media services',
+];
+
+const servicesInScope = [
+  'E-commerce services (any online sale of goods or services to consumers)',
+  'Banking services for consumers (accounts, payments, credit, investment products)',
+  'Passenger transport services (websites, apps, ticketing, real-time travel information)',
+  'Electronic communications services (telecom operators, ISPs)',
+  'Audiovisual media services access (VOD platforms, catch-up)',
+  'E-books and dedicated software',
+];
+---
+
+<Base lang={lang} title={title} description={description}>
+  <section class="container hero hero--pillar">
+    <div class="hero-content">
+      <p class="eyebrow">Reference guide · European Union</p>
+      <h1>European Accessibility Act: what changed on 28 June 2025.</h1>
+      <div class="silver-line" aria-hidden="true"></div>
+      <p class="hero-lead">
+        The European Accessibility Act (Directive 2019/882) is binding law across the 27 EU Member States since
+        28 June 2025. It applies to a wide range of products and services sold to EU consumers, including online.
+        This guide explains what the EAA covers, who is affected, the technical standard (EN 301 549) and how Nuada
+        helps you reach compliance with code, not just reports.
+      </p>
+      <ul class="hero-cta" role="list">
+        <li><a class="btn btn--primary" href="/en/#contact">Request an EAA audit</a></li>
+        <li><a class="btn btn--ghost" href="/en/#faq">Read the FAQ</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="eaa-what">
+    <div class="card card--accent reveal">
+      <h2 id="eaa-what">The EAA in one paragraph</h2>
+      <p>
+        Adopted in 2019 as Directive (EU) 2019/882 and transposed by each Member State into national law, the
+        European Accessibility Act aims at harmonising accessibility requirements for consumer products and
+        services placed on the EU internal market. The core obligation applies since
+        <strong>28 June 2025</strong>. It complements existing national frameworks such as the French
+        <abbr title="Référentiel général d'amélioration de l'accessibilité" lang="fr">RGAA</abbr>
+        or Spain's UNE-EN 301 549: the EAA sets the legal floor, national law sets the audit method.
+      </p>
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="eaa-products">
+    <h2 id="eaa-products">Products in scope</h2>
+    <p class="section-lead">The EAA covers hardware placed on the EU market from 28 June 2025 onwards.</p>
+    <ul class="scope-list">
+      {productsInScope.map((p) => <li>{p}</li>)}
+    </ul>
+  </section>
+
+  <section class="container" aria-labelledby="eaa-services">
+    <h2 id="eaa-services">Services in scope</h2>
+    <p class="section-lead">Services provided to consumers on or after 28 June 2025 must comply.</p>
+    <ul class="scope-list">
+      {servicesInScope.map((s) => <li>{s}</li>)}
+    </ul>
+    <p>
+      <strong>E-commerce</strong> is the widest gateway: the definition covers any online sale of a good or a
+      service to a consumer, so it captures virtually every B2C website, not just marketplaces.
+    </p>
+  </section>
+
+  <section class="container" aria-labelledby="eaa-reach">
+    <div class="card card--accent reveal">
+      <h2 id="eaa-reach">Extraterritorial reach</h2>
+      <p>
+        The EAA follows the classic EU internal market logic: what matters is where the product or service is
+        <em>placed on the market</em> or <em>provided</em>, not where the company is headquartered. A US, UK or
+        Swiss company selling e-commerce, banking or telecom services to EU consumers falls within the scope.
+        Non-EU companies must appoint an authorised representative in the Union.
+      </p>
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="eaa-exempt">
+    <h2 id="eaa-exempt">Exemptions</h2>
+    <ul class="grid" role="list">
+      <li class="card reveal">
+        <h3>Microenterprises (services)</h3>
+        <p>
+          Companies with fewer than 10 employees <em>and</em> an annual turnover or balance sheet total not exceeding
+          €2 million are exempted from the service obligations. They are <strong>not</strong> exempted from product
+          obligations.
+        </p>
+      </li>
+      <li class="card reveal">
+        <h3>Disproportionate burden</h3>
+        <p>
+          A specific requirement may be waived where compliance would impose a disproportionate burden. The
+          assessment must be documented, kept for five years and made available to authorities on request.
+        </p>
+      </li>
+      <li class="card reveal">
+        <h3>Fundamental alteration</h3>
+        <p>
+          A requirement can also be avoided if applying it would require a fundamental alteration of the nature of
+          the product or service. Same documentation rules apply.
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="container" aria-labelledby="eaa-enforcement">
+    <div class="card card--accent reveal">
+      <h2 id="eaa-enforcement">Enforcement and penalties</h2>
+      <p>
+        Enforcement is left to each Member State, through their national market surveillance authorities.
+        Sanctions must be <em>effective, proportionate and dissuasive</em>, and vary widely: administrative fines,
+        injunctions to bring the service into compliance, and, in the most serious cases, withdrawal of the product
+        or service from the market. Consumers and consumer associations can also seek redress through national
+        courts. In France, the DGCCRF is the competent authority for services covered by the EAA.
+      </p>
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="eaa-en301">
+    <h2 id="eaa-en301">The technical standard: EN 301 549</h2>
+    <p>
+      The EAA is a law: it sets what accessibility is expected, not the technical detail. The reference technical
+      standard is <strong>EN 301 549</strong>, a harmonised European standard co-produced by ETSI, CEN and CENELEC.
+      For web and mobile content, EN 301 549 maps directly to the WCAG success criteria (currently WCAG 2.1 level AA,
+      with WCAG 2.2 already integrated in the latest revision). In practice, if your website conforms to WCAG 2.2 AA,
+      you conform to the web part of EN 301 549, and therefore to the EAA.
+    </p>
+  </section>
+
+  <section class="container" aria-labelledby="eaa-nuada">
+    <div class="card reveal">
+      <h2 id="eaa-nuada">How Nuada helps</h2>
+      <ul>
+        <li><strong>WCAG 2.2 audit</strong> on a defined scope, mapped to EN 301 549 and to the EAA obligations that apply to your service.</li>
+        <li><strong>Accessibility statement</strong> ready to publish, aligned with the national transposition law.</li>
+        <li><strong>Remediation pull requests</strong> pushed into your repository (React, React Native, Vue, Astro): the difference between having a report and being compliant.</li>
+        <li><strong>Post-fix verification</strong> and, where useful, developer enablement.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container" id="contact-pillar" aria-labelledby="eaa-contact">
+    <div class="card reveal">
+      <h2 id="eaa-contact">Ready to scope your EAA compliance?</h2>
+      <p>Tell me about your service, your target Member States and your deadline. Reply within 48 hours.</p>
+      <ul class="hero-cta" role="list">
+        <li><a class="btn btn--primary" href="/en/#contact">Contact form</a></li>
+        <li class="contact-alt">
+          Or by email: <EmailLink user="sylvain.maurier" domain="gmail.com" subject="EAA compliance audit request" />
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+</Base>

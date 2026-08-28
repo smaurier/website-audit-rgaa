@@ -1,0 +1,209 @@
+---
+import Base from '../../layouts/Base.astro';
+import EmailLink from '../../components/EmailLink.astro';
+
+const lang = 'es';
+const title = 'Auditoría de accesibilidad web para España y Latinoamérica | Nuada';
+const description =
+  'Guía práctica de la auditoría de accesibilidad para el mercado hispanohablante: marco WCAG 2.2, norma UNE-EN 301 549, obligaciones EAA en España, panorama regulatorio en Latinoamérica (Argentina, México, Brasil, Colombia, Chile) y método Nuada con auditoría más pull requests de corrección.';
+const datePublished = '2026-08-28';
+const site = Astro.site ?? new URL('https://nuada.dev');
+const homepage = site.href;
+const esHome = new URL('/es/', site).href;
+const pageUrl = new URL('/es/auditoria-accesibilidad/', site).href;
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Auditoría de accesibilidad para España y Latinoamérica',
+  description,
+  inLanguage: 'es',
+  datePublished,
+  dateModified: datePublished,
+  author: { '@type': 'Person', name: 'Sylvain Maurier' },
+  publisher: { '@type': 'Organization', name: 'Nuada', url: homepage },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: esHome },
+    { '@type': 'ListItem', position: 2, name: 'Auditoría de accesibilidad', item: pageUrl },
+  ],
+};
+
+const latam = [
+  {
+    pais: 'Argentina',
+    ley: 'Ley 26.653 (2010) — Accesibilidad de la información en las páginas web.',
+    detalle:
+      'Obliga a los sitios del sector público nacional y a las empresas prestatarias de servicios públicos a cumplir criterios de accesibilidad. Autoridad de aplicación: ONTI.',
+  },
+  {
+    pais: 'México',
+    ley: 'NMX-I-27000-1-NYCE + Ley General de Inclusión de las Personas con Discapacidad.',
+    detalle:
+      'La NMX establece requisitos técnicos alineados con WCAG. El sector público debe ofrecer sitios accesibles; el sector privado avanza por presión reputacional y ESG.',
+  },
+  {
+    pais: 'Brasil',
+    ley: 'Lei 13.146/2015 (LBI — Lei Brasileira de Inclusão) y modelo eMAG.',
+    detalle:
+      'La LBI reconoce el derecho de acceso a la información y a la comunicación en igualdad de condiciones. El eMAG es el estándar técnico de referencia para el gobierno federal.',
+  },
+  {
+    pais: 'Colombia',
+    ley: 'Ley 1618/2013 y NTC 5854.',
+    detalle:
+      'La Ley 1618 garantiza el ejercicio pleno de los derechos de las personas con discapacidad. La NTC 5854 fija criterios técnicos alineados con WCAG para sitios del sector público.',
+  },
+  {
+    pais: 'Chile',
+    ley: 'Ley 20.422/2010 e instrucciones del Instituto Nacional de Estadísticas.',
+    detalle:
+      'Reconoce el derecho a la accesibilidad y encarga a la administración pública garantizar sitios accesibles. Estándares técnicos remitidos a normas ISO/W3C.',
+  },
+];
+---
+
+<Base lang={lang} title={title} description={description}>
+  <section class="container hero hero--pillar">
+    <div class="hero-content">
+      <p class="eyebrow">Guía de referencia · Mercado hispanohablante</p>
+      <h1>Auditoría de accesibilidad para España y Latinoamérica.</h1>
+      <div class="silver-line" aria-hidden="true"></div>
+      <p class="hero-lead">
+        Una única metodología, tres marcos regulatorios: WCAG 2.2 (norma técnica internacional del W3C),
+        UNE-EN 301 549 (norma armonizada europea y referencia técnica en España y buena parte de Latinoamérica)
+        y la European Accessibility Act aplicable desde el 28 de junio de 2025. Esta guía cubre el panorama legal,
+        la metodología de auditoría y el entregable Nuada, más allá del informe.
+      </p>
+      <ul class="hero-cta" role="list">
+        <li><a class="btn btn--primary" href="/es/#contact">Solicitar una auditoría</a></li>
+        <li><a class="btn btn--ghost" href="/es/#faq">Ver la FAQ</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="es-que">
+    <div class="card card--accent reveal">
+      <h2 id="es-que">Qué es una auditoría de accesibilidad</h2>
+      <p>
+        Una auditoría de accesibilidad web es una evaluación sistemática de un sitio o aplicación frente a un
+        referencial de criterios objetivos. La referencia internacional son las
+        <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> del W3C. En Europa, la norma
+        armonizada UNE-EN 301 549 mapea WCAG a un contexto regulatorio, y desde el 28 de junio de 2025 la
+        <span lang="en">European Accessibility Act</span> convierte ese cumplimiento en obligación legal para
+        un amplio conjunto de servicios digitales.
+      </p>
+      <p>
+        Una auditoría seria no es un escaneo automático: los tests automáticos cubren aproximadamente el 30 % de
+        los criterios. El resto exige pruebas manuales con teclado y lector de pantalla, y análisis del código.
+      </p>
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="es-espana">
+    <h2 id="es-espana">Marco regulatorio en España</h2>
+    <ul class="grid" role="list">
+      <li class="card reveal">
+        <h3>Real Decreto 1112/2018</h3>
+        <p>
+          Transpone la Directiva UE 2016/2102 sobre accesibilidad de los sitios web y aplicaciones móviles del
+          sector público. Fija la declaración de accesibilidad obligatoria y el mecanismo de comunicación.
+        </p>
+      </li>
+      <li class="card reveal">
+        <h3>Ley 11/2023 (transposición EAA)</h3>
+        <p>
+          Ley de transposición española de la Directiva 2019/882: extiende las obligaciones de accesibilidad a
+          e-commerce, banca, transporte, telecomunicaciones y servicios audiovisuales dirigidos a consumidores.
+        </p>
+      </li>
+      <li class="card reveal">
+        <h3>UNE-EN 301 549</h3>
+        <p>
+          Norma técnica de referencia. Alineada con WCAG 2.1 nivel AA (con WCAG 2.2 integrada en su última revisión).
+          Vigilada por el <abbr title="Observatorio de Accesibilidad Web">OAW</abbr> para el sector público.
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="container" aria-labelledby="es-latam">
+    <h2 id="es-latam">Panorama regulatorio en Latinoamérica</h2>
+    <p class="section-lead">
+      Cada país ha adoptado su propia base legal, en general alineada con las WCAG. El detalle varía por sector,
+      pero el mercado converge rápidamente hacia el estándar internacional.
+    </p>
+    <dl class="latam-list">
+      {latam.map((it) => (
+        <div class="latam-item reveal">
+          <dt>
+            <strong>{it.pais}</strong> · <span class="latam-ley">{it.ley}</span>
+          </dt>
+          <dd>{it.detalle}</dd>
+        </div>
+      ))}
+    </dl>
+    <p>
+      Más allá del cumplimiento estricto, la accesibilidad es un requisito creciente en licitaciones públicas,
+      criterios ESG y auditorías de grandes cuentas con operaciones internacionales.
+    </p>
+  </section>
+
+  <section class="container" aria-labelledby="es-metodo">
+    <h2 id="es-metodo">Metodología Nuada trilingüe</h2>
+    <ol class="grid" role="list">
+      <li class="card step reveal">
+        <h3>1. Alcance</h3>
+        <p>
+          Definición de la muestra (páginas clave, recorridos críticos, checkout), del marco aplicable y del país
+          de referencia legal.
+        </p>
+      </li>
+      <li class="card step reveal">
+        <h3>2. Auditoría manual</h3>
+        <p>
+          Pruebas de teclado, restitución con NVDA sobre Firefox, medición de contrastes, inspección de la
+          estructura y del código. Un criterio, una prueba reproducible.
+        </p>
+      </li>
+      <li class="card step reveal">
+        <h3>3. Informe y declaración</h3>
+        <p>
+          Informe detallado, matriz de criticidad y declaración de accesibilidad conforme al modelo legal aplicable
+          (RD 1112/2018 en España, modelo específico en cada país LATAM).
+        </p>
+      </li>
+      <li class="card step reveal">
+        <h3>4. Corrección de código</h3>
+        <p>
+          <span lang="en">Pull requests</span> subidas directamente a su repositorio (React, React Native, Vue,
+          Astro). Cada corrección se prueba con teclado y lector de pantalla antes de la entrega.
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="container" id="contact-pillar" aria-labelledby="es-contact">
+    <div class="card reveal">
+      <h2 id="es-contact">¿Listo para definir el alcance?</h2>
+      <p>
+        Cuénteme sobre su sitio o aplicación, el país objetivo y el marco legal aplicable. Respuesta en 48 h.
+      </p>
+      <ul class="hero-cta" role="list">
+        <li><a class="btn btn--primary" href="/es/#contact">Formulario de contacto</a></li>
+        <li class="contact-alt">
+          O por correo:
+          <EmailLink user="sylvain.maurier" domain="gmail.com" subject="Solicitud de auditoría de accesibilidad" />
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+</Base>

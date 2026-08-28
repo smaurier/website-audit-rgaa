@@ -1,0 +1,248 @@
+---
+import Base from '../layouts/Base.astro';
+import EmailLink from '../components/EmailLink.astro';
+
+const lang = 'fr';
+const title = 'Audit RGAA 4.1 : 106 critères, méthode Access42, remédiation code | Nuada';
+const description =
+  "Guide complet de l'audit RGAA 4.1 : les 106 critères, les 13 thématiques, les entités concernées (secteur public + entreprises >250 M€ CA + périmètre EAA), la méthode d'audit officielle et le livrable Nuada (rapport + PR de remédiation).";
+const datePublished = '2026-08-28';
+const site = Astro.site ?? new URL('https://nuada.dev');
+const homepage = site.href;
+const pageUrl = new URL('/audit-rgaa/', site).href;
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Audit RGAA 4.1 : 106 critères, méthode et remédiation',
+  description,
+  inLanguage: 'fr',
+  datePublished,
+  dateModified: datePublished,
+  author: { '@type': 'Person', name: 'Sylvain Maurier' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Nuada',
+    url: homepage,
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: homepage },
+    { '@type': 'ListItem', position: 2, name: 'Audit RGAA', item: pageUrl },
+  ],
+};
+
+const thematiques = [
+  { n: 1, nom: 'Images', propos: 'Alternatives textuelles, images-liens, images de décoration.' },
+  { n: 2, nom: 'Cadres', propos: 'Titres de cadres (frame, iframe) pertinents.' },
+  { n: 3, nom: 'Couleurs', propos: 'Contrastes, information non portée par la couleur seule.' },
+  { n: 4, nom: 'Multimédia', propos: 'Transcription, sous-titres, audiodescription, contrôle du son.' },
+  { n: 5, nom: 'Tableaux', propos: 'Tableaux de données correctement structurés, résumé, en-têtes.' },
+  { n: 6, nom: 'Liens', propos: 'Intitulés explicites, contexte suffisant, cible identifiable.' },
+  { n: 7, nom: 'Scripts', propos: 'Compatibilité avec les technologies d\'assistance, ARIA correct.' },
+  { n: 8, nom: 'Éléments obligatoires', propos: 'DOCTYPE, langue, validation, changement de langue.' },
+  { n: 9, nom: 'Structuration', propos: 'Titres hiérarchisés, listes, citations, landmarks.' },
+  { n: 10, nom: 'Présentation', propos: 'CSS désactivable, agrandissement 200 %, ordre du DOM.' },
+  { n: 11, nom: 'Formulaires', propos: 'Étiquettes, regroupement, aide à la saisie, gestion des erreurs.' },
+  { n: 12, nom: 'Navigation', propos: 'Fils d\'Ariane, plan du site, moteur de recherche, ordre de tabulation.' },
+  { n: 13, nom: 'Consultation', propos: 'Temps de session, animations, contenu additionnel, orientation.' },
+];
+---
+
+<Base lang={lang} title={title} description={description}>
+  <section class="container hero hero--pillar">
+    <div class="hero-content">
+      <p class="eyebrow">Guide de référence · France</p>
+      <h1>Audit RGAA 4.1 : 106 critères, méthode Access42, remédiation code.</h1>
+      <div class="silver-line" aria-hidden="true"></div>
+      <p class="hero-lead">
+        Le <abbr title="Référentiel général d'amélioration de l'accessibilité">RGAA</abbr> est le référentiel français
+        d'accessibilité numérique. Version 4.1 en vigueur, 106 critères, 13 thématiques. Ce guide explique qui est
+        concerné, comment un audit se déroule, et ce que Nuada livre concrètement au-delà du rapport.
+      </p>
+      <ul class="hero-cta" role="list">
+        <li><a class="btn btn--primary" href="/#contact">Demander un audit RGAA</a></li>
+        <li><a class="btn btn--ghost" href="/#faq">Voir la FAQ</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="rgaa-def">
+    <div class="card card--accent reveal">
+      <h2 id="rgaa-def">Qu'est-ce que le RGAA ?</h2>
+      <p>
+        Le RGAA est la déclinaison française des <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>
+        publiées par le W3C. Il en reprend les 50 critères de succès du niveau AA et y ajoute une méthodologie d'audit
+        officielle : conditions d'application, tests reproductibles, calcul du taux de conformité. La version 4.1,
+        publiée par la <abbr title="Direction interministérielle du numérique">DINUM</abbr>, comporte
+        <strong>106 critères</strong> répartis en <strong>13 thématiques</strong> et se fonde sur les WCAG 2.1.
+      </p>
+      <p>
+        Concrètement, WCAG dit <em>quoi</em> respecter (un principe), le RGAA dit <em>comment le vérifier</em>
+        (un test opposable). C'est cette méthodologie officielle qui rend le RGAA opposable en droit français,
+        et qui alimente la déclaration d'accessibilité que vous devez publier.
+      </p>
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="rgaa-qui">
+    <h2 id="rgaa-qui">Qui est concerné en France ?</h2>
+    <p class="section-lead">Trois régimes se cumulent depuis le 28 juin 2025.</p>
+    <ul class="grid" role="list">
+      <li class="card reveal">
+        <h3>Secteur public</h3>
+        <p>
+          Loi n° 2005-102 du 11 février 2005, article 47 : l'ensemble des services numériques publics doivent être
+          accessibles. Contrôle possible par le Défenseur des droits.
+        </p>
+      </li>
+      <li class="card reveal">
+        <h3>Entreprises privées &gt; 250 M€ de CA</h3>
+        <p>
+          Loi République numérique 2016 (article 106) : les entreprises privées dont le chiffre d'affaires en France
+          dépasse 250 millions d'euros sont soumises aux mêmes obligations que le public.
+        </p>
+      </li>
+      <li class="card reveal">
+        <h3>Périmètre EAA depuis le 28/06/2025</h3>
+        <p>
+          <span lang="en">European Accessibility Act</span> (directive 2019/882) : e-commerce, banque, transport,
+          télécom, service audiovisuel. S'ajoute aux régimes précédents, quel que soit le chiffre d'affaires.
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="container" aria-labelledby="rgaa-13">
+    <h2 id="rgaa-13">Les 106 critères en 13 thématiques</h2>
+    <p class="section-lead">
+      Chaque thématique regroupe plusieurs critères, chacun testable avec un ou plusieurs cas de test.
+      Le rapport final indique par critère : conforme, non conforme, non applicable.
+    </p>
+    <ol class="thematiques" role="list">
+      {thematiques.map((th) => (
+        <li class="thematique reveal">
+          <span class="thematique-num" aria-hidden="true">{th.n}</span>
+          <h3>{th.nom}</h3>
+          <p>{th.propos}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="container" aria-labelledby="rgaa-sanctions">
+    <div class="card card--accent reveal">
+      <h2 id="rgaa-sanctions">Sanctions et contrôle</h2>
+      <p>
+        La non-conformité expose à plusieurs risques cumulables :
+      </p>
+      <ul>
+        <li>
+          <strong>Saisine du Défenseur des droits</strong>, gratuite pour l'usager, qui peut interpeller l'organisme
+          et publier ses observations.
+        </li>
+        <li>
+          <strong>Sanctions administratives</strong> plafonnées par décret pour les organismes publics et les entités
+          soumises à la loi République numérique, avec possibilité de publication au Journal officiel.
+        </li>
+        <li>
+          <strong>Sanctions EAA</strong> pour les services couverts par la directive 2019/882 depuis le 28 juin 2025,
+          fixées par la loi de transposition française et pouvant inclure le retrait du service.
+        </li>
+        <li>
+          <strong>Exclusion des marchés publics</strong> : la conformité RGAA est fréquemment exigée dans les
+          cahiers des charges.
+        </li>
+      </ul>
+      <p>
+        Au-delà du risque légal, l'exposition réputationnelle est réelle : la déclaration d'accessibilité est
+        publique, tout comme les taux de conformité affichés.
+      </p>
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="rgaa-methode">
+    <h2 id="rgaa-methode">La méthode d'audit Nuada</h2>
+    <ol class="grid" role="list">
+      <li class="card step reveal">
+        <h3>1. Cadrage</h3>
+        <p>
+          Définition de l'échantillon représentatif (page d'accueil, gabarits, parcours critique, tunnel d'achat).
+          Choix du référentiel (RGAA 4.1) et des critères applicables.
+        </p>
+      </li>
+      <li class="card step reveal">
+        <h3>2. Tests manuels</h3>
+        <p>
+          Chaque critère est vérifié à la main : navigation clavier, restitution NVDA sur Firefox, contrastes
+          mesurés, structure inspectée. Les tests automatisés ne couvrent qu'environ 30 % des critères.
+        </p>
+      </li>
+      <li class="card step reveal">
+        <h3>3. Calcul du taux</h3>
+        <p>
+          Le taux global de conformité et le taux moyen de conformité sont calculés selon la méthode officielle,
+          et alimentent la déclaration d'accessibilité obligatoire.
+        </p>
+      </li>
+      <li class="card step reveal">
+        <h3>4. Remédiation code</h3>
+        <p>
+          Les non-conformités sont livrées sous forme de <span lang="en">pull requests</span> dans votre dépôt
+          (React, React Native, Vue, Astro). Chaque correctif est testé au clavier et au lecteur d'écran.
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="container" aria-labelledby="rgaa-livrable">
+    <div class="card reveal">
+      <h2 id="rgaa-livrable">Le livrable spécifique RGAA</h2>
+      <ul>
+        <li>
+          <strong>Rapport d'audit détaillé</strong> : critère par critère, avec preuves (captures, extraits de code,
+          restitutions lecteur d'écran).
+        </li>
+        <li>
+          <strong>Déclaration d'accessibilité conforme au modèle DINUM</strong> : à publier sur votre site
+          (obligation légale).
+        </li>
+        <li>
+          <strong>Grille de criticité</strong> : priorisation par impact utilisateur réel, pas par ordre numérique
+          des critères.
+        </li>
+        <li>
+          <strong><span lang="en">Pull requests</span> de remédiation</strong> : le distinctif Nuada. Pas des
+          recommandations abstraites, du code prêt à merger.
+        </li>
+        <li>
+          <strong>Vérification post-correction</strong> : nouveau passage sur les critères remédiés.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container" id="contact-pillar" aria-labelledby="rgaa-contact">
+    <div class="card reveal">
+      <h2 id="rgaa-contact">Prêt à cadrer votre audit RGAA ?</h2>
+      <p>
+        Décrivez votre site ou application et le contexte (obligation légale, marché public visé, calendrier).
+        Réponse sous 48 h.
+      </p>
+      <ul class="hero-cta" role="list">
+        <li><a class="btn btn--primary" href="/#contact">Formulaire de contact</a></li>
+        <li class="contact-alt">
+          Ou par e-mail : <EmailLink user="sylvain.maurier" domain="gmail.com" subject="Demande d'audit RGAA" />
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+</Base>

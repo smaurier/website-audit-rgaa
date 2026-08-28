@@ -47,7 +47,8 @@ adresse, moyen de contact, identité de l'hébergeur (Netlify, Inc. — 512 2nd 
       « totalement conforme » sans audit réel. Excellent exercice de prépa certif + preuve commerciale.
 - [x] Socle SEO/GEO : sitemap i18n, robots.txt, canonical, OG, JSON-LD ProfessionalService+Offers, llms.txt
 - [x] **FAQ sur la landing** + JSON-LD FAQPage (FR/EN/ES, 8 Q/R : coût, RGAA vs WCAG vs EAA, périmètre EAA, délai, livrable, remédiation code, langues, sanctions 28/06/2025)
-- [ ] 3 pages piliers : `/audit-rgaa`, `/european-accessibility-act` (+ quiz Svelte), `/auditoria-accesibilidad`
+- [x] 3 pages piliers : `/audit-rgaa` (FR, 106 critères + 13 thématiques), `/en/european-accessibility-act` (EAA scope + EN 301 549), `/es/auditoria-accesibilidad` (España + panorama LATAM) — JSON-LD Article + BreadcrumbList par page
+- [ ] Quiz Svelte sur `/en/european-accessibility-act` (backlog item 5)
 - [ ] Image OG 1200×630 (main d'argent sur vert-nuit)
 - [ ] Google Search Console dès le domaine branché ; vérifier notifications Netlify Forms
 - [ ] DA celtique v2 : logo main d'argent, entrelacs discrets, typographie display
