@@ -27,6 +27,7 @@ export interface Dict {
     nav: string;
     offer: string;
     method: string;
+    faq: string;
     contact: string;
     langLabel: string;
     footerRights: string;
@@ -68,6 +69,11 @@ export interface Dict {
     };
   };
   story: { title: string; p1Html: string; p2Html: string };
+  faq: {
+    title: string;
+    intro: string;
+    items: { q: string; aHtml: string }[];
+  };
   contact: {
     title: string;
     body: string;
@@ -102,6 +108,7 @@ export const ui: Record<Lang, Dict> = {
       nav: 'Navigation principale',
       offer: 'Offre',
       method: 'Méthode',
+      faq: 'Questions',
       contact: 'Contact',
       langLabel: 'Choisir la langue',
       footerRights: 'Nuada — Accessibilité numérique FR · EN · ES.',
@@ -239,6 +246,67 @@ export const ui: Record<Lang, Dict> = {
         levée. L'accessibilité numérique dit exactement cela : ce ne sont pas vos utilisateurs qui sont
         inadaptés, ce sont les interfaces. <strong>Je forge des mains d'argent pour les vôtres.</strong>`,
     },
+    faq: {
+      title: 'Questions fréquentes',
+      intro: "Les huit questions qui reviennent le plus souvent avant un audit : cadre légal, coût, délai, livrable.",
+      items: [
+        {
+          q: "Combien coûte un audit d'accessibilité ?",
+          aHtml: `Trois paliers à prix affichés. <strong>Diagnostic</strong> à 1 200 € (jusqu'à 5 pages, priorités A/AA).
+            <strong>Audit + Remédiation</strong> à partir de 4 900 € (échantillon jusqu'à 10 pages, 106 critères RGAA,
+            <span lang="en">pull requests</span> de correction livrées). <strong>Mise en conformité</strong> sur devis
+            pour les grands comptes. Pas de temps facturé à l'aveugle : un périmètre, un livrable.`,
+        },
+        {
+          q: "Quelle différence entre RGAA, WCAG et European Accessibility Act ?",
+          aHtml: `Les <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr> sont la norme technique
+            internationale du W3C. Le <abbr title="Référentiel général d'amélioration de l'accessibilité">RGAA</abbr>
+            est la déclinaison française pour le secteur public et les entreprises de plus de 250 M€ de chiffre d'affaires :
+            il s'appuie sur les WCAG 2.1 niveau AA et ajoute une méthode d'audit officielle (106 critères).
+            L'<span lang="en">European Accessibility Act</span> (directive 2019/882) est une obligation légale
+            européenne applicable depuis le <strong>28 juin 2025</strong> pour le e-commerce, la banque, le transport
+            et les télécommunications.`,
+        },
+        {
+          q: "Mon site est-il concerné par l'European Accessibility Act ?",
+          aHtml: `Si vous vendez en ligne à des consommateurs européens, ou si vous êtes une banque, un transporteur,
+            un opérateur télécom ou un service audiovisuel : <strong>oui, depuis le 28 juin 2025</strong>. La directive
+            s'applique aussi aux entreprises hors UE qui servent des consommateurs européens. Les micro-entreprises
+            (moins de 10 salariés <em>et</em> moins de 2 M€ de chiffre d'affaires) sont exemptées pour les services.`,
+        },
+        {
+          q: 'Quel est le délai pour un audit ?',
+          aHtml: `<strong>Diagnostic</strong> : 5 à 7 jours ouvrés. <strong>Audit + Remédiation</strong> : 3 à 4 semaines.
+            La phase de correction du code est planifiée après la restitution, au rythme convenu avec votre équipe technique.`,
+        },
+        {
+          q: 'Que livre concrètement Nuada ?',
+          aHtml: `Un rapport d'audit sourcé sur le référentiel applicable (RGAA, WCAG 2.2 ou EN 301 549), une grille de
+            criticité priorisée par impact utilisateur, et surtout des <strong><span lang="en">pull requests</span>
+            de correction poussées directement dans votre dépôt</strong> (React, React Native, Vue, Astro).
+            Pas de PDF orphelin. Restitution en visio de 45 min.`,
+        },
+        {
+          q: 'Vous corrigez le code, pas seulement l\'audit ?',
+          aHtml: `Oui, c'est le positionnement. Développeur fullstack senior <em>et</em> auditeur RGAA. La plupart des
+            cabinets livrent une liste de non-conformités ; Nuada livre les correctifs testés au clavier et au lecteur
+            d'écran, prêts à merger.`,
+        },
+        {
+          q: 'Quelles langues et quels référentiels couvrez-vous ?',
+          aHtml: `Français avec le RGAA 4.1. Anglais avec les WCAG 2.2, l'<abbr lang="en" title="Americans with Disabilities Act">ADA</abbr>
+            américaine et la Section 508. Espagnol avec la norme UNE-EN 301 549, y compris pour le marché latino-américain.
+            Un audit, trois cadres réglementaires selon votre marché cible.`,
+        },
+        {
+          q: "Que se passe-t-il si mon site n'est pas conforme au 28 juin 2025 ?",
+          aHtml: `Les sanctions administratives sont fixées par chaque État membre. En France, la <abbr title="Direction générale de la concurrence, de la consommation et de la répression des fraudes">DGCCRF</abbr>
+            peut prononcer des amendes pouvant atteindre 50 000 € par service non conforme, avec possibilité de retrait du service.
+            Les contentieux privés (associations d'usagers) sont également recevables. L'exposition légale est réelle :
+            la mise en conformité doit être engagée sans attendre.`,
+        },
+      ],
+    },
     contact: {
       title: 'Parlons de votre projet',
       body: 'Décrivez votre site ou application et le cadre légal visé. Réponse sous 48 h.',
@@ -278,6 +346,7 @@ export const ui: Record<Lang, Dict> = {
       nav: 'Main navigation',
       offer: 'Services',
       method: 'Method',
+      faq: 'FAQ',
       contact: 'Contact',
       langLabel: 'Choose language',
       footerRights: 'Nuada — Digital accessibility FR · EN · ES.',
@@ -410,8 +479,70 @@ export const ui: Record<Lang, Dict> = {
         battle. The law bars him from the throne: a king must be "whole". The physician of the gods then
         forges him a fully functional <strong>silver hand</strong> — and Nuada reigns again.`,
       p2Html: `The barrier was never his body: it was the rule. Technology lifted it. That is precisely what
-        digital accessibility means: your users are not unfit — your interfaces are.
+        digital accessibility means: your users are not unfit, your interfaces are.
         <strong>I forge silver hands for yours.</strong>`,
+    },
+    faq: {
+      title: 'Frequently asked questions',
+      intro: 'The eight questions clients ask most before an audit: legal framework, cost, timeline, deliverables.',
+      items: [
+        {
+          q: 'How much does an accessibility audit cost?',
+          aHtml: `Three tiers with published prices. <strong>Assessment</strong> at €1,200 (up to 5 pages, A/AA priorities).
+            <strong>Audit + Remediation</strong> from €4,900 (sample up to 10 pages, full WCAG 2.2 audit,
+            remediation pull requests delivered). <strong>Compliance program</strong> on custom quote for
+            enterprise clients. No blind hourly billing: one scope, one deliverable.`,
+        },
+        {
+          q: 'What is the difference between WCAG, RGAA, EAA and ADA?',
+          aHtml: `<abbr title="Web Content Accessibility Guidelines">WCAG</abbr> is the international W3C
+            technical standard. <abbr title="Référentiel général d'amélioration de l'accessibilité" lang="fr">RGAA</abbr>
+            is the French adaptation (public sector + companies above €250M revenue), 106 criteria based on
+            WCAG 2.1 AA with an official audit method. The <strong>European Accessibility Act</strong>
+            (Directive 2019/882) is binding EU law since <strong>28 June 2025</strong> for e-commerce, banking,
+            transport and telecom. The <abbr title="Americans with Disabilities Act">ADA</abbr> is US civil-rights
+            law under which private lawsuits over inaccessible websites keep rising, with courts applying WCAG.`,
+        },
+        {
+          q: 'Does the European Accessibility Act apply to my company?',
+          aHtml: `If you sell online to EU consumers, or operate a bank, transport company, telecom or audiovisual
+            service: <strong>yes, since 28 June 2025</strong>. The directive also applies to non-EU companies
+            serving EU consumers. Micro-enterprises (fewer than 10 employees <em>and</em> less than €2M revenue)
+            are exempted for services.`,
+        },
+        {
+          q: 'How long does an audit take?',
+          aHtml: `<strong>Assessment</strong>: 5 to 7 business days. <strong>Audit + Remediation</strong>: 3 to 4 weeks.
+            Code fixes are scheduled after the debrief, at a cadence agreed with your engineering team.`,
+        },
+        {
+          q: 'What does Nuada actually deliver?',
+          aHtml: `A sourced audit report against the applicable framework (WCAG 2.2, EN 301 549 or ADA), a severity
+            matrix prioritised by user impact, and the differentiator: <strong>remediation pull requests pushed
+            directly into your repository</strong> (React, React Native, Vue, Astro). Not a lonely PDF.
+            45-minute debrief on video call.`,
+        },
+        {
+          q: 'You fix the code, not just audit it?',
+          aHtml: `Yes, that is the position. Senior fullstack developer <em>and</em> accessibility auditor. Most
+            firms hand off a list of findings; Nuada hands off fixes tested with keyboard and screen reader,
+            ready to merge.`,
+        },
+        {
+          q: 'Which markets and frameworks do you cover?',
+          aHtml: `French with RGAA 4.1. English with WCAG 2.2, the US <abbr title="Americans with Disabilities Act">ADA</abbr>
+            and Section 508. Spanish with UNE-EN 301 549, including the Latin American market. One audit,
+            three regulatory frames depending on your target market.`,
+        },
+        {
+          q: 'What happens if my site is not compliant on 28 June 2025?',
+          aHtml: `Administrative penalties are set by each Member State. In France, the
+            <abbr title="Direction générale de la concurrence, de la consommation et de la répression des fraudes" lang="fr">DGCCRF</abbr>
+            can impose fines up to €50,000 per non-compliant service, with possible service withdrawal.
+            Private lawsuits (user associations) are admissible. Legal exposure is real: remediation should
+            start without delay.`,
+        },
+      ],
     },
     contact: {
       title: "Let's talk about your project",
@@ -452,6 +583,7 @@ export const ui: Record<Lang, Dict> = {
       nav: 'Navegación principal',
       offer: 'Oferta',
       method: 'Método',
+      faq: 'Preguntas',
       contact: 'Contacto',
       langLabel: 'Elegir idioma',
       footerRights: 'Nuada — Accesibilidad digital FR · EN · ES.',
@@ -584,8 +716,70 @@ export const ui: Record<Lang, Dict> = {
         en combate. La ley lo aparta del trono: un rey debe estar «íntegro». El médico de los dioses le forja
         entonces una <strong>mano de plata</strong> totalmente funcional — y Nuada vuelve a reinar.`,
       p2Html: `La barrera nunca estuvo en su cuerpo: estaba en la regla. Fue la tecnología la que la levantó.
-        Eso es exactamente la accesibilidad digital: sus usuarios no son inadecuados — lo son las interfaces.
+        Eso es exactamente la accesibilidad digital: sus usuarios no son inadecuados, lo son las interfaces.
         <strong>Yo forjo manos de plata para las suyas.</strong>`,
+    },
+    faq: {
+      title: 'Preguntas frecuentes',
+      intro: 'Las ocho preguntas más habituales antes de una auditoría: marco legal, coste, plazo, entregable.',
+      items: [
+        {
+          q: '¿Cuánto cuesta una auditoría de accesibilidad?',
+          aHtml: `Tres niveles con precios publicados. <strong>Diagnóstico</strong> a 1 200 € (hasta 5 páginas,
+            prioridades A/AA). <strong>Auditoría + Corrección</strong> desde 4 900 € (muestra de hasta 10 páginas,
+            auditoría WCAG 2.2 completa, <span lang="en">pull requests</span> de corrección entregadas).
+            <strong>Conformidad WCAG</strong> a medida para grandes cuentas. Sin horas facturadas a ciegas:
+            un alcance, un entregable.`,
+        },
+        {
+          q: '¿Diferencia entre WCAG, UNE-EN 301 549 y la EAA?',
+          aHtml: `<abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> es la norma técnica
+            internacional del W3C. <strong>UNE-EN 301 549</strong> es la norma armonizada europea, referencia
+            en España y en la mayoría de los países latinoamericanos, basada en WCAG. La
+            <strong><span lang="en">European Accessibility Act</span></strong> (Directiva UE 2019/882) es una
+            obligación legal aplicable desde el <strong>28 de junio de 2025</strong> para el e-commerce, la banca,
+            el transporte y las telecomunicaciones.`,
+        },
+        {
+          q: '¿Mi sitio está afectado por la European Accessibility Act?',
+          aHtml: `Si vende en línea a consumidores de la UE, o es banco, transportista, operador de telecomunicaciones
+            o servicio audiovisual: <strong>sí, desde el 28 de junio de 2025</strong>. La directiva también se aplica
+            a empresas no comunitarias que sirven a consumidores UE. Las microempresas (menos de 10 empleados
+            <em>y</em> menos de 2 M€ de facturación) están exentas para los servicios.`,
+        },
+        {
+          q: '¿Cuál es el plazo de una auditoría?',
+          aHtml: `<strong>Diagnóstico</strong>: 5 a 7 días laborables. <strong>Auditoría + Corrección</strong>:
+            3 a 4 semanas. Las correcciones de código se planifican tras la restitución, al ritmo acordado con
+            su equipo técnico.`,
+        },
+        {
+          q: '¿Qué entrega Nuada exactamente?',
+          aHtml: `Un informe de auditoría con fuentes del marco aplicable (WCAG 2.2, UNE-EN 301 549 o EAA),
+            una matriz de criticidad priorizada por impacto en el usuario, y sobre todo <strong>pull requests
+            de corrección subidas directamente a su repositorio</strong> (React, React Native, Vue, Astro).
+            No un PDF huérfano. Restitución en videollamada de 45 min.`,
+        },
+        {
+          q: '¿Corrige el código, no solo audita?',
+          aHtml: `Sí, es el posicionamiento. Desarrollador fullstack senior <em>y</em> auditor de accesibilidad.
+            La mayoría de los gabinetes entregan una lista de no conformidades; Nuada entrega correcciones probadas
+            con teclado y lector de pantalla, listas para hacer merge.`,
+        },
+        {
+          q: '¿Qué mercados y marcos regulatorios cubre?',
+          aHtml: `Francés con RGAA 4.1. Inglés con WCAG 2.2, la <abbr title="Americans with Disabilities Act" lang="en">ADA</abbr>
+            estadounidense y la Section 508. Español con UNE-EN 301 549, incluido el mercado latinoamericano.
+            Una auditoría, tres marcos regulatorios según su mercado objetivo.`,
+        },
+        {
+          q: '¿Qué ocurre si mi sitio no cumple el 28 de junio de 2025?',
+          aHtml: `Las sanciones administrativas las fija cada Estado miembro. En España, la autoridad de consumo
+            competente puede imponer multas según la legislación de transposición, con posibilidad de retirada
+            del servicio. Los recursos privados (asociaciones de usuarios) también son admisibles. La exposición
+            legal es real: la puesta en conformidad debe iniciarse sin demora.`,
+        },
+      ],
     },
     contact: {
       title: 'Hablemos de su proyecto',

@@ -46,7 +46,7 @@ adresse, moyen de contact, identité de l'hébergeur (Netlify, Inc. — 512 2nd 
       déclaration (état de conformité, taux, base de référence, moyen de contact). Ne JAMAIS afficher
       « totalement conforme » sans audit réel. Excellent exercice de prépa certif + preuve commerciale.
 - [x] Socle SEO/GEO : sitemap i18n, robots.txt, canonical, OG, JSON-LD ProfessionalService+Offers, llms.txt
-- [ ] **FAQ sur la landing** + JSON-LD FAQPage (prochaine session — meilleur ratio GEO)
+- [x] **FAQ sur la landing** + JSON-LD FAQPage (FR/EN/ES, 8 Q/R : coût, RGAA vs WCAG vs EAA, périmètre EAA, délai, livrable, remédiation code, langues, sanctions 28/06/2025)
 - [ ] 3 pages piliers : `/audit-rgaa`, `/european-accessibility-act` (+ quiz Svelte), `/auditoria-accesibilidad`
 - [ ] Image OG 1200×630 (main d'argent sur vert-nuit)
 - [ ] Google Search Console dès le domaine branché ; vérifier notifications Netlify Forms

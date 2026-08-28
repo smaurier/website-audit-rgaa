@@ -410,6 +410,27 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
 /* Chapeau sous un titre de section */
 .section-lead { color: var(--c-muted); margin: 0; }
 
+/* --- FAQ : questions frequentes, colonne unique, lecture confortable --- */
+.faq-list {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  max-width: 60ch;
+}
+.faq-item {
+  border-left: 3px solid var(--c-border);
+  padding-left: var(--space-5);
+}
+.faq-q {
+  margin: 0 0 var(--space-2);
+  font-size: 1.15em;
+  color: var(--c-primary);
+}
+.faq-a {
+  margin: 0;
+  color: var(--c-text);
+}
+
 /* --- Offre : carte de palier --- */
 .tier-name { margin-bottom: var(--space-1); }
 .tier-target { color: var(--c-muted); margin: 0; }
