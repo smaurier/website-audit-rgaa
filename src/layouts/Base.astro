@@ -22,6 +22,12 @@ const pageDescription = description ?? t.meta.description;
 const site = Astro.site ?? new URL('https://nuada.dev');
 const canonical = new URL(Astro.url.pathname, site).href;
 const ogLocale = { fr: 'fr_FR', en: 'en_US', es: 'es_ES' }[lang];
+const ogImage = new URL('/og-image.png', site).href;
+const ogImageAlt = {
+  fr: "Nuada, main d'argent sur fond vert forêt : l'auditeur qui code la solution. RGAA, WCAG, European Accessibility Act.",
+  en: "Nuada silver hand on forest green: the auditor who codes the fix. RGAA, WCAG, European Accessibility Act.",
+  es: "Nuada, mano de plata sobre verde bosque: el auditor que programa la solución. RGAA, WCAG, European Accessibility Act.",
+}[lang];
 
 // Données structurées — l'entité Nuada pour Google et les LLM (GEO)
 const jsonLd = {
@@ -85,7 +91,14 @@ const jsonLd = {
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Nuada" />
     <meta property="og:locale" content={ogLocale} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     {Object.entries(locales).map(([code, { path }]) => (
       <link rel="alternate" hreflang={code} href={new URL(path, site).href} />

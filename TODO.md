@@ -50,7 +50,7 @@ adresse, moyen de contact, identité de l'hébergeur (Netlify, Inc. — 512 2nd 
 - [x] 3 pages piliers : `/audit-rgaa` (FR, 106 critères + 13 thématiques), `/en/european-accessibility-act` (EAA scope + EN 301 549), `/es/auditoria-accesibilidad` (España + panorama LATAM) — JSON-LD Article + BreadcrumbList par page
 - [x] Cross-linking FAQ ↔ piliers (liens sortants dans Q2/Q3/Q7/Q8 par langue + sections « Aussi disponibles » entre piliers)
 - [ ] Quiz Svelte sur `/en/european-accessibility-act` (backlog item 5)
-- [ ] Image OG 1200×630 (main d'argent sur vert-nuit)
+- [x] Image OG 1200×630 (SVG source + PNG genere via `npm run og`, sharp devDep) — reference dans Base.astro (og:image, og:image:width/height/alt, twitter:card=summary_large_image)
 - [ ] Google Search Console dès le domaine branché ; vérifier notifications Netlify Forms
 - [ ] DA celtique v2 : logo main d'argent, entrelacs discrets, typographie display
 - [ ] Calculateur de coût interactif (futur composant Svelte)
