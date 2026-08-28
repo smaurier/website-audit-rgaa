@@ -85,6 +85,14 @@ const jsonLd = {
     <meta name="description" content={pageDescription} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonical} />
+    <!-- View Transitions cross-document : le pill de langue actif glisse d'une langue a l'autre lors du changement de page. -->
+    <style is:inline>
+      @view-transition { navigation: auto; }
+      ::view-transition-group(lang-active) { animation-duration: 380ms; animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
+      @media (prefers-reduced-motion: reduce) {
+        ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation-duration: 1ms !important; }
+      }
+    </style>
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
@@ -185,9 +193,10 @@ const jsonLd = {
                 href={path}
                 lang={code}
                 hreflang={code}
+                data-label={label}
                 aria-current={code === lang ? 'true' : undefined}
               >
-                {label}
+                <span>{label}</span>
               </a>
             </li>
           ))}

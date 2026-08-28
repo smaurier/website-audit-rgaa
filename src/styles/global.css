@@ -240,19 +240,33 @@ main > section:last-child { margin-bottom: var(--section-gap); }
   margin: 0;
 }
 .lang-pills a {
-  display: inline-block;
+  display: grid;
+  place-items: center;
   font-size: var(--text-sm);
   color: var(--c-muted);
   text-decoration: none;
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-pill);
+  transition: background-color 0.28s var(--ease), color 0.28s var(--ease);
+}
+/* Reserve la largeur bold via un pseudo invisible : le lien garde la meme
+   largeur qu'il soit actif ou non, donc pas de saut layout au clic. */
+.lang-pills a::before,
+.lang-pills a > span { grid-column: 1; grid-row: 1; }
+.lang-pills a::before {
+  content: attr(data-label);
+  font-weight: 700;
+  visibility: hidden;
+  pointer-events: none;
 }
 .lang-pills a:hover { background: var(--c-surface); text-decoration: underline; }
 .lang-pills a[aria-current='true'] {
   background: var(--c-text);
   color: var(--c-bg);
-  font-weight: 700;
+  /* Nom partage entre pages : le navigateur interpole ce pill actif d'une position a l'autre. */
+  view-transition-name: lang-active;
 }
+.lang-pills a[aria-current='true'] > span { font-weight: 700; }
 
 /* Bouton de thème (injecté par JS — absent sans JS, le site suit le système) */
 .theme-toggle {
@@ -503,13 +517,6 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
   margin: 0;
   justify-self: end;
   max-width: 400px;
-}
-.hero-v2-torque {
-  position: absolute;
-  top: -30px;
-  left: -30px;
-  z-index: 2;
-  color: var(--c-text);
 }
 .hero-v2-arch {
   width: 100%;
