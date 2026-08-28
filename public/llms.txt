@@ -31,13 +31,13 @@ Trilingue français / español / english.
 
 L'auditeur qui code la solution : contrairement aux cabinets qui livrent un rapport PDF et aux
 widgets/overlays automatiques (qui ne rendent pas un site conforme au RGAA), Nuada corrige le
-code source — la seule approche qui passe un audit. Le site nuada.dev est lui-même sa
+code source — la seule approche qui passe un audit. Le site nuada-audit.com est lui-même sa
 démonstration : conçu pour la conformité RGAA / WCAG 2.2 AAA, zéro cookie, statique et léger.
 
 ## Pages
 
-- Accueil (français) : https://nuada.dev/
-- Home (English) : https://nuada.dev/en/
-- Inicio (español) : https://nuada.dev/es/
-- Contact : https://nuada.dev/#contact
-- Mentions légales & confidentialité : https://nuada.dev/mentions-legales/
+- Accueil (français) : https://nuada-audit.com/
+- Home (English) : https://nuada-audit.com/en/
+- Inicio (español) : https://nuada-audit.com/es/
+- Contact : https://nuada-audit.com/#contact
+- Mentions légales & confidentialité : https://nuada-audit.com/mentions-legales/

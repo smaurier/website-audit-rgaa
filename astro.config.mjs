@@ -4,8 +4,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // Domaine principal (à enregistrer : nuada.dev + nuada-audit.fr en redirection)
-  site: 'https://nuada.dev',
+  // Domaine principal acheté le 2026-08-28 (nuada.com squatté, écarté).
+  site: 'https://nuada-audit.com',
   integrations: [
     sitemap({
       filter: (page) => !page.includes('404'),

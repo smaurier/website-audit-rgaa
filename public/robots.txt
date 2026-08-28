@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nuada.dev/sitemap-index.xml
+Sitemap: https://nuada-audit.com/sitemap-index.xml
