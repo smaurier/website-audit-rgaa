@@ -470,6 +470,37 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
 .latam-item dd { margin: 0; color: var(--c-muted); }
 .latam-ley { color: var(--c-accent); font-size: 0.95em; }
 
+/* --- Siblings : liens croises entre pages piliers --- */
+.sibling-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-6) 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: var(--space-5);
+}
+.sibling {
+  padding: var(--space-5);
+  background: var(--c-surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--c-border);
+}
+.sibling-eyebrow {
+  margin: 0 0 var(--space-2);
+  color: var(--c-accent);
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.sibling-link {
+  font-weight: 600;
+  color: var(--c-primary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.sibling-desc { margin: var(--space-3) 0 0; color: var(--c-muted); font-size: 0.95em; }
+
 /* --- FAQ : questions frequentes, colonne unique, lecture confortable --- */
 .faq-list {
   display: grid;

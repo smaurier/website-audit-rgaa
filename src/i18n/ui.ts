@@ -265,14 +265,16 @@ export const ui: Record<Lang, Dict> = {
             il s'appuie sur les WCAG 2.1 niveau AA et ajoute une méthode d'audit officielle (106 critères).
             L'<span lang="en">European Accessibility Act</span> (directive 2019/882) est une obligation légale
             européenne applicable depuis le <strong>28 juin 2025</strong> pour le e-commerce, la banque, le transport
-            et les télécommunications.`,
+            et les télécommunications.
+            <a href="/audit-rgaa/">Guide complet de l'audit RGAA</a>.`,
         },
         {
           q: "Mon site est-il concerné par l'European Accessibility Act ?",
           aHtml: `Si vous vendez en ligne à des consommateurs européens, ou si vous êtes une banque, un transporteur,
             un opérateur télécom ou un service audiovisuel : <strong>oui, depuis le 28 juin 2025</strong>. La directive
             s'applique aussi aux entreprises hors UE qui servent des consommateurs européens. Les micro-entreprises
-            (moins de 10 salariés <em>et</em> moins de 2 M€ de chiffre d'affaires) sont exemptées pour les services.`,
+            (moins de 10 salariés <em>et</em> moins de 2 M€ de chiffre d'affaires) sont exemptées pour les services.
+            <a href="/en/european-accessibility-act/" hreflang="en" lang="en">Full EAA guide (in English)</a>.`,
         },
         {
           q: 'Quel est le délai pour un audit ?',
@@ -296,14 +298,19 @@ export const ui: Record<Lang, Dict> = {
           q: 'Quelles langues et quels référentiels couvrez-vous ?',
           aHtml: `Français avec le RGAA 4.1. Anglais avec les WCAG 2.2, l'<abbr lang="en" title="Americans with Disabilities Act">ADA</abbr>
             américaine et la Section 508. Espagnol avec la norme UNE-EN 301 549, y compris pour le marché latino-américain.
-            Un audit, trois cadres réglementaires selon votre marché cible.`,
+            Un audit, trois cadres réglementaires selon votre marché cible.
+            Guides détaillés :
+            <a href="/audit-rgaa/">RGAA</a>,
+            <a href="/en/european-accessibility-act/" hreflang="en" lang="en">EAA</a>,
+            <a href="/es/auditoria-accesibilidad/" hreflang="es" lang="es">España + LATAM</a>.`,
         },
         {
           q: "Que se passe-t-il si mon site n'est pas conforme au 28 juin 2025 ?",
           aHtml: `Les sanctions administratives sont fixées par chaque État membre. En France, la <abbr title="Direction générale de la concurrence, de la consommation et de la répression des fraudes">DGCCRF</abbr>
             peut prononcer des amendes pouvant atteindre 50 000 € par service non conforme, avec possibilité de retrait du service.
             Les contentieux privés (associations d'usagers) sont également recevables. L'exposition légale est réelle :
-            la mise en conformité doit être engagée sans attendre.`,
+            la mise en conformité doit être engagée sans attendre.
+            <a href="/audit-rgaa/">Détails du régime français dans le guide RGAA</a>.`,
         },
       ],
     },
@@ -501,14 +508,16 @@ export const ui: Record<Lang, Dict> = {
             WCAG 2.1 AA with an official audit method. The <strong>European Accessibility Act</strong>
             (Directive 2019/882) is binding EU law since <strong>28 June 2025</strong> for e-commerce, banking,
             transport and telecom. The <abbr title="Americans with Disabilities Act">ADA</abbr> is US civil-rights
-            law under which private lawsuits over inaccessible websites keep rising, with courts applying WCAG.`,
+            law under which private lawsuits over inaccessible websites keep rising, with courts applying WCAG.
+            <a href="/en/european-accessibility-act/">Full EAA guide</a>.`,
         },
         {
           q: 'Does the European Accessibility Act apply to my company?',
           aHtml: `If you sell online to EU consumers, or operate a bank, transport company, telecom or audiovisual
             service: <strong>yes, since 28 June 2025</strong>. The directive also applies to non-EU companies
             serving EU consumers. Micro-enterprises (fewer than 10 employees <em>and</em> less than €2M revenue)
-            are exempted for services.`,
+            are exempted for services.
+            <a href="/en/european-accessibility-act/">Detailed scope, exemptions and enforcement</a>.`,
         },
         {
           q: 'How long does an audit take?',
@@ -532,7 +541,11 @@ export const ui: Record<Lang, Dict> = {
           q: 'Which markets and frameworks do you cover?',
           aHtml: `French with RGAA 4.1. English with WCAG 2.2, the US <abbr title="Americans with Disabilities Act">ADA</abbr>
             and Section 508. Spanish with UNE-EN 301 549, including the Latin American market. One audit,
-            three regulatory frames depending on your target market.`,
+            three regulatory frames depending on your target market.
+            In-depth guides:
+            <a href="/en/european-accessibility-act/">EAA</a>,
+            <a href="/audit-rgaa/" hreflang="fr" lang="fr">RGAA (French)</a>,
+            <a href="/es/auditoria-accesibilidad/" hreflang="es" lang="es">Spain + LATAM (Spanish)</a>.`,
         },
         {
           q: 'What happens if my site is not compliant on 28 June 2025?',
@@ -540,7 +553,8 @@ export const ui: Record<Lang, Dict> = {
             <abbr title="Direction générale de la concurrence, de la consommation et de la répression des fraudes" lang="fr">DGCCRF</abbr>
             can impose fines up to €50,000 per non-compliant service, with possible service withdrawal.
             Private lawsuits (user associations) are admissible. Legal exposure is real: remediation should
-            start without delay.`,
+            start without delay.
+            <a href="/en/european-accessibility-act/">Member States, EN 301 549 and exemptions in the EAA guide</a>.`,
         },
       ],
     },
@@ -738,14 +752,16 @@ export const ui: Record<Lang, Dict> = {
             en España y en la mayoría de los países latinoamericanos, basada en WCAG. La
             <strong><span lang="en">European Accessibility Act</span></strong> (Directiva UE 2019/882) es una
             obligación legal aplicable desde el <strong>28 de junio de 2025</strong> para el e-commerce, la banca,
-            el transporte y las telecomunicaciones.`,
+            el transporte y las telecomunicaciones.
+            <a href="/es/auditoria-accesibilidad/">Guía completa España y LATAM</a>.`,
         },
         {
           q: '¿Mi sitio está afectado por la European Accessibility Act?',
           aHtml: `Si vende en línea a consumidores de la UE, o es banco, transportista, operador de telecomunicaciones
             o servicio audiovisual: <strong>sí, desde el 28 de junio de 2025</strong>. La directiva también se aplica
             a empresas no comunitarias que sirven a consumidores UE. Las microempresas (menos de 10 empleados
-            <em>y</em> menos de 2 M€ de facturación) están exentas para los servicios.`,
+            <em>y</em> menos de 2 M€ de facturación) están exentas para los servicios.
+            <a href="/en/european-accessibility-act/" hreflang="en" lang="en">Detailed EAA scope (in English)</a>.`,
         },
         {
           q: '¿Cuál es el plazo de una auditoría?',
@@ -770,14 +786,19 @@ export const ui: Record<Lang, Dict> = {
           q: '¿Qué mercados y marcos regulatorios cubre?',
           aHtml: `Francés con RGAA 4.1. Inglés con WCAG 2.2, la <abbr title="Americans with Disabilities Act" lang="en">ADA</abbr>
             estadounidense y la Section 508. Español con UNE-EN 301 549, incluido el mercado latinoamericano.
-            Una auditoría, tres marcos regulatorios según su mercado objetivo.`,
+            Una auditoría, tres marcos regulatorios según su mercado objetivo.
+            Guías detalladas:
+            <a href="/es/auditoria-accesibilidad/">España y LATAM</a>,
+            <a href="/en/european-accessibility-act/" hreflang="en" lang="en">EAA (inglés)</a>,
+            <a href="/audit-rgaa/" hreflang="fr" lang="fr">RGAA (francés)</a>.`,
         },
         {
           q: '¿Qué ocurre si mi sitio no cumple el 28 de junio de 2025?',
           aHtml: `Las sanciones administrativas las fija cada Estado miembro. En España, la autoridad de consumo
             competente puede imponer multas según la legislación de transposición, con posibilidad de retirada
             del servicio. Los recursos privados (asociaciones de usuarios) también son admisibles. La exposición
-            legal es real: la puesta en conformidad debe iniciarse sin demora.`,
+            legal es real: la puesta en conformidad debe iniciarse sin demora.
+            <a href="/es/auditoria-accesibilidad/">Detalles del régimen español y del panorama LATAM</a>.`,
         },
       ],
     },
