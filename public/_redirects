@@ -1,0 +1,5 @@
+# Filet de securite : force la redirection 301 de l'URL Netlify d'origine
+# vers le domaine principal nuada-audit.com. Netlify le fait normalement
+# en auto quand un domaine est marque "Primary", ce fichier garantit le
+# 301 si le comportement auto lag ou est desactive.
+https://nuada-audit.netlify.app/*  https://nuada-audit.com/:splat  301!
