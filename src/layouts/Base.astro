@@ -172,13 +172,43 @@ const jsonLd = {
     </svg>
 
     <header class="container site-header" role="banner">
+      <span class="site-header-bg" aria-hidden="true"></span>
       <a href={locales[lang].path} class="brand">
         <svg class="brand-mark" aria-hidden="true" focusable="false" viewBox="0 0 28 28" width="28" height="28">
           <use href="#logo3c" />
         </svg>
         Nuada
       </a>
-      <nav role="navigation" aria-label={l.nav}>
+
+      <!-- Bouton hamburger : visible < 900px, ouvre le panneau de navigation. -->
+      <button
+        type="button"
+        class="menu-toggle"
+        aria-expanded="false"
+        aria-controls="menu-panel"
+        aria-label={l.menuOpen}
+        data-menu-toggle
+      >
+        <svg class="menu-icon" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+          <path class="menu-icon-bar menu-icon-bar-top" d="M4 7h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path class="menu-icon-bar menu-icon-bar-mid" d="M4 12h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path class="menu-icon-bar menu-icon-bar-bot" d="M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Panneau menu : inline > 900px, drawer plein ecran < 900px. -->
+      <div id="menu-panel" class="menu-panel" data-open="false">
+      <button
+        type="button"
+        class="menu-close"
+        aria-label={l.menuClose}
+        data-menu-close
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
+          <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <nav class="menu-nav" role="navigation" aria-label={l.nav}>
         <ul class="nav-list">
           <li><a class="nav-link" href="#offre">{l.offer}</a></li>
           <li><a class="nav-link" href="#methode">{l.method}</a></li>
@@ -186,7 +216,7 @@ const jsonLd = {
           <li><a class="nav-link" href="#contact">{l.contact}</a></li>
         </ul>
       </nav>
-      <nav role="navigation" aria-label={l.langLabel}>
+      <nav class="menu-lang" role="navigation" aria-label={l.langLabel}>
         <ul class="lang-pills">
           {Object.entries(locales).map(([code, { label, path }]) => (
             <li>
@@ -203,7 +233,7 @@ const jsonLd = {
           ))}
         </ul>
       </nav>
-      <!-- Le bouton de thème est injecté ici par JS (pas de contrôle mort sans JS) -->
+      <!-- Le bouton de theme est injecte ici par JS (pas de controle mort sans JS) -->
       <span
         data-theme-mount
         data-label={l.theme.label}
@@ -211,6 +241,7 @@ const jsonLd = {
         data-light={l.theme.light}
         data-dark={l.theme.dark}
       ></span>
+      </div>
       <span id="theme-status" role="status" class="visually-hidden"></span>
     </header>
 
@@ -254,6 +285,75 @@ const jsonLd = {
         });
 
         render();
+      }
+
+      // Hamburger mobile : ouvre / ferme le panneau, focus trap, ESC, click backdrop,
+      // fermeture auto sur ancre. Silencieux au-dessus du breakpoint desktop.
+      const menuToggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+      const menuPanel = document.getElementById('menu-panel');
+      const menuClose = document.querySelector<HTMLButtonElement>('[data-menu-close]');
+      if (menuToggle && menuPanel) {
+        const mqDesktop = matchMedia('(min-width: 900px)');
+        let lastFocus: HTMLElement | null = null;
+
+        const focusable = () => Array.from(
+          menuPanel.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter((el) => !el.hasAttribute('hidden') && el.offsetParent !== null);
+
+        const setOpen = (open: boolean) => {
+          menuPanel.dataset.open = open ? 'true' : 'false';
+          menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          document.documentElement.classList.toggle('menu-locked', open);
+          if (open) {
+            lastFocus = document.activeElement as HTMLElement;
+            const first = focusable()[0];
+            first?.focus();
+          } else if (lastFocus) {
+            lastFocus.focus();
+            lastFocus = null;
+          }
+        };
+
+        menuToggle.addEventListener('click', () => setOpen(menuPanel.dataset.open !== 'true'));
+        menuClose?.addEventListener('click', () => setOpen(false));
+
+        // ESC ferme
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && menuPanel.dataset.open === 'true') {
+            e.preventDefault();
+            setOpen(false);
+          }
+        });
+
+        // Tab / Shift+Tab : trap focus dans le panneau quand ouvert (mobile only)
+        menuPanel.addEventListener('keydown', (e) => {
+          if (menuPanel.dataset.open !== 'true' || e.key !== 'Tab') return;
+          const items = focusable();
+          if (!items.length) return;
+          const first = items[0];
+          const last = items[items.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        });
+
+        // Clic sur ancre interne : ferme le menu
+        menuPanel.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((a) => {
+          a.addEventListener('click', () => {
+            if (menuPanel.dataset.open === 'true') setOpen(false);
+          });
+        });
+
+        // Repasse en desktop : force la fermeture propre
+        mqDesktop.addEventListener('change', (e) => {
+          if (e.matches && menuPanel.dataset.open === 'true') setOpen(false);
+        });
       }
 
       // Reveals au scroll — uniquement si le mouvement est accepte

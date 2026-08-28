@@ -30,6 +30,8 @@ export interface Dict {
     faq: string;
     contact: string;
     langLabel: string;
+    menuOpen: string;
+    menuClose: string;
     footerRights: string;
     footerProof: string;
     legalLink: string;
@@ -154,6 +156,8 @@ export const ui: Record<Lang, Dict> = {
       faq: 'Questions',
       contact: 'Contact',
       langLabel: 'Choisir la langue',
+      menuOpen: 'Ouvrir le menu',
+      menuClose: 'Fermer le menu',
       footerRights: 'Nuada — Accessibilité numérique FR · EN · ES.',
       footerProof:
         'Ce site vise la conformité <strong><a href="https://www.w3.org/TR/WCAG22/" hreflang="en">WCAG 2.2 (en anglais)</a> niveau AAA</strong>. Il est sa propre démonstration.',
@@ -478,6 +482,8 @@ export const ui: Record<Lang, Dict> = {
       faq: 'FAQ',
       contact: 'Contact',
       langLabel: 'Choose language',
+      menuOpen: 'Open menu',
+      menuClose: 'Close menu',
       footerRights: 'Nuada — Digital accessibility FR · EN · ES.',
       footerProof:
         'This site targets <strong><a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2</a> level AAA</strong> conformance. It is its own demo.',
@@ -801,6 +807,8 @@ export const ui: Record<Lang, Dict> = {
       faq: 'Preguntas',
       contact: 'Contacto',
       langLabel: 'Elegir idioma',
+      menuOpen: 'Abrir el menú',
+      menuClose: 'Cerrar el menú',
       footerRights: 'Nuada — Accesibilidad digital FR · EN · ES.',
       footerProof:
         'Este sitio apunta a la conformidad <strong><a href="https://www.w3.org/TR/WCAG22/" hreflang="en">WCAG 2.2 (en inglés)</a> nivel AAA</strong>. Es su propia demostración.',
