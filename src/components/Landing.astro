@@ -24,115 +24,160 @@ const faqJsonLd = {
 ---
 
 <Base lang={lang}>
-  <!-- HERO — composition centrée -->
-  <section class="container hero">
-    <div class="hero-content">
-      <p class="eyebrow">{t.hero.eyebrow}</p>
-      <h1 set:html={t.hero.h1Html} />
-      <div class="silver-line" aria-hidden="true"></div>
-      <p class="hero-lead" set:html={t.hero.leadHtml} />
-      <!-- Suite de liens => liste (RGAA 9.3) -->
-      <ul class="hero-cta" role="list">
-        <li><a class="btn btn--primary" href="#contact">{t.hero.ctaPrimary}</a></li>
-        <li><a class="btn btn--ghost" href="#methode">{t.hero.ctaSecondary}</a></li>
-      </ul>
-      <ul class="hero-pills" role="list">
-        {t.hero.pills.map((p) => (
-          <li class="pill" lang={p.lang}>{p.text}</li>
-        ))}
-      </ul>
-      <p class="hero-story-link">
-        <a href="#nuada">{t.hero.storyLink}<span aria-hidden="true"> ↓</span></a>
+  <!-- HERO v2 — split 60/40, gros H1 clamp, illustration Nuada en arche, torque overlay -->
+  <section class="hero-v2" aria-labelledby="hero-title">
+    <div class="hero-v2-content rise">
+      <p class="hero-v2-eyebrow">{t.hero.eyebrow}</p>
+      <h1 id="hero-title" class="hero-v2-h1" set:html={t.hero.h1Html} />
+      <div class="hero-v2-lead-cta">
+        <p class="hero-v2-lead" set:html={t.hero.leadHtml} />
+        <ul class="hero-v2-actions" role="list">
+          <li><a class="btn btn--primary" href="#contact">{t.hero.ctaPrimary}</a></li>
+          <li><a class="hero-v2-secondary" href="#methode">{t.hero.ctaSecondary} <span aria-hidden="true">↓</span></a></li>
+        </ul>
+      </div>
+      <p class="hero-v2-note">
+        <span set:html={t.hero.proofNoteHtml} /> · <a href="#nuada" class="hero-v2-story-link">{t.hero.storyLink}</a>
       </p>
     </div>
+    <figure class="hero-v2-figure">
+      <svg class="hero-v2-torque" viewBox="0 0 120 120" width="72" height="72" aria-hidden="true">
+        <use href="#torque" />
+      </svg>
+      <div class="hero-v2-arch">
+        <img src="/illustrations/nuada-bust.svg" alt={t.hero.illustrationAlt} width="400" height="540" loading="eager" decoding="async" />
+      </div>
+      <figcaption class="hero-v2-caption">{t.hero.illustrationCaption}</figcaption>
+    </figure>
   </section>
 
-  <!-- CADRE LEGAL -->
+  <!-- Ticker STATIQUE : marchés + référentiels + AAA. Statique conforme RGAA 13.8 (pas de défilement continu). -->
+  <div class="ticker" role="list" aria-label={t.hero.eyebrow}>
+    {t.ticker.map((it, i) => (
+      <>
+        {i > 0 && <span class="ticker-sep" aria-hidden="true">✦</span>}
+        <span class="ticker-item" role="listitem" lang={it.lang}>{it.text}</span>
+      </>
+    ))}
+  </div>
+
+  <!-- CADRE LEGAL — carte sombre + braise cuivre radial-gradient -->
   <section class="container" aria-labelledby="legal-title">
-    <div class="card card--accent reveal">
-      <h2 id="legal-title" set:html={t.legal.titleHtml} />
-      <p set:html={t.legal.bodyHtml} />
+    <div class="legal-card reveal">
+      <div class="legal-ember" aria-hidden="true"></div>
+      <p class="section-eyebrow"><span aria-hidden="true">01 · </span>{t.sections.legal}</p>
+      <h2 id="legal-title" class="section-h2" set:html={t.legal.titleHtml} />
+      <p class="legal-body" set:html={t.legal.bodyHtml} />
     </div>
   </section>
 
-  <!-- OFFRE -->
-  <section class="container" id="offre" aria-labelledby="offre-title">
-    <h2 id="offre-title">{t.offer.title}</h2>
+  <!-- OFFRE — table éditoriale, ligne phare au centre avec torque en coin -->
+  <section class="container section-block" id="offre" aria-labelledby="offre-title">
+    <p class="section-eyebrow"><span aria-hidden="true">02 · </span>{t.sections.offer}</p>
+    <h2 id="offre-title" class="section-h2">{t.offer.title}</h2>
+    <div class="silver-rule" aria-hidden="true"></div>
     <p class="section-lead" set:html={t.offer.subtitle} />
-    <ul class="grid" role="list">
-      {t.offer.paliers.map((p) => (
-        <li class:list={['card', 'reveal', { 'card--featured': p.phare }]}>
-          {p.phare && <p class="badge">{t.offer.badge}</p>}
-          <h3 class="tier-name">{p.nom}</h3>
-          <p class="tier-target">{p.cible}</p>
-          <p class="tier-price">{p.prix}</p>
-          <p class="tier-scope">{p.scope}</p>
-          <ul class="tier-list">
-            {p.contenu.map((c) => <li set:html={c} />)}
-          </ul>
-          <p class="tier-deliverable"><span aria-hidden="true">→ </span>{p.livrable}</p>
+    <ol class="offer-table" role="list">
+      {t.offer.paliers.map((p, idx) => (
+        <li class:list={['offer-row', 'reveal', { 'offer-row--featured': p.phare }]}>
+          {p.phare && (
+            <svg class="offer-torque" viewBox="0 0 120 120" width="54" height="54" aria-hidden="true">
+              <use href="#torque" />
+            </svg>
+          )}
+          <span class="offer-num" aria-hidden="true">{String(idx + 1).padStart(2, '0')}</span>
+          <div class="offer-name">
+            {p.phare && <p class="offer-badge">{t.offer.badge}</p>}
+            <h3>{p.nom}</h3>
+            <p class="offer-target">{p.cible} · {p.scope}</p>
+          </div>
+          <div class="offer-desc">
+            <ul class="offer-contenu">
+              {p.contenu.map((c) => <li set:html={c} />)}
+            </ul>
+            <p class="offer-deliverable"><span aria-hidden="true">→ </span>{p.livrable}</p>
+          </div>
+          <p class="offer-price">{p.prix}</p>
         </li>
       ))}
-    </ul>
+    </ol>
   </section>
 
-  <!-- METHODE -->
-  <section class="container" id="methode" aria-labelledby="methode-title">
-    <h2 id="methode-title">{t.method.title}</h2>
-    <ol class="grid" role="list">
-      {t.method.steps.map((s) => (
-        <li class="card step reveal">
-          <h3>{s.t}</h3>
+  <!-- METHODE — 4 col outline, chiffres géants transparents avec text-stroke -->
+  <section class="container section-block" id="methode" aria-labelledby="methode-title">
+    <p class="section-eyebrow"><span aria-hidden="true">03 · </span>{t.sections.method}</p>
+    <h2 id="methode-title" class="section-h2">{t.method.title}</h2>
+    <div class="silver-rule" aria-hidden="true"></div>
+    <ol class="method-outline" role="list">
+      {t.method.steps.map((s, idx) => (
+        <li class="method-step reveal">
+          <span class="method-num" aria-hidden="true">{idx + 1}</span>
+          <h3>{s.t.replace(/^\d+\.\s*/, '')}</h3>
           <p set:html={s.dHtml} />
         </li>
       ))}
     </ol>
   </section>
 
-  <!-- PREUVE — le positionnement montré : une PR de remédiation -->
-  <section class="container" aria-labelledby="preuve-title">
-    <h2 id="preuve-title">{t.proof.title}</h2>
-    <div class="proof-grid">
+  <!-- PREUVE — carte PR rotée -2° avec filet argent + tampon "Révisé" cuivre -->
+  <section class="container section-block" aria-labelledby="preuve-title">
+    <p class="section-eyebrow"><span aria-hidden="true">04 · </span>{t.sections.proof}</p>
+    <h2 id="preuve-title" class="section-h2">{t.proof.title}</h2>
+    <div class="silver-rule" aria-hidden="true"></div>
+    <div class="proof-grid-v2">
       <div class="reveal">
-        <p set:html={t.proof.p1Html} />
-        <p set:html={t.proof.p2Html} />
+        <p class="proof-p1" set:html={t.proof.p1Html} />
+        <p class="proof-p2" set:html={t.proof.p2Html} />
       </div>
-      <figure class="pr-window reveal" aria-label={t.proof.pr.figLabel}>
-        <div class="pr-bar" aria-hidden="true"></div>
-        <div class="pr-body">
-          <div class="pr-head">
-            <span class="pr-dots" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </span>
-            <span>{t.proof.pr.title}</span>
-            <span class="pr-badge">{t.proof.pr.badge}</span>
+      <figure class="pr-artifact reveal" aria-label={t.proof.pr.figLabel}>
+        <div class="pr-artifact-inner">
+          <div class="pr-artifact-strip" aria-hidden="true"></div>
+          <div class="pr-artifact-tabs">
+            <span class="pr-tab pr-tab--active">ContactForm.tsx</span>
+            <span class="pr-tab">index.astro</span>
+            <span class="pr-artifact-badge">{t.proof.pr.badge}</span>
           </div>
-          <pre class="pr-code">{t.proof.pr.lines.map((line) => (
+          <pre class="pr-artifact-code">{t.proof.pr.lines.map((line) => (
             <span class={line.k === 'ctx' ? undefined : line.k}>{line.t}</span>
           ))}</pre>
-          <figcaption class="pr-foot">
-            {t.proof.pr.checks.map((c) => <span>{c}</span>)}
-            <span class="pr-ready">{t.proof.pr.ready}</span>
+          <figcaption class="pr-artifact-foot">
+            <span class="pr-artifact-checks">
+              {t.proof.pr.checks.map((c) => <span>{c}</span>)}
+            </span>
+            <span class="pr-artifact-stamp">{t.proof.pr.ready}</span>
           </figcaption>
         </div>
       </figure>
     </div>
   </section>
 
-  <!-- POURQUOI NUADA -->
-  <section class="container" id="nuada" aria-labelledby="nuada-title">
-    <div class="card card--accent reveal">
-      <h2 id="nuada-title">{t.story.title}</h2>
-      <p set:html={t.story.p1Html} />
-      <p set:html={t.story.p2Html} />
+  <!-- POURQUOI NUADA — illustration portrait rond + torque filigrane géant -->
+  <section class="container section-block" id="nuada" aria-labelledby="nuada-title">
+    <div class="story-card reveal">
+      <svg class="story-torque" viewBox="0 0 120 120" width="460" height="460" aria-hidden="true">
+        <use href="#torque" />
+      </svg>
+      <div class="story-grid">
+        <div class="story-portrait">
+          <img src="/illustrations/nuada-portrait.svg" alt={t.hero.illustrationAlt} width="280" height="280" loading="lazy" decoding="async" />
+        </div>
+        <div class="story-text">
+          <p class="section-eyebrow"><span aria-hidden="true">05 · </span>{t.sections.story}</p>
+          <h2 id="nuada-title" class="section-h2">{t.story.title}</h2>
+          <p set:html={t.story.p1Html} />
+          <p set:html={t.story.p2Html} />
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- FAQ — questions frequentes + JSON-LD FAQPage (GEO) -->
-  <section class="container" id="faq" aria-labelledby="faq-title">
-    <h2 id="faq-title">{t.faq.title}</h2>
+  <!-- FAQ — 2 colonnes, bord gauche cuivre + JSON-LD FAQPage (GEO) -->
+  <section class="container section-block" id="faq" aria-labelledby="faq-title">
+    <p class="section-eyebrow"><span aria-hidden="true">06 · </span>{t.sections.faq}</p>
+    <h2 id="faq-title" class="section-h2">{t.faq.title}</h2>
+    <div class="silver-rule" aria-hidden="true"></div>
     <p class="section-lead">{t.faq.intro}</p>
-    <div class="faq-list">
+    <div class="faq-grid">
       {t.faq.items.map((item) => (
         <article class="faq-item reveal">
           <h3 class="faq-q">{item.q}</h3>
@@ -144,9 +189,11 @@ const faqJsonLd = {
   </section>
 
   <!-- CONTACT -->
-  <section class="container" id="contact" aria-labelledby="contact-title">
-    <div class="card reveal">
-      <h2 id="contact-title">{t.contact.title}</h2>
+  <section class="container section-block" id="contact" aria-labelledby="contact-title">
+    <p class="section-eyebrow"><span aria-hidden="true">07 · </span>{t.sections.contact}</p>
+    <h2 id="contact-title" class="section-h2 section-h2--jumbo">{t.contact.title}</h2>
+    <div class="silver-rule" aria-hidden="true"></div>
+    <div class="reveal">
       <p>{t.contact.body}</p>
 
       <form

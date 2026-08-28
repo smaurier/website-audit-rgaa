@@ -1,87 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Nuada — Open Graph 1200x630. Source de la generation de /public/og-image.png -->
+<!-- Nuada — Open Graph 1200x630. Source de la generation de /public/og-image.png. -->
+<!-- v2 : logo 3c (torque parapluie + main levee) en heros, wordmark Fraunces + tagline. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="ogtitle ogdesc">
   <title id="ogtitle">Nuada — Audit et remediation accessibilite</title>
   <desc id="ogdesc">L'auditeur qui code la solution. RGAA, WCAG 2.2, European Accessibility Act.</desc>
 
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#0b5138"/>
-      <stop offset="1" stop-color="#062e20"/>
+      <stop offset="0" stop-color="#0c1310"/>
+      <stop offset="1" stop-color="#0b2b1f"/>
     </linearGradient>
-    <linearGradient id="silver" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="360" y2="360">
-      <stop offset="0" stop-color="#e6eaef"/>
+    <radialGradient id="ember" cx="220" cy="480" r="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7a3b10" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#7a3b10" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2e6eb"/>
       <stop offset="0.5" stop-color="#8d97a1"/>
       <stop offset="1" stop-color="#c4cad1"/>
     </linearGradient>
-    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#d9dde2" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#d9dde2"/>
-      <stop offset="1" stop-color="#d9dde2" stop-opacity="0"/>
-    </linearGradient>
   </defs>
 
-  <!-- Fond -->
+  <!-- Fond vert-nuit + braise cuivre en bas-gauche -->
   <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#ember)"/>
 
   <!-- Bord cuivre discret en haut -->
   <rect x="0" y="0" width="1200" height="6" fill="#7a3b10"/>
 
-  <!-- Main d'argent (memes chemins que la brand de Base.astro, agrandis x11) -->
-  <g transform="translate(140 155)">
-    <path d="M55 192.5 a99 71.5 0 0 0 198 0 z" fill="url(#silver)"/>
-    <g fill="url(#silver)">
-      <rect x="54" y="123" width="28.6" height="80.3" rx="14.3"/>
-      <rect x="96" y="79" width="28.6" height="124.3" rx="14.3"/>
-      <rect x="140" y="61.6" width="28.6" height="141.9" rx="14.3"/>
-      <rect x="184" y="77" width="28.6" height="126.5" rx="14.3"/>
-      <rect x="226" y="114.4" width="28.6" height="89.1" rx="14.3"/>
+  <!-- Logo 3c version large : torque parapluie + main levee. Position gauche. -->
+  <g transform="translate(180 165) scale(11)">
+    <!-- Torque : cercle ouvert vers le bas -->
+    <circle cx="14" cy="14" r="11.5" fill="none" stroke="url(#silver)" stroke-width="2.2" stroke-dasharray="58.2 14" stroke-linecap="round" transform="rotate(125 14 14)"/>
+    <!-- Main levee dans le torque -->
+    <g transform="translate(6.4 5.6) scale(0.55)" fill="url(#silver)">
+      <path d="M5 17 a9 6.5 0 0 0 18 0 z"/>
+      <rect x="5" y="11.2" width="3" height="7" rx="1.5"/>
+      <rect x="8.75" y="7.6" width="3" height="10.6" rx="1.5"/>
+      <rect x="12.5" y="6.2" width="3" height="12" rx="1.5"/>
+      <rect x="16.25" y="7.6" width="3" height="10.6" rx="1.5"/>
+      <rect x="20" y="11.2" width="3" height="7" rx="1.5"/>
     </g>
   </g>
 
-  <!-- Filet argent horizontal -->
-  <rect x="570" y="200" width="480" height="3" fill="url(#rule)"/>
+  <!-- Filet argent horizontal court sous le wordmark -->
+  <rect x="600" y="205" width="72" height="3" fill="url(#silver)" rx="2"/>
 
   <!-- Wordmark Nuada -->
-  <text x="570" y="180"
+  <text x="600" y="185"
     font-family="Georgia, 'Times New Roman', serif"
     font-weight="700"
     font-size="118"
-    fill="#ffffff"
+    fill="#eef4f0"
     letter-spacing="-2">Nuada</text>
 
-  <!-- Tagline principale -->
-  <text x="570" y="270"
+  <!-- Tagline italique -->
+  <text x="600" y="272"
     font-family="Georgia, 'Times New Roman', serif"
     font-style="italic"
-    font-size="40"
-    fill="#ffffff">L'auditeur qui code la solution.</text>
+    font-size="38"
+    fill="#82d4ab">L'auditeur qui code la solution.</text>
 
   <!-- Sous-tagline factuelle -->
-  <text x="570" y="335"
+  <text x="600" y="332"
     font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
-    font-size="28"
+    font-size="26"
     fill="#b7c5bd">Audit et remediation accessibilite</text>
-  <text x="570" y="375"
+  <text x="600" y="370"
     font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
-    font-size="28"
+    font-size="26"
     fill="#b7c5bd">RGAA 4.1 · WCAG 2.2 · European Accessibility Act</text>
 
   <!-- Trois pastilles marche -->
-  <g font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="600">
-    <rect x="570" y="440" width="130" height="46" rx="23" fill="#0b5138" stroke="#82d4ab" stroke-width="2"/>
-    <text x="635" y="470" fill="#82d4ab" text-anchor="middle">France</text>
+  <g font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="600">
+    <rect x="600" y="435" width="120" height="42" rx="21" fill="none" stroke="#82d4ab" stroke-width="1.5"/>
+    <text x="660" y="463" fill="#82d4ab" text-anchor="middle">France</text>
 
-    <rect x="720" y="440" width="180" height="46" rx="23" fill="#0b5138" stroke="#82d4ab" stroke-width="2"/>
-    <text x="810" y="470" fill="#82d4ab" text-anchor="middle">United States</text>
+    <rect x="736" y="435" width="150" height="42" rx="21" fill="none" stroke="#82d4ab" stroke-width="1.5"/>
+    <text x="811" y="463" fill="#82d4ab" text-anchor="middle">English</text>
 
-    <rect x="920" y="440" width="230" height="46" rx="23" fill="#0b5138" stroke="#82d4ab" stroke-width="2"/>
-    <text x="1035" y="470" fill="#82d4ab" text-anchor="middle">America Latina</text>
+    <rect x="902" y="435" width="150" height="42" rx="21" fill="none" stroke="#82d4ab" stroke-width="1.5"/>
+    <text x="977" y="463" fill="#82d4ab" text-anchor="middle">Espanol</text>
   </g>
 
-  <!-- URL en bas -->
-  <text x="570" y="560"
-    font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
-    font-size="24"
-    fill="#e0b48f">nuada-audit.netlify.app</text>
+  <!-- URL + preuve AAA en bas -->
+  <text x="600" y="555"
+    font-family="'Consolas', 'Menlo', monospace"
+    font-size="20"
+    fill="#e0b48f">nuada-audit.netlify.app · WCAG 2.2 AAA</text>
 </svg>

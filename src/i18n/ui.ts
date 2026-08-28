@@ -43,6 +43,19 @@ export interface Dict {
     ctaSecondary: string;
     pills: { text: string; lang?: string }[];
     storyLink: string;
+    proofNoteHtml: string;
+    illustrationAlt: string;
+    illustrationCaption: string;
+  };
+  ticker: { text: string; lang?: string }[];
+  sections: {
+    legal: string;
+    offer: string;
+    method: string;
+    proof: string;
+    story: string;
+    faq: string;
+    contact: string;
   };
   legal: { titleHtml: string; bodyHtml: string };
   offer: {
@@ -160,6 +173,24 @@ export const ui: Record<Lang, Dict> = {
         { text: 'English — WCAG · ADA', lang: 'en' },
       ],
       storyLink: "Pourquoi « Nuada » ? L'histoire du roi à la main d'argent",
+      proofNoteHtml: 'WCAG 2.2 AAA · clair <em>et</em> sombre. Ce site est sa propre démonstration.',
+      illustrationAlt: "Nuada, roi des Tuatha Dé Danann, tenant sa main d'argent forgée par le médecin des dieux",
+      illustrationCaption: "Nuada, roi des Tuatha Dé Danann : la main d'argent forgée par le médecin des dieux.",
+    },
+    ticker: [
+      { text: 'France : RGAA 4.1 · EAA' },
+      { text: 'English : WCAG 2.2 · ADA · Section 508', lang: 'en' },
+      { text: 'Español : UNE-EN 301 549 · LATAM', lang: 'es' },
+      { text: 'Conformité AAA · clair et sombre' },
+    ],
+    sections: {
+      legal: 'Le cadre légal',
+      offer: "L'offre",
+      method: 'La méthode',
+      proof: 'La preuve',
+      story: "L'histoire",
+      faq: 'Les questions',
+      contact: 'Contact',
     },
     legal: {
       titleHtml: `<span lang="en">European Accessibility Act</span> : applicable depuis juin 2025`,
@@ -466,6 +497,24 @@ export const ui: Record<Lang, Dict> = {
         { text: 'Español — WCAG · UNE-EN 301 549', lang: 'es' },
       ],
       storyLink: 'Why "Nuada"? The story of the silver-handed king',
+      proofNoteHtml: 'WCAG 2.2 AAA · light <em>and</em> dark. This site is its own demo.',
+      illustrationAlt: 'Nuada, king of the Tuatha Dé Danann, holding the silver hand forged by the physician of the gods',
+      illustrationCaption: 'Nuada, king of the Tuatha Dé Danann: the silver hand forged by the physician of the gods.',
+    },
+    ticker: [
+      { text: 'English : WCAG 2.2 · ADA · Section 508' },
+      { text: 'France : RGAA 4.1 · EAA', lang: 'fr' },
+      { text: 'Español : UNE-EN 301 549 · LATAM', lang: 'es' },
+      { text: 'AAA conformance · light and dark' },
+    ],
+    sections: {
+      legal: 'The legal frame',
+      offer: 'The offer',
+      method: 'The method',
+      proof: 'The proof',
+      story: 'The story',
+      faq: 'The questions',
+      contact: 'Contact',
     },
     legal: {
       titleHtml: `EAA, ADA, Section 508: accessibility is now a legal requirement`,
@@ -771,6 +820,24 @@ export const ui: Record<Lang, Dict> = {
         { text: 'English — WCAG · ADA', lang: 'en' },
       ],
       storyLink: '¿Por qué «Nuada»? La historia del rey de la mano de plata',
+      proofNoteHtml: 'WCAG 2.2 AAA · claro <em>y</em> oscuro. Este sitio es su propia demostración.',
+      illustrationAlt: 'Nuada, rey de los Tuatha Dé Danann, sosteniendo su mano de plata forjada por el médico de los dioses',
+      illustrationCaption: 'Nuada, rey de los Tuatha Dé Danann: la mano de plata forjada por el médico de los dioses.',
+    },
+    ticker: [
+      { text: 'Español : UNE-EN 301 549 · LATAM' },
+      { text: 'France : RGAA 4.1 · EAA', lang: 'fr' },
+      { text: 'English : WCAG 2.2 · ADA · Section 508', lang: 'en' },
+      { text: 'Conformidad AAA · claro y oscuro' },
+    ],
+    sections: {
+      legal: 'El marco legal',
+      offer: 'La oferta',
+      method: 'El método',
+      proof: 'La prueba',
+      story: 'La historia',
+      faq: 'Las preguntas',
+      contact: 'Contacto',
     },
     legal: {
       titleHtml: `<span lang="en">European Accessibility Act</span>: aplicable desde junio de 2025`,
