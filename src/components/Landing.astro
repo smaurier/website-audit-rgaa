@@ -58,7 +58,7 @@ const faqJsonLd = {
   <!-- OFFRE -->
   <section class="container" id="offre" aria-labelledby="offre-title">
     <h2 id="offre-title">{t.offer.title}</h2>
-    <p class="section-lead">{t.offer.subtitle}</p>
+    <p class="section-lead" set:html={t.offer.subtitle} />
     <ul class="grid" role="list">
       {t.offer.paliers.map((p) => (
         <li class:list={['card', 'reveal', { 'card--featured': p.phare }]}>

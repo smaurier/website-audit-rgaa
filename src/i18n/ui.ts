@@ -94,6 +94,36 @@ export interface Dict {
     };
   };
   success: { title: string; body: string; back: string };
+  estimation: {
+    metaTitle: string;
+    metaDescription: string;
+    eyebrow: string;
+    h1: string;
+    lead: string;
+    typeLabel: string;
+    typeOptions: { value: 'vitrine' | 'app' | 'mobile' | 'ecommerce'; label: string }[];
+    pagesLabel: string;
+    pagesHint: string;
+    refsLabel: string;
+    refsHint: string;
+    refsOptions: { value: string; label: string }[];
+    remediationLabel: string;
+    remediationOptions: { value: 'oui' | 'non'; label: string }[];
+    submit: string;
+    resultTitle: string;
+    resultIdle: string;
+    palierLabel: string;
+    priceLabel: string;
+    justificationLabel: string;
+    ctaLabel: string;
+    ctaHref: string;
+    paliers: {
+      diagnostic: { name: string; price: string; justify: string };
+      audit: { name: string; price: string; justify: string };
+      surmesure: { name: string; price: string; justify: string };
+    };
+    disclaimer: string;
+  };
 }
 
 export const ui: Record<Lang, Dict> = {
@@ -142,7 +172,7 @@ export const ui: Record<Lang, Dict> = {
     offer: {
       title: 'Trois façons de travailler ensemble',
       subtitle:
-        "Offre à prix fixe, audit 100 % manuel. Pas de temps facturé à l'aveugle : un périmètre, un livrable.",
+        "Offre à prix fixe, audit 100 % manuel. Pas de temps facturé à l'aveugle : un périmètre, un livrable. Vous hésitez sur le palier : <a href=\"/estimation/\">calculateur de coût en 30 secondes</a>.",
       badge: 'Le plus demandé',
       paliers: [
         {
@@ -340,6 +370,67 @@ export const ui: Record<Lang, Dict> = {
       body: 'Merci, votre message est bien parti. Je vous réponds sous 48 h.',
       back: "Retour à l'accueil",
     },
+    estimation: {
+      metaTitle: "Calculateur de coût d'audit d'accessibilité | Nuada",
+      metaDescription:
+        "Estimez en 30 secondes le palier d'audit d'accessibilité adapté à votre projet (RGAA, WCAG, EAA) : type de site, volume, référentiel visé, remédiation incluse ou non.",
+      eyebrow: 'Estimation en 30 secondes',
+      h1: "Calculateur de coût d'audit d'accessibilité.",
+      lead: "Quatre questions, une fourchette de prix indicative et le palier recommandé. La cotation finale se fait toujours après un cadrage précis.",
+      typeLabel: 'Type de projet',
+      typeOptions: [
+        { value: 'vitrine', label: 'Site vitrine ou landing' },
+        { value: 'app', label: 'Application web' },
+        { value: 'mobile', label: 'Application mobile (React Native)' },
+        { value: 'ecommerce', label: 'E-commerce ou plateforme transactionnelle' },
+      ],
+      pagesLabel: 'Nombre de pages ou écrans clés',
+      pagesHint: 'Compter les parcours critiques (accueil, catalogue, panier, compte, etc.).',
+      refsLabel: 'Référentiels visés',
+      refsHint: 'Cochez tout ce qui s\'applique.',
+      refsOptions: [
+        { value: 'rgaa', label: 'RGAA 4.1 (France)' },
+        { value: 'wcag', label: 'WCAG 2.2 (international)' },
+        { value: 'eaa', label: 'European Accessibility Act' },
+        { value: 'en301', label: 'UNE-EN 301 549 (Espagne / LATAM)' },
+        { value: 'ada', label: 'ADA / Section 508 (États-Unis)' },
+      ],
+      remediationLabel: 'Souhaitez-vous la remédiation code ?',
+      remediationOptions: [
+        { value: 'oui', label: 'Oui, livrer les PR de correction' },
+        { value: 'non', label: 'Non, seulement le rapport d\'audit' },
+      ],
+      submit: "Calculer l'estimation",
+      resultTitle: 'Palier recommandé',
+      resultIdle: 'Renseignez le formulaire pour voir l\'estimation.',
+      palierLabel: 'Palier',
+      priceLabel: 'Fourchette indicative',
+      justificationLabel: 'Pourquoi ce palier',
+      ctaLabel: 'Demander un devis précis',
+      ctaHref: '/#contact',
+      paliers: {
+        diagnostic: {
+          name: 'Diagnostic',
+          price: '1 200 € HT',
+          justify:
+            "Périmètre restreint, sans remédiation code. Idéal pour un premier état des lieux sur un site vitrine et prioriser une action.",
+        },
+        audit: {
+          name: 'Audit + Remédiation',
+          price: 'À partir de 4 900 € HT',
+          justify:
+            "Périmètre étendu ou remédiation code demandée. Audit exhaustif sur l'échantillon défini, avec pull requests de correction livrées dans votre dépôt.",
+        },
+        surmesure: {
+          name: 'Mise en conformité sur-mesure',
+          price: 'Sur devis',
+          justify:
+            "Projet de grande ampleur, plusieurs référentiels cumulés ou obligation légale complexe. Cadrage dédié et accompagnement dans le temps.",
+        },
+      },
+      disclaimer:
+        "Cette estimation est indicative. Le prix final dépend de la profondeur des parcours, du volume réel de non-conformités et du contexte technique (framework, dette, monorepo). Un cadrage de 30 min permet de figer la cotation.",
+    },
   },
 
   en: {
@@ -386,7 +477,7 @@ export const ui: Record<Lang, Dict> = {
     },
     offer: {
       title: 'Three ways to work together',
-      subtitle: 'Fixed prices, 100% manual audits. No blind hourly billing: one scope, one deliverable.',
+      subtitle: 'Fixed prices, 100% manual audits. No blind hourly billing: one scope, one deliverable. Not sure which tier: <a href="/en/estimator/">30-second cost estimator</a>.',
       badge: 'Most requested',
       paliers: [
         {
@@ -584,6 +675,67 @@ export const ui: Record<Lang, Dict> = {
       body: 'Thank you, your message is on its way. I will reply within 48 hours.',
       back: 'Back to home',
     },
+    estimation: {
+      metaTitle: 'Accessibility audit cost estimator | Nuada',
+      metaDescription:
+        'Estimate in 30 seconds the audit tier that fits your project (WCAG, EAA, ADA): project type, scope, target framework, remediation included or not.',
+      eyebrow: '30-second estimate',
+      h1: 'Accessibility audit cost estimator.',
+      lead: 'Four questions, one indicative price range and the recommended tier. Final quotes always follow a proper scoping call.',
+      typeLabel: 'Project type',
+      typeOptions: [
+        { value: 'vitrine', label: 'Marketing site or landing page' },
+        { value: 'app', label: 'Web application' },
+        { value: 'mobile', label: 'Mobile application (React Native)' },
+        { value: 'ecommerce', label: 'E-commerce or transactional platform' },
+      ],
+      pagesLabel: 'Number of key pages or screens',
+      pagesHint: 'Count critical journeys (home, catalogue, cart, account, etc.).',
+      refsLabel: 'Target frameworks',
+      refsHint: 'Tick every framework that applies.',
+      refsOptions: [
+        { value: 'wcag', label: 'WCAG 2.2 (international)' },
+        { value: 'eaa', label: 'European Accessibility Act' },
+        { value: 'ada', label: 'ADA / Section 508 (United States)' },
+        { value: 'rgaa', label: 'RGAA 4.1 (France)' },
+        { value: 'en301', label: 'UNE-EN 301 549 (Spain / LATAM)' },
+      ],
+      remediationLabel: 'Do you want code remediation?',
+      remediationOptions: [
+        { value: 'oui', label: 'Yes, deliver remediation pull requests' },
+        { value: 'non', label: 'No, audit report only' },
+      ],
+      submit: 'Compute estimate',
+      resultTitle: 'Recommended tier',
+      resultIdle: 'Fill in the form to see the estimate.',
+      palierLabel: 'Tier',
+      priceLabel: 'Indicative range',
+      justificationLabel: 'Why this tier',
+      ctaLabel: 'Request a precise quote',
+      ctaHref: '/en/#contact',
+      paliers: {
+        diagnostic: {
+          name: 'Assessment',
+          price: '€1,200 (excl. VAT)',
+          justify:
+            'Small scope, no code remediation. A good first look at a marketing site to prioritise action.',
+        },
+        audit: {
+          name: 'Audit + Remediation',
+          price: 'From €4,900 (excl. VAT)',
+          justify:
+            'Broader scope or code remediation requested. Exhaustive audit on the defined sample, with remediation pull requests pushed into your repository.',
+        },
+        surmesure: {
+          name: 'Custom compliance program',
+          price: 'Custom quote',
+          justify:
+            'Large scope, multiple stacked frameworks or complex legal obligation. Dedicated scoping and ongoing enablement.',
+        },
+      },
+      disclaimer:
+        'This is an indicative estimate. The final price depends on journey depth, actual non-conformance volume and technical context (framework, tech debt, monorepo). A 30-minute scoping call locks the quote.',
+    },
   },
 
   es: {
@@ -630,7 +782,7 @@ export const ui: Record<Lang, Dict> = {
     },
     offer: {
       title: 'Tres formas de trabajar juntos',
-      subtitle: 'Precios fijos, auditoría 100 % manual. Sin horas facturadas a ciegas: un alcance, un entregable.',
+      subtitle: 'Precios fijos, auditoría 100 % manual. Sin horas facturadas a ciegas: un alcance, un entregable. ¿Dudas sobre el nivel?: <a href="/es/estimacion/">calculadora de coste en 30 segundos</a>.',
       badge: 'El más solicitado',
       paliers: [
         {
@@ -827,6 +979,67 @@ export const ui: Record<Lang, Dict> = {
       title: 'Mensaje enviado',
       body: 'Gracias, su mensaje está en camino. Le responderé en 48 h.',
       back: 'Volver al inicio',
+    },
+    estimation: {
+      metaTitle: 'Calculadora de coste de auditoría de accesibilidad | Nuada',
+      metaDescription:
+        'Estime en 30 segundos el nivel de auditoría adecuado para su proyecto (WCAG, UNE-EN 301 549, EAA): tipo de proyecto, alcance, marco objetivo, corrección incluida o no.',
+      eyebrow: 'Estimación en 30 segundos',
+      h1: 'Calculadora de coste de auditoría de accesibilidad.',
+      lead: 'Cuatro preguntas, una franja de precio orientativa y el nivel recomendado. El presupuesto final siempre se cierra tras una sesión de alcance.',
+      typeLabel: 'Tipo de proyecto',
+      typeOptions: [
+        { value: 'vitrine', label: 'Sitio corporativo o landing' },
+        { value: 'app', label: 'Aplicación web' },
+        { value: 'mobile', label: 'Aplicación móvil (React Native)' },
+        { value: 'ecommerce', label: 'E-commerce o plataforma transaccional' },
+      ],
+      pagesLabel: 'Número de páginas o pantallas clave',
+      pagesHint: 'Cuente los recorridos críticos (inicio, catálogo, carrito, cuenta, etc.).',
+      refsLabel: 'Marcos objetivo',
+      refsHint: 'Marque todo lo que aplique.',
+      refsOptions: [
+        { value: 'wcag', label: 'WCAG 2.2 (internacional)' },
+        { value: 'en301', label: 'UNE-EN 301 549 (España / LATAM)' },
+        { value: 'eaa', label: 'European Accessibility Act' },
+        { value: 'rgaa', label: 'RGAA 4.1 (Francia)' },
+        { value: 'ada', label: 'ADA / Section 508 (Estados Unidos)' },
+      ],
+      remediationLabel: '¿Desea la corrección del código?',
+      remediationOptions: [
+        { value: 'oui', label: 'Sí, entregar los pull requests de corrección' },
+        { value: 'non', label: 'No, solo el informe de auditoría' },
+      ],
+      submit: 'Calcular la estimación',
+      resultTitle: 'Nivel recomendado',
+      resultIdle: 'Rellene el formulario para ver la estimación.',
+      palierLabel: 'Nivel',
+      priceLabel: 'Franja orientativa',
+      justificationLabel: 'Por qué este nivel',
+      ctaLabel: 'Solicitar un presupuesto detallado',
+      ctaHref: '/es/#contact',
+      paliers: {
+        diagnostic: {
+          name: 'Diagnóstico',
+          price: '1 200 € (sin IVA)',
+          justify:
+            'Alcance reducido, sin corrección de código. Ideal para un primer análisis de un sitio corporativo y priorizar acciones.',
+        },
+        audit: {
+          name: 'Auditoría + Corrección',
+          price: 'Desde 4 900 € (sin IVA)',
+          justify:
+            'Alcance amplio o corrección de código solicitada. Auditoría exhaustiva sobre la muestra definida, con pull requests de corrección subidas a su repositorio.',
+        },
+        surmesure: {
+          name: 'Conformidad a medida',
+          price: 'Presupuesto a medida',
+          justify:
+            'Proyecto de gran envergadura, varios marcos regulatorios acumulados u obligación legal compleja. Alcance dedicado y acompañamiento en el tiempo.',
+        },
+      },
+      disclaimer:
+        'Esta estimación es orientativa. El precio final depende de la profundidad de los recorridos, del volumen real de no conformidades y del contexto técnico (framework, deuda, monorepo). Una sesión de alcance de 30 min cierra el presupuesto.',
     },
   },
 };

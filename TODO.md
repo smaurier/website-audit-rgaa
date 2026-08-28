@@ -53,6 +53,6 @@ adresse, moyen de contact, identité de l'hébergeur (Netlify, Inc. — 512 2nd 
 - [x] Image OG 1200×630 (SVG source + PNG genere via `npm run og`, sharp devDep) — reference dans Base.astro (og:image, og:image:width/height/alt, twitter:card=summary_large_image)
 - [ ] Google Search Console dès le domaine branché ; vérifier notifications Netlify Forms
 - [ ] DA celtique v2 : logo main d'argent, entrelacs discrets, typographie display
-- [ ] Calculateur de coût interactif (futur composant Svelte)
+- [x] Calculateur de coût interactif : pages `/estimation` (FR), `/en/estimator`, `/es/estimacion`, composant vanilla Astro (pas de dep Svelte ajoutee), formulaire accessible avec fieldset/legend, output aria-live, lien depuis section Offre
 - [ ] Études de cas dès les premiers clients
 - [ ] Renommer le repo GitHub `website-audit-rgaa` → `nuada` (optionnel, GitHub redirige l'ancien nom)

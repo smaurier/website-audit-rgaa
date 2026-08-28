@@ -470,6 +470,63 @@ ul.grid, ol.grid { list-style: none; padding: 0; }
 .latam-item dd { margin: 0; color: var(--c-muted); }
 .latam-ley { color: var(--c-accent); font-size: 0.95em; }
 
+/* --- Estimator : calculateur de cout d'audit --- */
+.estimator {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  max-width: 44rem;
+}
+.estimator fieldset { border: 0; padding: 0; margin: 0; }
+.estimator fieldset legend {
+  padding: 0;
+  font-weight: 600;
+  color: var(--c-text);
+}
+.est-choices {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-3) 0 0;
+  display: grid;
+  gap: var(--space-2);
+}
+.est-choices label {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.est-choices label:hover { border-color: var(--c-primary); }
+.est-choices input:focus-visible ~ span {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.estimator-result {
+  margin-top: var(--space-8);
+  max-width: 44rem;
+}
+.estimator-out {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+}
+.estimator-out dt { font-weight: 600; color: var(--c-muted); }
+.estimator-out dd { margin: 0; }
+.estimator-cta { margin-top: var(--space-6); max-width: 44rem; }
+.estimator-disclaimer {
+  margin-top: var(--space-4);
+  max-width: 44rem;
+  color: var(--c-muted);
+  font-size: 0.9em;
+  font-style: italic;
+}
+
 /* --- Siblings : liens croises entre pages piliers --- */
 .sibling-list {
   list-style: none;

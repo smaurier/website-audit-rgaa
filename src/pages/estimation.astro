@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import Estimation from '../components/Estimation.astro';
+import { ui } from '../i18n/ui';
+const lang = 'fr';
+const t = ui[lang].estimation;
+---
+<Base lang={lang} title={t.metaTitle} description={t.metaDescription}>
+  <Estimation lang={lang} />
+</Base>

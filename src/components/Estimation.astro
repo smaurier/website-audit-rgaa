@@ -1,0 +1,135 @@
+---
+import { ui, type Lang } from '../i18n/ui';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const t = ui[lang].estimation;
+const paliersJson = JSON.stringify(t.paliers);
+const labelsJson = JSON.stringify({
+  palierLabel: t.palierLabel,
+  priceLabel: t.priceLabel,
+  justificationLabel: t.justificationLabel,
+});
+---
+
+<section class="container" aria-labelledby="est-title">
+  <p class="eyebrow">{t.eyebrow}</p>
+  <h1 id="est-title">{t.h1}</h1>
+  <p class="section-lead">{t.lead}</p>
+
+  <form class="estimator" data-estimator novalidate>
+    <fieldset class="field">
+      <legend>{t.typeLabel}</legend>
+      <ul class="est-choices" role="list">
+        {t.typeOptions.map((opt, i) => (
+          <li>
+            <label>
+              <input type="radio" name="type" value={opt.value} checked={i === 0} required />
+              <span>{opt.label}</span>
+            </label>
+          </li>
+        ))}
+      </ul>
+    </fieldset>
+
+    <p class="field">
+      <label for="est-pages">{t.pagesLabel}</label>
+      <span class="hint" id="est-pages-hint">{t.pagesHint}</span>
+      <input
+        class="input"
+        id="est-pages"
+        name="pages"
+        type="number"
+        min="1"
+        max="200"
+        value="5"
+        required
+        aria-describedby="est-pages-hint"
+      />
+    </p>
+
+    <fieldset class="field">
+      <legend>{t.refsLabel}</legend>
+      <span class="hint">{t.refsHint}</span>
+      <ul class="est-choices" role="list">
+        {t.refsOptions.map((opt, i) => (
+          <li>
+            <label>
+              <input type="checkbox" name="refs" value={opt.value} checked={i === 0} />
+              <span>{opt.label}</span>
+            </label>
+          </li>
+        ))}
+      </ul>
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>{t.remediationLabel}</legend>
+      <ul class="est-choices" role="list">
+        {t.remediationOptions.map((opt, i) => (
+          <li>
+            <label>
+              <input type="radio" name="remediation" value={opt.value} checked={i === 0} required />
+              <span>{opt.label}</span>
+            </label>
+          </li>
+        ))}
+      </ul>
+    </fieldset>
+
+    <p class="field">
+      <button type="submit" class="btn btn--primary">{t.submit}</button>
+    </p>
+  </form>
+
+  <div class="estimator-result card reveal" aria-live="polite" data-estimator-result>
+    <h2>{t.resultTitle}</h2>
+    <p data-estimator-idle>{t.resultIdle}</p>
+  </div>
+
+  <p class="estimator-cta">
+    <a class="btn btn--ghost" href={t.ctaHref}>{t.ctaLabel}</a>
+  </p>
+
+  <p class="estimator-disclaimer">{t.disclaimer}</p>
+</section>
+
+<script is:inline define:vars={{ paliersJson, labelsJson }}>
+  const paliers = JSON.parse(paliersJson);
+  const labels = JSON.parse(labelsJson);
+  const form = document.querySelector('[data-estimator]');
+  const result = document.querySelector('[data-estimator-result]');
+  const idle = document.querySelector('[data-estimator-idle]');
+  if (form && result) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const type = fd.get('type');
+      const pages = parseInt(fd.get('pages'), 10) || 1;
+      const refs = fd.getAll('refs');
+      const remediation = fd.get('remediation');
+      const factor = { vitrine: 1, app: 1.5, mobile: 1.8, ecommerce: 2 }[type] || 1;
+      const score = pages * factor + refs.length * 3;
+      const large = pages > 20 || refs.length >= 3;
+      let key = 'diagnostic';
+      if (large || (type === 'ecommerce' && pages > 15)) key = 'surmesure';
+      else if (remediation === 'oui' || score > 15) key = 'audit';
+      const p = paliers[key];
+      if (idle) idle.remove();
+      result.querySelectorAll('[data-est-out]').forEach((n) => n.remove());
+      const wrapper = document.createElement('div');
+      wrapper.setAttribute('data-est-out', '');
+      wrapper.innerHTML = `
+        <dl class="estimator-out">
+          <dt>${labels.palierLabel}</dt>
+          <dd><strong>${p.name}</strong></dd>
+          <dt>${labels.priceLabel}</dt>
+          <dd>${p.price}</dd>
+          <dt>${labels.justificationLabel}</dt>
+          <dd>${p.justify}</dd>
+        </dl>
+      `;
+      result.appendChild(wrapper);
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
+</script>
