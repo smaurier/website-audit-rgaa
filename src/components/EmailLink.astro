@@ -1,9 +1,16 @@
 ---
 /*
-  Adresse email protégée des bots sans sacrifier l'accessibilité.
-  - Sans JS : texte lisible/copiable "user (at) domaine (dot) com" (pas de mailto: ni @ à récolter).
-  - Avec JS : remplacé par un vrai lien <a mailto:> cliquable.
-  Aucun lien mort, lecture correcte par lecteur d'écran.
+  Adresse e-mail protégée des bots sans sacrifier l'accessibilité.
+
+  - Sans JS : fallback texte "user (at) domaine (dot) com" (pas de @ à récolter,
+    pas de mailto: dead).
+  - Avec JS : l'adresse est reconstruite à partir de deux data-attributs
+    base64 (utilisateur et domaine séparés + sujet), remplacée dynamiquement
+    par un vrai lien mailto: cliquable. Bots qui parsent uniquement le HTML
+    ne voient jamais l'adresse en clair.
+
+  Aucun lien mort. Lecture correcte par lecteur d'écran (le fallback reste
+  compréhensible, le lien mailto: prend le relais dès que le JS charge).
 */
 interface Props {
   user: string;
@@ -11,22 +18,39 @@ interface Props {
   subject?: string;
 }
 const { user, domain, subject } = Astro.props;
+
+// Encodage base64 séparé pour user et domain : un scraper qui décode
+// béatement chaque data-* ne récupère pas l'adresse complète, il faut
+// concaténer volontairement.
+const toB64 = (s: string) => Buffer.from(s, 'utf8').toString('base64');
+const encUser = toB64(user);
+const encDomain = toB64(domain);
+const encSubject = subject ? toB64(subject) : '';
+
+// Fallback lisible pour no-JS : notation (at)/(dot), zéro @ dans le HTML.
 const display = `${user} (at) ${domain.replace(/\./g, ' (dot) ')}`;
 ---
-<span class="email" data-user={user} data-domain={domain} data-subject={subject ?? ''}>{display}</span>
+<span
+  class="email"
+  data-u={encUser}
+  data-d={encDomain}
+  data-s={encSubject}
+>{display}</span>
 
 <script>
-  for (const el of document.querySelectorAll('span.email')) {
-    const s = el as HTMLElement;
-    const user = s.dataset.user;
-    const domain = s.dataset.domain;
+  // Reconstruit et remplace tous les emails obfusqués une seule fois.
+  const decode = (s: string | undefined) => (s ? atob(s) : '');
+  for (const el of document.querySelectorAll<HTMLElement>('span.email')) {
+    const user = decode(el.dataset.u);
+    const domain = decode(el.dataset.d);
     if (!user || !domain) continue;
     const addr = `${user}@${domain}`;
-    const subject = s.dataset.subject;
+    const subject = decode(el.dataset.s);
     const a = document.createElement('a');
     a.href = `mailto:${addr}${subject ? `?subject=${encodeURIComponent(subject)}` : ''}`;
     a.textContent = addr;
     a.className = 'email';
-    s.replaceWith(a);
+    a.rel = 'nofollow';
+    el.replaceWith(a);
   }
 </script>
