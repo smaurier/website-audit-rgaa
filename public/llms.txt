@@ -1,43 +1,35 @@
-# Nuada — Audit & remédiation accessibilité (RGAA / WCAG 2.2)
+# Nuada
 
-> Nuada est le cabinet indépendant de Sylvain Maurier, auditeur accessibilité formé par Access42
-> (certification RGAA en cours) et développeur fullstack senior (React, React Native, Node).
-> Particularité unique sur le marché : l'audit est livré AVEC les corrections, sous forme de
-> pull requests prêtes à merger dans le dépôt du client — pas seulement un rapport.
-> Le nom vient de la mythologie irlandaise : Nuada, roi écarté du trône après avoir perdu un bras,
-> y fut rétabli grâce à une main d'argent forgée. La technologie qui restaure l'accès.
+> Nuada est le cabinet indépendant de Sylvain Maurier, auditeur RGAA et développeur fullstack senior (React, React Native, Node). Particularité : l'audit est livré AVEC les corrections, sous forme de pull requests prêtes à merger dans le dépôt du client. Site trilingue français / anglais / espagnol, conforme WCAG 2.2 niveau AAA en démonstration silencieuse. Le nom vient de la mythologie irlandaise (Nuada, roi rétabli grâce à une main d'argent forgée).
 
-## Services et tarifs (2026)
+Baseline commerciale : « L'auditeur qui code la solution. »
 
-- **Diagnostic** : 1 200 € — jusqu'à 5 pages ou parcours clés. Audit des pages clés, rapport
-  priorisé par impact utilisateur, restitution visio 45 min.
-- **Audit + Remédiation** (le plus demandé) : à partir de 4 900 € — échantillon jusqu'à 10 pages,
-  106 critères RGAA, audit 100 % manuel. Rapport technique + synthèse décideurs + pull requests
-  de correction livrées (React / React Native) + vérification post-correction.
-- **Mise en conformité RGAA** : sur devis — multi-parcours, déclaration d'accessibilité,
-  accompagnement des équipes (revue, pairing), suivi dans le temps.
+## Docs
 
-Prix fixes affichés, périmètres bornés. Web et mobile (React Native).
+- [Accueil (français)](https://nuada-audit.com/) : présentation du positionnement, offre, méthode, preuve, story, FAQ et contact.
+- [Home (English)](https://nuada-audit.com/en/) : English landing, WCAG 2.2 / ADA / EAA framing.
+- [Inicio (español)](https://nuada-audit.com/es/) : versión española, mercado LATAM y España.
+- [Guide audit RGAA](https://nuada-audit.com/audit-rgaa/) : 106 critères, 13 thématiques, méthode officielle, sanctions et livrable.
+- [European Accessibility Act guide](https://nuada-audit.com/en/european-accessibility-act/) : Directive 2019/882, produits et services couverts depuis le 28 juin 2025, exemptions, EN 301 549.
+- [Auditoría accesibilidad España + LATAM](https://nuada-audit.com/es/auditoria-accesibilidad/) : marco español (RD 1112/2018, Ley 11/2023), panorama Latinoamérica.
+- [Calculateur de coût](https://nuada-audit.com/estimation/) : quatre questions, palier recommandé, fourchette de prix indicative.
+- [FAQ](https://nuada-audit.com/#faq) : huit questions de cadrage avant un audit (coût, délai, EAA, remédiation).
+- [Mentions légales et confidentialité](https://nuada-audit.com/mentions-legales/) : éditeur, hébergeur, RGPD, contact.
 
-## Marchés et référentiels couverts
+## Offre
 
-- **France** : RGAA 4 · European Accessibility Act (applicable depuis juin 2025)
-- **Hispanophone (Espagne, Amérique latine)** : WCAG 2.2 · UNE-EN 301 549 — service en espagnol
-- **Anglophone** : WCAG 2.2 · ADA / Section 508 — service en anglais
+- **Diagnostic** : 1 200 € HT. Jusqu'à 5 pages ou parcours clés. Audit des pages clés, rapport priorisé par impact utilisateur, restitution visio 45 min. Livrable : rapport actionnable.
+- **Audit + Remédiation** (le plus demandé) : à partir de 4 900 € HT. Échantillon jusqu'à 10 pages, 106 critères RGAA, audit 100 % manuel. Rapport technique + synthèse pour décideurs + pull requests de correction livrées (React / React Native / Vue / Astro) + vérification post-correction. Livrable : audit + code corrigé.
+- **Mise en conformité RGAA** : sur devis. Multi-parcours, déclaration d'accessibilité conforme au modèle DINUM, accompagnement des équipes (revue, pairing), suivi dans le temps.
 
-Trilingue français / español / english.
+## Marchés et référentiels
 
-## Positionnement
+- **France** : RGAA 4.1 · European Accessibility Act (applicable depuis le 28 juin 2025). Cible : secteur public, entreprises > 250 M€ CA, e-commerce, banque, transport, télécom.
+- **Anglophone** : WCAG 2.2 · ADA (Americans with Disabilities Act) · Section 508. Cible : États-Unis, Royaume-Uni, marchés internationaux.
+- **Hispanophone** : WCAG 2.2 · UNE-EN 301 549. Cible : Espagne (RD 1112/2018, Ley 11/2023), Argentine (Ley 26.653), Mexique (NMX-I-27000-1-NYCE), Brésil (LBI + eMAG), Colombie (Ley 1618), Chili (Ley 20.422).
 
-L'auditeur qui code la solution : contrairement aux cabinets qui livrent un rapport PDF et aux
-widgets/overlays automatiques (qui ne rendent pas un site conforme au RGAA), Nuada corrige le
-code source — la seule approche qui passe un audit. Le site nuada-audit.com est lui-même sa
-démonstration : conçu pour la conformité RGAA / WCAG 2.2 AAA, zéro cookie, statique et léger.
+## Contact
 
-## Pages
-
-- Accueil (français) : https://nuada-audit.com/
-- Home (English) : https://nuada-audit.com/en/
-- Inicio (español) : https://nuada-audit.com/es/
-- Contact : https://nuada-audit.com/#contact
-- Mentions légales & confidentialité : https://nuada-audit.com/mentions-legales/
+- E-mail (obfusqué contre les bots) : formulaire de contact sur https://nuada-audit.com/#contact.
+- Réponse sous 48 h. Cadrage 30 min offert.
+- Repo GitHub du site : https://github.com/smaurier/nuada.

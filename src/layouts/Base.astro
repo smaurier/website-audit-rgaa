@@ -12,10 +12,10 @@ interface Props {
   lang: Lang;
   title?: string;
   description?: string;
-  preloadImage?: string;
+  preloadImages?: { href: string; type?: string }[];
 }
 
-const { lang, title, description, preloadImage } = Astro.props;
+const { lang, title, description, preloadImages } = Astro.props;
 const t = ui[lang];
 const l = t.layout;
 const pageTitle = title ?? t.meta.title;
@@ -86,7 +86,9 @@ const jsonLd = {
     <meta name="description" content={pageDescription} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonical} />
-    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
+    {preloadImages?.map((p) => (
+      <link rel="preload" as="image" href={p.href} type={p.type} fetchpriority="high" />
+    ))}
     <meta name="google-site-verification" content="EMAcDfRSRRazsjSjlwlXtu89Qk4MJICjSAw45mQLSMY" />
     <!-- View Transitions cross-document : le pill de langue actif glisse d'une langue a l'autre lors du changement de page. -->
     <style is:inline>

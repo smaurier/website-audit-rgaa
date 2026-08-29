@@ -23,7 +23,10 @@ const faqJsonLd = {
 };
 ---
 
-<Base lang={lang} preloadImage="/illustrations/nuada-bust.svg">
+<Base lang={lang} preloadImages={[
+  { href: '/illustrations/nuada-bust.avif', type: 'image/avif' },
+  { href: '/illustrations/nuada-bust.webp', type: 'image/webp' },
+]}>
   <!-- HERO v2 — split 60/40, gros H1 clamp, illustration Nuada en arche, torque overlay -->
   <section class="hero-v2" aria-labelledby="hero-title">
     <div class="hero-v2-content rise">
@@ -42,7 +45,19 @@ const faqJsonLd = {
     </div>
     <figure class="hero-v2-figure">
       <div class="hero-v2-arch">
-        <img src="/illustrations/nuada-bust.svg" alt={t.hero.illustrationAlt} width="400" height="540" loading="eager" decoding="async" fetchpriority="high" />
+        <picture>
+          <source srcset="/illustrations/nuada-bust.avif" type="image/avif" />
+          <source srcset="/illustrations/nuada-bust.webp" type="image/webp" />
+          <img
+            src="/illustrations/nuada-bust.svg"
+            alt={t.hero.illustrationAlt}
+            width="400"
+            height="540"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </picture>
       </div>
       <figcaption class="hero-v2-caption">{t.hero.illustrationCaption}</figcaption>
     </figure>
