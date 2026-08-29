@@ -25,3 +25,8 @@ pnpm-debug.log*
 
 # Mockups scratch (Claude Design exports, kept locally for reference)
 mockups/
+
+# Lighthouse reports (local audit)
+lh-*.json
+lh-*.html
+.playwright-mcp/
