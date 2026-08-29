@@ -6,6 +6,12 @@ import '@fontsource/fraunces/700.css';
 import '@fontsource/fraunces/900.css';      // h1
 import '@fontsource/fraunces/900-italic.css'; // accents italiques du h1
 import '../styles/global.css';
+
+// URLs hashees des 2 fontes critiques du hero (H1 + em italique).
+// Preload en fetchpriority high : le layout du hero (donc le LCP element image)
+// arrete d'attendre les metrics de police plus tot.
+import fraunces900url from '@fontsource/fraunces/files/fraunces-latin-900-normal.woff2?url';
+import fraunces900italicUrl from '@fontsource/fraunces/files/fraunces-latin-900-italic.woff2?url';
 import { ui, locales, type Lang } from '../i18n/ui';
 
 interface Props {
@@ -86,6 +92,8 @@ const jsonLd = {
     <meta name="description" content={pageDescription} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonical} />
+    <link rel="preload" as="font" type="font/woff2" href={fraunces900url} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={fraunces900italicUrl} crossorigin />
     {preloadImages?.map((p) => (
       <link rel="preload" as="image" href={p.href} type={p.type} fetchpriority="high" />
     ))}
