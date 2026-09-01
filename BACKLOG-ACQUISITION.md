@@ -30,6 +30,15 @@
 - [ ] **Profil Malt** « Consultant accessibilité RGAA certifié + dev React » : ouverture
       quand le SIRET tombe (nov-déc, Malt exige un statut pour contractualiser).
       Canal passif n°2, la sous-traitance directe reste le n°1.
+- [ ] **Productiser l'offre** : 3 formules à prix fixe (audit express / audit complet +
+      code de correction / **accompagnement conformité mensuel**). Le retainer mensuel
+      (veille, re-tests, support des devs du client) = revenu récurrent, pas du one-shot.
+      Aligner la page Offre + le calculateur d'estimation sur ces 3 formules.
+- [ ] **Annuaires spécialisés** (1h, une fois) : annuaire des certifiés Access42 si
+      public, répertoires a11y, CCI. S'inscrire partout où les acheteurs cherchent.
+- [ ] **Amorçage références via l'associatif** : 2-3 audits à prix coûtant pour des
+      associations (idéalement champ du handicap) contre témoignage public + fiche
+      référence. Remplit la page /references en 2 mois au lieu de 12, effet de halo.
 
 ## Phase 2 · canal sous-traitance (déc → mi-2027)
 
@@ -41,6 +50,21 @@
       publiée (autorisation ou anonymisée) + date de relance posée.
 - [ ] Cross-sell systématique vers Nahual : tout audit livré = proposition de remédiation
       ou refonte (l'auditeur qui code la solution).
+- [ ] **Marchés publics** : le secteur public est le seul acheteur légalement obligé
+      d'auditer (RGAA depuis 2019). Mode veille **BOAMP** dans radar-signaux (mots-clés
+      « RGAA », « audit accessibilité ») ; viser les MAPA < 40 k€ (attribution sans appel
+      d'offres formel, accessible à un solo certifié). Cibler en priorité les agences qui
+      ont des clients publics : elles ont besoin d'un sous-traitant certifié.
+- [ ] **Outreach semi-automatique piloté par le radar** : site non conforme détecté →
+      email personnalisé avec 2-3 problèmes concrets trouvés chez eux (jamais de template
+      creux). Quota : 5/semaine. B2B légal (intérêt légitime + opt-out).
+- [ ] **Métrique pipeline mensuelle** : leads → RDV → devis → missions, revue une fois
+      par mois. Sans mesure, pas de stratégie.
+
+## Phase 3 · dépassement (suite)
+
+- [ ] **Formation accessibilité en entreprise** : former les équipes du client (modèle
+      mission APICIL de Code Média). TJM élevé, récurrent, demande EAA énorme.
 
 ## Phase 3 · dépassement
 
